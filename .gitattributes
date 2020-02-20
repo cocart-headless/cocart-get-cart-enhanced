@@ -1,0 +1,6 @@
+/.* export-ignore
+CHANGELOG.md export-ignore
+Gruntfile.js export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+README.md export-ignore
