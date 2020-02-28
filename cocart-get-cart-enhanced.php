@@ -2,10 +2,10 @@
 /*
  * Plugin Name: CoCart - Get Cart Enhanced
  * Plugin URI:  https://cocart.xyz
- * Description: Enhances the get cart response to return the cart totals, coupons applied and additional product details.
+ * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.0.0
+ * Version:     1.1.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -36,6 +36,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 
 			// Enhances the returned cart contents.
 			add_filter( 'cocart_return_cart_contents', array( $this, 'enhance_cart_contents' ), 99 );
+			add_filter( 'cocart_return_cart_contents', array( $this, 'maybe_return_notices' ), 100 );
 
 			// Load translation files.
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
@@ -222,6 +223,54 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$new_cart_contents['totals'] = $new_totals;
 
 			return $new_cart_contents;
+		}
+
+		/**
+		 * Return notices in cart if any.
+		 *
+		 * @access public
+		 * @since  1.1.0
+		 * @param  array $cart_contents
+		 * @return array $cart_contents
+		 */
+		public function maybe_return_notices( $cart_contents ) {
+			$notice_count = 0;
+			$all_notices  = WC()->session->get( 'wc_notices', array() );
+
+			foreach ( $all_notices as $notices ) {
+				$notice_count += count( $notices );
+			}
+
+			if ( $notice_count > 0 ) {
+				$cart_contents['notices'] = $this->cocart_print_notices();
+			}
+
+			return $cart_contents;
+		}
+
+		/**
+		 * Returns messages and errors which are stored in the session, then clears them.
+		 *
+		 * @access public
+		 * @since  1.1.0
+		 * @return string|null
+		 */
+		protected function cocart_print_notices() {
+			$all_notices  = WC()->session->get( 'wc_notices', array() );
+			$notice_types = apply_filters( 'cocart_notice_types', array( 'error', 'success', 'notice' ) );
+			$notices      = array();
+
+			foreach ( $notice_types as $notice_type ) {
+				if ( wc_notice_count( $notice_type ) > 0 ) {
+					foreach ( $all_notices[ $notice_type ] as $key => $notice ) {
+						$notices[ $notice_type ][$key] = $notice;
+					}
+				}
+			}
+
+			wc_clear_notices();
+
+			return wc_kses_notice( $notices );
 		}
 
 		/**
