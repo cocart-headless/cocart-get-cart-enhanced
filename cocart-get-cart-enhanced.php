@@ -5,12 +5,12 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.1.0
+ * Version:     1.2.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
  * WC requires at least: 3.6.0
- * WC tested up to: 3.9.2
+ * WC tested up to: 3.9.3
  *
  * Copyright: © 2020 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
@@ -40,6 +40,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 
 			// Load translation files.
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
+			// Plugin activation and deactivation.
+			register_activation_hook( __FILE__, array( $this, 'activated' ) );
+			register_deactivation_hook( __FILE__, array( $this, 'deactivated' ) );
 		} // END __construct()
 
 		/**
@@ -285,6 +289,44 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		public function load_plugin_textdomain() {
 			load_plugin_textdomain( 'cocart-get-cart-enhanced', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
+
+		/**
+		 * Runs when the plugin is activated.
+		 *
+		 * Adds plugin to list of installed CoCart add-ons.
+		 *
+		 * @access public
+		 */
+		public function activated() {
+			$addons_installed = get_site_option( 'cocart_addons_installed', array() );
+
+			$plugin = plugin_basename( __FILE__ );
+
+			// Check if plugin is already added to list of installed add-ons.
+			if ( ! in_array( $plugin, $addons_installed, true ) ) {
+				array_push( $addons_installed, $plugin );
+				update_site_option( 'cocart_addons_installed', $addons_installed );
+			}
+		} // END activated()
+
+		/**
+		 * Runs when the plugin is deactivated.
+		 *
+		 * Removes plugin from list of installed CoCart add-ons.
+		 *
+		 * @access public
+		 */
+		public function deactivated() {
+			$addons_installed = get_site_option( 'cocart_addons_installed', array() );
+
+			$plugin = plugin_basename( __FILE__ );
+			
+			// Remove plugin from list of installed add-ons.
+			if ( in_array( $plugin, $addons_installed, true ) ) {
+				$addons_installed = array_diff( $addons_installed, array( $plugin ) );
+				update_site_option( 'cocart_addons_installed', $addons_installed );
+			}
+		} // END deactivated()
 
 	} // END class
 
