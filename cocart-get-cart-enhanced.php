@@ -5,12 +5,12 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.2.0
+ * Version:     1.3.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
  * WC requires at least: 3.6.0
- * WC tested up to: 3.9.3
+ * WC tested up to: 4.1.0
  *
  * Copyright: © 2020 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
@@ -49,14 +49,18 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Returns additional product details for each item in the cart.
 		 *
-		 * @access public
-		 * @param  array  $cart_contents
-		 * @param  int    $item_key
-		 * @param  array  $cart_item
-		 * @param  object $_product
-		 * @return array  $cart_contents
+		 * @access  public
+		 * @since   1.0.0
+		 * @version 1.3.0
+		 * @param   array  $cart_contents
+		 * @param   int    $item_key
+		 * @param   array  $cart_item
+		 * @param   object $_product
+		 * @return  array  $cart_contents
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
+			$cart_contents[ $item_key ]['product_price_raw'] = $_product->get_price();
+
 			// Return permalink if product is visible.
 			if ( $_product->is_visible() ) {
 				$cart_contents[ $item_key ]['permalink'] = $_product->get_permalink( $cart_item );
@@ -72,7 +76,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$cart_contents[ $item_key ]['sku'] = $_product->get_sku();
 
 			// Returns the product weight.
-			$cart_contents[ $item_key ]['weight'] = $_product->get_weight();
+			$cart_contents[ $item_key ]['weight'] = array(
+				'weight' => $_product->get_weight(),
+				'unit'   => get_option( 'woocommerce_weight_unit' )
+			);
 
 			// Returns the product stock status.
 			$status = $_product->get_stock_status();
@@ -138,23 +145,29 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * Enhances the returned cart contents.
 		 *
 		 * 1. Returns the cart hash.
-		 * 2. Places the cart contents under a new array called `items`.
-		 * 3. Returns the item count of all items in the cart.
-		 * 4. Returns the shipping status of the cart.
-		 * 5. Returns the payment status of the cart.
-		 * 6. Returns coupons applied to the cart if enabled.
-		 * 7. Returns additional fees applied to the cart.
-		 * 8. Returns the cart totals.
+		 * 2. Returns the cart key.
+		 * 3. Places the cart contents under a new array called `items`.
+		 * 4. Returns the item count of all items in the cart.
+		 * 5. Returns the shipping status of the cart.
+		 * 6. Returns the payment status of the cart.
+		 * 7. Returns coupons applied to the cart if enabled.
+		 * 8. Returns additional fees applied to the cart.
+		 * 9. Returns the cart totals.
 		 *
-		 * @access public
-		 * @param  array $cart_contents
-		 * @return array $new_cart_contents
+		 * @access  public
+		 * @since   1.0.0
+		 * @version 1.3.0
+		 * @param   array $cart_contents
+		 * @return  array $new_cart_contents
 		 */
 		public function enhance_cart_contents( $cart_contents ) {
 			$new_cart_contents = array();
 
 			// Get Cart.
 			$cart = WC()->cart;
+
+			// Cart Key.
+			$new_cart_contents['cart_key'] = $this->get_cart_key();
 
 			// Cart hash.
 			$new_cart_contents['cart_hash'] = $cart->get_cart_hash();
@@ -227,6 +240,40 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$new_cart_contents['totals'] = $new_totals;
 
 			return $new_cart_contents;
+		}
+
+		/**
+		 * Returns the cart key.
+		 *
+		 * @access public
+		 * @since  1.3.0
+		 * @return string
+		 */
+		public function get_cart_key() {
+			if ( ! class_exists( 'CoCart_Session_Handler' ) ) {
+				return;
+			}
+
+			// CoCart Session Handler.
+			$handler = new CoCart_Session_Handler();
+
+			// Current user ID.
+			$cart_key = strval( get_current_user_id() );
+			
+			// Check if we requested to load a specific cart.
+			if ( isset( $_REQUEST['id'] ) ) {
+				$cart_key = $_REQUEST['id'];
+			}
+
+			// Get cart cookie... if any.
+			$cookie = $handler->get_cart_cookie();
+
+			// Does a cookie exist?
+			if ( $cookie ) {
+				$cart_key = $cookie[0];
+			}
+
+			return $cart_key;
 		}
 
 		/**
