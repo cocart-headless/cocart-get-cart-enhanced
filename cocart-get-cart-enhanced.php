@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.3.0
+ * Version:     1.4.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -38,6 +38,9 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			add_filter( 'cocart_return_cart_contents', array( $this, 'enhance_cart_contents' ), 99 );
 			add_filter( 'cocart_return_cart_contents', array( $this, 'maybe_return_notices' ), 100 );
 
+			// Enhances an empty cart response.
+			add_filter( 'cocart_return_empty_cart', array( $this, 'enhance_cart_contents' ), 99 );
+
 			// Load translation files.
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
@@ -51,7 +54,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.3.0
+		 * @version 1.4.0
 		 * @param   array  $cart_contents
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
@@ -59,13 +62,6 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * @return  array  $cart_contents
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
-			$cart_contents[ $item_key ]['product_price_raw'] = $_product->get_price();
-
-			// Return permalink if product is visible.
-			if ( $_product->is_visible() ) {
-				$cart_contents[ $item_key ]['permalink'] = $_product->get_permalink( $cart_item );
-			}
-
 			// Returns the product categories.
 			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_category_ids(), 'product_cat' );
 
@@ -75,11 +71,21 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Returns the product SKU.
 			$cart_contents[ $item_key ]['sku'] = $_product->get_sku();
 
-			// Returns the product weight.
-			$cart_contents[ $item_key ]['weight'] = array(
+			// Returns the product weight if any.
+			$cart_contents[ $item_key ]['weight'] = ! empty( $_product->get_weight() ) ? array(
 				'weight' => $_product->get_weight(),
 				'unit'   => get_option( 'woocommerce_weight_unit' )
-			);
+			) : array();
+
+			// Returns product price and line price.
+			$cart_contents[ $item_key ]['price_raw'] = $_product->get_price();
+
+			$cart_contents[ $item_key ]['price'] = wc_format_decimal( $_product->get_price(), wc_get_price_decimals() );
+
+			$cart_contents[ $item_key ]['line_price'] = wc_format_decimal( isset( $cart_item['line_total'] ) ? $cart_item['line_total'] : $_product->get_price() * wc_stock_amount( $cart_item['quantity'] ), wc_get_price_decimals() );
+
+			// Returns variation data formatted.
+			$cart_contents[ $item_key ]['variation_data'] = $this->format_variation_data( $cart_item['variation'], $_product );
 
 			// Returns the product stock status.
 			$status = $_product->get_stock_status();
@@ -121,6 +127,11 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				}
 			}
 
+			// Return permalink if product is visible.
+			if ( $_product->is_visible() ) {
+				$cart_contents[ $item_key ]['permalink'] = $_product->get_permalink( $cart_item );
+			}
+
 			return $cart_contents;
 		}
 
@@ -144,27 +155,33 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Enhances the returned cart contents.
 		 *
-		 * 1. Returns the cart hash.
-		 * 2. Returns the cart key.
-		 * 3. Places the cart contents under a new array called `items`.
-		 * 4. Returns the item count of all items in the cart.
-		 * 5. Returns the shipping status of the cart.
-		 * 6. Returns the payment status of the cart.
-		 * 7. Returns coupons applied to the cart if enabled.
-		 * 8. Returns additional fees applied to the cart.
-		 * 9. Returns the cart totals.
+		 * 1.  Returns cart currency.
+		 * 2.  Returns the cart hash.
+		 * 3.  Returns the cart key.
+		 * 4.  Places the cart contents under a new array called `items`.
+		 * 5.  Returns the item count of all items in the cart.
+		 * 6.  Returns the shipping status of the cart.
+		 * 7.  Returns the payment status of the cart.
+		 * 8.  Returns coupons applied to the cart if enabled.
+		 * 9.  Returns additional fees applied to the cart.
+		 * 10. Returns the cart totals.
+		 * 11. Returns the total weight of the cart.
+		 * 12. Returns cart extras.
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.3.0
+		 * @version 1.4.0
 		 * @param   array $cart_contents
 		 * @return  array $new_cart_contents
 		 */
-		public function enhance_cart_contents( $cart_contents ) {
+		public function enhance_cart_contents( $cart_contents = array() ) {
 			$new_cart_contents = array();
 
 			// Get Cart.
 			$cart = WC()->cart;
+
+			// Currency.
+			$new_cart_contents['currency'] = get_woocommerce_currency();
 
 			// Cart Key.
 			$new_cart_contents['cart_key'] = $this->get_cart_key();
@@ -176,7 +193,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$new_cart_contents['items'] = $cart_contents;
 
 			// Returns item count of all items.
-			$new_cart_contents['items_counted'] = $cart->get_cart_contents_count();
+			$new_cart_contents['item_count'] = $cart->get_cart_contents_count();
 
 			// Returns the shipping status of the cart.
 			$new_cart_contents['needs_shipping'] = $cart->needs_shipping();
@@ -239,18 +256,30 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 
 			$new_cart_contents['totals'] = $new_totals;
 
+			// Returns total weight of cart.
+			$new_cart_contents['total_weight'] = array(
+				'total'       => wc_get_weight( $cart->get_cart_contents_weight(), get_option( 'woocommerce_weight_unit' ) ),
+				'weight_unit' => get_option( 'woocommerce_weight_unit' )
+			);
+
+			// Returns extra cart data and can be filtered.
+			$new_cart_contents['extras'] = apply_filters( 'cocart_enhanced_extras', array(
+				'removed_items' => $cart->get_removed_cart_contents()
+			) );
+
 			return $new_cart_contents;
 		}
 
 		/**
 		 * Returns the cart key.
 		 *
-		 * @access public
-		 * @since  1.3.0
-		 * @return string
+		 * @access  public
+		 * @since   1.3.0
+		 * @version 1.4.0
+		 * @return  string
 		 */
 		public function get_cart_key() {
-			if ( ! class_exists( 'CoCart_Session_Handler' ) ) {
+			if ( ! class_exists( 'CoCart_Session_Handler' ) || ! WC()->session instanceof CoCart_Session_Handler ) {
 				return;
 			}
 
@@ -260,17 +289,17 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Current user ID.
 			$cart_key = strval( get_current_user_id() );
 			
-			// Check if we requested to load a specific cart.
-			if ( isset( $_REQUEST['id'] ) ) {
-				$cart_key = $_REQUEST['id'];
-			}
-
 			// Get cart cookie... if any.
-			$cookie = $handler->get_cart_cookie();
+			$cookie = $handler->get_session_cookie();
 
 			// Does a cookie exist?
 			if ( $cookie ) {
 				$cart_key = $cookie[0];
+			}
+
+			// Check if we requested to load a specific cart.
+			if ( isset( $_REQUEST['cart_key'] ) || isset( $_REQUEST['id'] ) ) {
+				$cart_key = isset( $_REQUEST['cart_key'] ) ? $_REQUEST['cart_key'] : $_REQUEST['id'];
 			}
 
 			return $cart_key;
@@ -322,6 +351,40 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			wc_clear_notices();
 
 			return wc_kses_notice( $notices );
+		}
+
+		/**
+		 * Format variation data, for example convert slugs such as attribute_pa_size to Size.
+		 *
+		 * @access protected
+		 * @since  1.4.0
+		 * @param  array       $variation_data Array of data from the cart.
+		 * @param  WC_Product $product Product data.
+		 * @return array
+		 */
+		protected function format_variation_data( $variation_data, $product ) {
+			$return = array();
+
+			foreach ( $variation_data as $key => $value ) {
+				$taxonomy = wc_attribute_taxonomy_name( str_replace( 'attribute_pa_', '', urldecode( $key ) ) );
+
+				if ( taxonomy_exists( $taxonomy ) ) {
+					// If this is a term slug, get the term's nice name.
+					$term = get_term_by( 'slug', $value, $taxonomy );
+					if ( ! is_wp_error( $term ) && $term && $term->name ) {
+						$value = $term->name;
+					}
+					$label = wc_attribute_label( $taxonomy );
+				} else {
+					// If this is a custom option slug, get the options name.
+					$value = apply_filters( 'cocart_variation_option_name', $value, null, $taxonomy, $product );
+					$label = wc_attribute_label( str_replace( 'attribute_', '', $name ), $product );
+				}
+
+				$return[ $label ] = $value;
+			}
+
+			return $return;
 		}
 
 		/**

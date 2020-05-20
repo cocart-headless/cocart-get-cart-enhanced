@@ -7,7 +7,7 @@ Donate link: https://opencollective.com/cocart
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 5.4.1
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 WC requires at least: 3.6.0
 WC tested up to: 4.1.0
 License: GPLv3
@@ -21,7 +21,11 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
- * **NEW**: Returns the cart key.
+ * **NEW**: Cart returns currency.
+ * **NEW**: Cart returns total weight.
+ * **NEW**: Cart now returns items removed under extras.
+ * **NEW**: Cart returns enhanced for empty carts.
+ * Returns the cart key.
  * Returns the cart hash key.
  * Places the cart contents under a new array called `items`.
  * Returns the item count of all items in the cart.
@@ -33,7 +37,8 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will also return the following: 
 
- * **NEW**: Return product price raw.
+ * **NEW**: Returns variation data formatted.
+ * Return product price raw.
  * Returns the product categories assigned.
  * Returns the product tags assigned.
  * Returns the product SKU.

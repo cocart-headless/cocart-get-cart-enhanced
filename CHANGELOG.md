@@ -1,10 +1,19 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.4.0 - ?? ??, 2020
+
+* NEW: Returns item price without currency symbol.
+* NEW: Returns variation data formatted.
+* NEW: Cart returns currency.
+* NEW: Cart returns total weight.
+* NEW: Cart now returns items removed under extras.
+* NEW: Cart returns enhanced for empty carts.
+
 ## v1.3.0 - 9th May, 2020
 
 * NEW: Returns cart key.
 * NEW: Returns product price raw so no currency symbol.
-* Tweaked: Product weigh so now returns as an array with weight unit.
+* Tweaked: Product weight so now returns as an array with weight unit.
 * Compatible: CoCart Lite v2.1
 
 ## v1.2.0 - 16th March, 2020
