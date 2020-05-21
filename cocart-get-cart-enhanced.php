@@ -419,7 +419,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				$discount_amount_html = __( 'Free shipping coupon', 'cocart-get-cart-enhanced' );
 			}
 
-			$discount_amount_html = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_amount_html, $coupon );
+			$discount_amount_html = apply_filters( 'cocart_coupon_discount_amount_html', $discount_amount_html, $coupon );
 
 			return $discount_amount_html;
 		}
