@@ -1,6 +1,6 @@
 # Changelog for CoCart Get Cart Enhanced
 
-## v1.4.0 - ?? ??, 2020
+## v1.4.0 - 21st May, 2020
 
 * NEW: Returns item price without currency symbol.
 * NEW: Returns variation data formatted.
@@ -8,6 +8,7 @@
 * NEW: Cart returns total weight.
 * NEW: Cart now returns items removed under extras.
 * NEW: Cart returns enhanced for empty carts.
+* Fixed: Coupon partially echoing results.
 
 ## v1.3.0 - 9th May, 2020
 
