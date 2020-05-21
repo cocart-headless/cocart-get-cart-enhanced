@@ -416,7 +416,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$discount_amount_html = '-' . html_entity_decode( strip_tags( $savings ) );
 
 			if ( $coupon->get_free_shipping() && empty( $amount ) ) {
-				$discount_amount_html = __( 'Free shipping coupon', 'woocommerce' );
+				$discount_amount_html = __( 'Free shipping coupon', 'cocart-get-cart-enhanced' );
 			}
 
 			$discount_amount_html = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_amount_html, $coupon );
