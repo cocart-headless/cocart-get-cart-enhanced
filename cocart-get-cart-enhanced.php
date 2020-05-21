@@ -209,9 +209,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 
 				foreach ( $coupons as $code => $coupon ) {
 					$new_cart_contents['coupons'][ $code ] = array(
-						'code'  => esc_attr( sanitize_title( $code ) ),
-						'label' => esc_attr( wc_cart_totals_coupon_label( $coupon ) ),
-						'total' => wc_cart_totals_coupon_html( $coupon )
+						'coupon'      => esc_attr( sanitize_title( $coupon ) ),
+						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
+						'saving'      => $this->coupon_html( $coupon, false ),
+						'saving_html' => $this->coupon_html( $coupon )
 					);
 				}
 			}
@@ -385,6 +386,42 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			}
 
 			return $return;
+		}
+
+		/**
+		 * Get coupon in HTML.
+		 *
+		 * @access public
+		 * @since  1.4.0
+		 * @param  string|WC_Coupon $coupon Coupon data or code.
+		 * @param  bool             $formatted Formats the saving amount.
+		 * @return string           The coupon in HTML.
+		 */
+		public function coupon_html( $coupon, $formatted = true ) {
+			if ( is_string( $coupon ) ) {
+				$coupon = new WC_Coupon( $coupon );
+			}
+
+			$discount_amount_html = '';
+
+			$amount = WC()->cart->get_coupon_discount_amount( $coupon->get_code(), WC()->cart->display_cart_ex_tax );
+
+			if ( $formatted ) {
+				$savings = wc_price( $amount );
+			}
+			else {
+				$savings = wc_format_decimal( $amount, wc_get_price_decimals() );
+			}
+
+			$discount_amount_html = '-' . html_entity_decode( strip_tags( $savings ) );
+
+			if ( $coupon->get_free_shipping() && empty( $amount ) ) {
+				$discount_amount_html = __( 'Free shipping coupon', 'woocommerce' );
+			}
+
+			$discount_amount_html = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_amount_html, $coupon );
+
+			return $discount_amount_html;
 		}
 
 		/**
