@@ -54,7 +54,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.4.0
+		 * @version 1.5.0
 		 * @param   array  $cart_contents
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
@@ -76,6 +76,19 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				'weight' => $_product->get_weight(),
 				'unit'   => get_option( 'woocommerce_weight_unit' )
 			) : array();
+
+			// Returns the product dimensions.
+			$cart_contents[ $item_key ]['dimensions'] = array();
+
+			$dimensions = $_product->get_dimensions();
+			if ( ! empty( $dimensions ) ) {
+				$cart_contents[ $item_key ]['dimensions'] = array(
+					'height' => $_product->get_height(),
+					'width'  => $_product->get_width(),
+					'length' => $_product->get_length(),
+					'unit'   => get_option( 'woocommerce_dimension_unit' )
+				);
+			}
 
 			// Returns product price and line price.
 			$cart_contents[ $item_key ]['price_raw'] = $_product->get_price();
@@ -226,7 +239,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				foreach ( $cart_fees as $key => $fee ) {
 					$new_cart_contents['cart_fees'][ $key ] = array(
 						'name' => esc_html( $fee->name ),
-						'fee'  => wc_cart_totals_fee_html( $fee )
+						'fee'  => html_entity_decode( strip_tags( $this->fee_html( $fee ) ) )
 					);
 				}
 			}
@@ -422,6 +435,19 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$discount_amount_html = apply_filters( 'cocart_coupon_discount_amount_html', $discount_amount_html, $coupon );
 
 			return $discount_amount_html;
+		}
+
+		/**
+		 * Get the fee value.
+		 * 
+		 * @access public
+		 * @since 1.5.0
+		 * @param object $fee Fee data.
+		 */
+		public function fee_html( $fee ) {
+			$cart_totals_fee_html = WC()->cart->display_prices_including_tax() ? wc_price( $fee->total + $fee->tax ) : wc_price( $fee->total );
+
+			return apply_filters( 'cocart_cart_totals_fee_html', $cart_totals_fee_html, $fee );
 		}
 
 		/**

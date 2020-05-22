@@ -38,6 +38,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 Each item added to the cart will also return the following: 
 
  * **NEW**: Returns variation data formatted.
+ * **NEW**: Returns the product dimensions.
  * Return product price raw.
  * Returns the product categories assigned.
  * Returns the product tags assigned.

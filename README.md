@@ -6,6 +6,11 @@ This free add-on enhances the data returned for the cart and the items added to 
 
 ## Features
 
+ * **NEW**: Cart returns currency.
+ * **NEW**: Cart returns total weight.
+ * **NEW**: Cart now returns items removed under extras.
+ * **NEW**: Cart returns enhanced for empty carts.
+ * Returns the cart key.
  * Returns the cart hash key.
  * Places the cart contents under a new array called `items`.
  * Returns the item count of all items in the cart.
@@ -17,10 +22,13 @@ This free add-on enhances the data returned for the cart and the items added to 
 
 Each item added to the cart will also return the following: 
 
+ * **NEW**: Returns variation data formatted.
+ * **NEW**: Returns the product dimensions.
+ * Return product price raw.
  * Returns the product categories assigned.
  * Returns the product tags assigned.
  * Returns the product SKU.
- * Returns the product weight.
+ * Returns the product weight and unit.
  * Returns the product stock status.
 
 ## Requirement
