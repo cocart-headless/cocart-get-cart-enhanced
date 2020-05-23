@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.5.1 - 23rd May, 2020
+
+* Fixed: `wc_deprecated_argument` for **WC_Product** `get_dimensions()`.
+
 ## v1.5.0 - 22nd May, 2020
 
 * NEW: Returns the product dimensions if any.

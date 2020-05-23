@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.5.0
+ * Version:     1.5.1
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -54,7 +54,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.5.0
+		 * @version 1.5.1
 		 * @param   array  $cart_contents
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
@@ -80,12 +80,12 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Returns the product dimensions.
 			$cart_contents[ $item_key ]['dimensions'] = array();
 
-			$dimensions = $_product->get_dimensions();
+			$dimensions = $_product->get_dimensions( false );
 			if ( ! empty( $dimensions ) ) {
 				$cart_contents[ $item_key ]['dimensions'] = array(
-					'height' => $_product->get_height(),
-					'width'  => $_product->get_width(),
-					'length' => $_product->get_length(),
+					'length' => $dimensions['length'],
+					'width'  => $dimensions['width'],
+					'height' => $dimensions['height'],
 					'unit'   => get_option( 'woocommerce_dimension_unit' )
 				);
 			}
