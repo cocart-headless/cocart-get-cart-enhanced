@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.5.1
+ * Version:     1.6.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -127,26 +127,23 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				'hex_color'      => $color
 			);
 
-			// If product is not sold individually return the maximum quantity that can be purchased.
-			if ( ! $_product->is_sold_individually() ) {
-				$cart_contents[ $item_key ]['max_purchase_quantity'] = $_product->get_max_purchase_quantity();
-			}
+			// Returns the minimum and maximum quantity that can be purchased.
+			$cart_contents[ $item_key ]['min_purchase_quantity'] = $_product->get_min_purchase_quantity();
+			$cart_contents[ $item_key ]['max_purchase_quantity'] = $_product->get_max_purchase_quantity();
 
 			// Returns product gallery images.
 			$gallery_ids = $_product->get_gallery_image_ids();
 
-			if ( ! empty( $gallery_ids ) ) {
-				$cart_contents[ $item_key ]['gallery'] = array();
+			$cart_contents[ $item_key ]['gallery'] = array();
 
+			if ( ! empty( $gallery_ids ) ) {
 				foreach( $gallery_ids as $image_id ) {
 					$cart_contents[ $item_key ]['gallery'][ $image_id ] = wp_get_attachment_image_src( $image_id, apply_filters( 'cocart_item_gallery_thumbnail_size', 'woocommerce_thumbnail' ) );
 				}
 			}
 
 			// Return permalink if product is visible.
-			if ( $_product->is_visible() ) {
-				$cart_contents[ $item_key ]['permalink'] = $_product->get_permalink( $cart_item );
-			}
+			$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
 
 			return $cart_contents;
 		}
