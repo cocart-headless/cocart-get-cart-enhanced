@@ -41,6 +41,9 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Enhances an empty cart response.
 			add_filter( 'cocart_return_empty_cart', array( $this, 'enhance_cart_contents' ), 99 );
 
+			// Returns cross sells under extras.
+			add_filter( 'cocart_enhanced_extras', array( $this, 'return_cross_sells' ) );
+
 			// Load translation files.
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
@@ -282,6 +285,55 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			) );
 
 			return $new_cart_contents;
+		}
+
+		/**
+		 * Returns cross sells based on the items in the cart.
+		 *
+		 * @access public
+		 * @since  1.6.0
+		 * @param  array  $extras - Cart extras before filtered.
+		 * @return array $extras - Cart extras after filtered.
+		 */
+		public function return_cross_sells( $extras ) {
+			// Get visible cross sells then sort them at random.
+			$cross_sells = array_filter( array_map( 'wc_get_product', WC()->cart->get_cross_sells() ), 'wc_products_array_filter_visible' );
+
+			// Handle orderby and limit results.
+			$orderby     = apply_filters( 'cocart_cross_sells_orderby', $orderby );
+			$order       = apply_filters( 'cocart_cross_sells_order', $order );
+			$cross_sells = wc_products_array_orderby( $cross_sells, $orderby, $order );
+			$limit       = apply_filters( 'cocart_cross_sells_total', $limit );
+			$cross_sells = $limit > 0 ? array_slice( $cross_sells, 0, $limit ) : $cross_sells;
+
+			$extras['cross_sells'] = array();
+
+			foreach( $cross_sells as $cross_sell ) {
+				$id = $cross_sell->get_id();
+
+				$thumbnail_id  = apply_filters( 'cocart_cross_sell_item_thumbnail', $cross_sell->get_image_id() );
+				$thumbnail_src = wp_get_attachment_image_src( $thumbnail_id, apply_filters( 'cocart_cross_sell_item_thumbnail_size', 'woocommerce_thumbnail' ) );
+				$thumbnail_src = apply_filters( 'cocart_item_thumbnail_src', $thumbnail_src[0] );
+
+				$extras['cross_sells'][ $id ] = array(
+					'product_id'             => $id,
+					'product_name'           => $cross_sell->get_name(),
+					'product_title'          => $cross_sell->get_title(),
+					'product_price'          => html_entity_decode( strip_tags( wc_price( $cross_sell->get_price() ) ) ),
+					'product_regular_price'  => html_entity_decode( strip_tags( wc_price( $cross_sell->get_regular_price() ) ) ),
+					'product_sale_price'     => html_entity_decode( strip_tags( wc_price( $cross_sell->get_sale_price() ) ) ),
+					'product_image'          => esc_url( $thumbnail_src ),
+					'product_average_rating' => $cross_sell->get_average_rating() > 0 ? sprintf(
+						/* translators: %s: average rating */
+						esc_html__( 'Rated %s out of 5', 'cocart-get-cart-enhanced' ), esc_html( $cross_sell->get_average_rating() )
+					) : '',
+					'product_on_sale'        => $cross_sell->is_on_sale() ? true : false,
+				);
+			}
+
+			$extras['cross_sells'] = apply_filters( 'cocart_cross_sell_contents', $extras['cross_sells'] );
+
+			return $extras;
 		}
 
 		/**
