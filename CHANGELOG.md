@@ -1,5 +1,13 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.0 - 26th May, 2020
+
+* NEW: Cross sell items return based on items in the cart.
+* NEW: Added minimum quantity of item can be purchased.
+* Tweaked: Variables that have no data now just return empty. Easier for developers to check if the variable exists.
+
+> Cross sell has a number of filters. Check source code for them. 😄
+
 ## v1.5.1 - 23rd May, 2020
 
 * Fixed: `wc_deprecated_argument` for **WC_Product** `get_dimensions()`.
