@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.1 - 27th May, 2020
+
+* Fixed: Undefined default values for cross sell `orderby`, `order` and `limit`. (Woops 🤦‍♂)
+
 ## v1.6.0 - 26th May, 2020
 
 * NEW: Cross sell items return based on items in the cart.
