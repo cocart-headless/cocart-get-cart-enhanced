@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.0
+ * Version:     1.6.1
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -287,20 +287,21 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Returns cross sells based on the items in the cart.
 		 *
-		 * @access public
-		 * @since  1.6.0
-		 * @param  array  $extras - Cart extras before filtered.
-		 * @return array $extras - Cart extras after filtered.
+		 * @access  public
+		 * @since   1.6.0
+		 * @version 1.6.1
+		 * @param   array $extras - Cart extras before filtered.
+		 * @return  array $extras - Cart extras after filtered.
 		 */
 		public function return_cross_sells( $extras ) {
 			// Get visible cross sells then sort them at random.
 			$cross_sells = array_filter( array_map( 'wc_get_product', WC()->cart->get_cross_sells() ), 'wc_products_array_filter_visible' );
 
 			// Handle orderby and limit results.
-			$orderby     = apply_filters( 'cocart_cross_sells_orderby', $orderby );
-			$order       = apply_filters( 'cocart_cross_sells_order', $order );
+			$orderby     = apply_filters( 'cocart_cross_sells_orderby', 'rand' );
+			$order       = apply_filters( 'cocart_cross_sells_order', 'desc' );
 			$cross_sells = wc_products_array_orderby( $cross_sells, $orderby, $order );
-			$limit       = apply_filters( 'cocart_cross_sells_total', $limit );
+			$limit       = apply_filters( 'cocart_cross_sells_total', 3 );
 			$cross_sells = $limit > 0 ? array_slice( $cross_sells, 0, $limit ) : $cross_sells;
 
 			$extras['cross_sells'] = array();
