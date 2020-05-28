@@ -1,5 +1,10 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.2 - 29th May, 2020
+
+* Fixed: Undefined method for `get_session_cookie()`.
+* Compatible: CoCart Lite v2.1.2
+
 ## v1.6.1 - 27th May, 2020
 
 * Fixed: Undefined default values for cross sell `orderby`, `order` and `limit`. (Woops 🤦‍♂)

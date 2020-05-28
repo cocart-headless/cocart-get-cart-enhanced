@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.1
+ * Version:     1.6.2
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -339,7 +339,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.3.0
-		 * @version 1.4.0
+		 * @version 1.6.2
 		 * @return  string
 		 */
 		public function get_cart_key() {
@@ -347,14 +347,11 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				return;
 			}
 
-			// CoCart Session Handler.
-			$handler = new CoCart_Session_Handler();
-
 			// Current user ID.
 			$cart_key = strval( get_current_user_id() );
-			
+
 			// Get cart cookie... if any.
-			$cookie = $handler->get_session_cookie();
+			$cookie = WC()->session->get_session_cookie();
 
 			// Does a cookie exist?
 			if ( $cookie ) {
