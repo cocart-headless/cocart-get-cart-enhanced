@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.2
+ * Version:     1.6.3
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -417,14 +417,19 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Format variation data, for example convert slugs such as attribute_pa_size to Size.
 		 *
-		 * @access protected
-		 * @since  1.4.0
-		 * @param  array       $variation_data Array of data from the cart.
-		 * @param  WC_Product $product Product data.
-		 * @return array
+		 * @access  protected
+		 * @since   1.4.0
+		 * @version 1.6.3
+		 * @param   array      $variation_data Array of data from the cart.
+		 * @param   WC_Product $product Product data.
+		 * @return  array
 		 */
 		protected function format_variation_data( $variation_data, $product ) {
 			$return = array();
+
+			if ( empty( $variation_data ) ) {
+				return $return;
+			}
 
 			foreach ( $variation_data as $key => $value ) {
 				$taxonomy = wc_attribute_taxonomy_name( str_replace( 'attribute_pa_', '', urldecode( $key ) ) );

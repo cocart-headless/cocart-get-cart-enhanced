@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.3 - 29th May, 2020
+
+* Fixed: Invalid argument supplied for `format_variation_data()`.
+
 ## v1.6.2 - 29th May, 2020
 
 * Fixed: Undefined method for `get_session_cookie()`.
