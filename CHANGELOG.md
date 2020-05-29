@@ -1,5 +1,11 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.4 - 29th May, 2020
+
+* Fixed: Array to string conversion error for notices.
+* Tweaked: `cocart_notice_types` filter to return **info** notices.
+* Tweaked: Cross sells to return product type.
+
 ## v1.6.3 - 29th May, 2020
 
 * Fixed: Invalid argument supplied for `format_variation_data()`.

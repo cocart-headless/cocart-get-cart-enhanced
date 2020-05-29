@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.3
+ * Version:     1.6.4
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -58,11 +58,11 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * @access  public
 		 * @since   1.0.0
 		 * @version 1.5.1
-		 * @param   array  $cart_contents
+		 * @param   array  $cart_contents - Cart contents before modifications.
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
 		 * @param   object $_product
-		 * @return  array  $cart_contents
+		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Returns the product categories.
@@ -184,8 +184,8 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * @access  public
 		 * @since   1.0.0
 		 * @version 1.4.0
-		 * @param   array $cart_contents
-		 * @return  array $new_cart_contents
+		 * @param   array $cart_contents     - Cart contents before modifications.
+		 * @return  array $new_cart_contents - Cart contents after modifications.
 		 */
 		public function enhance_cart_contents( $cart_contents = array() ) {
 			$new_cart_contents = array();
@@ -289,11 +289,11 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.6.0
-		 * @version 1.6.1
+		 * @version 1.6.4
 		 * @param   array $extras - Cart extras before filtered.
 		 * @return  array $extras - Cart extras after filtered.
 		 */
-		public function return_cross_sells( $extras ) {
+		public function return_cross_sells( $extras = array() ) {
 			// Get visible cross sells then sort them at random.
 			$cross_sells = array_filter( array_map( 'wc_get_product', WC()->cart->get_cross_sells() ), 'wc_products_array_filter_visible' );
 
@@ -326,6 +326,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 						esc_html__( 'Rated %s out of 5', 'cocart-get-cart-enhanced' ), esc_html( $cross_sell->get_average_rating() )
 					) : '',
 					'product_on_sale'        => $cross_sell->is_on_sale() ? true : false,
+					'product_type'           => $cross_sell->get_type()
 				);
 			}
 
@@ -369,12 +370,13 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Return notices in cart if any.
 		 *
-		 * @access public
-		 * @since  1.1.0
-		 * @param  array $cart_contents
-		 * @return array $cart_contents
+		 * @access  public
+		 * @since   1.1.0
+		 * @version 1.6.4
+		 * @param   array $cart_contents - Cart contents before modifications.
+		 * @return  array $cart_contents - Cart contents after modifications.
 		 */
-		public function maybe_return_notices( $cart_contents ) {
+		public function maybe_return_notices( $cart_contents = array() ) {
 			$notice_count = 0;
 			$all_notices  = WC()->session->get( 'wc_notices', array() );
 
@@ -382,9 +384,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				$notice_count += count( $notices );
 			}
 
-			if ( $notice_count > 0 ) {
-				$cart_contents['notices'] = $this->cocart_print_notices();
-			}
+			$cart_contents['notices'] = $notice_count > 0 ? $this->cocart_print_notices() : array();
 
 			return $cart_contents;
 		}
@@ -392,26 +392,27 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Returns messages and errors which are stored in the session, then clears them.
 		 *
-		 * @access public
-		 * @since  1.1.0
-		 * @return string|null
+		 * @access  public
+		 * @since   1.1.0
+		 * @version 1.6.4
+		 * @return  array
 		 */
 		protected function cocart_print_notices() {
 			$all_notices  = WC()->session->get( 'wc_notices', array() );
-			$notice_types = apply_filters( 'cocart_notice_types', array( 'error', 'success', 'notice' ) );
+			$notice_types = apply_filters( 'cocart_notice_types', array( 'error', 'success', 'notice', 'info' ) );
 			$notices      = array();
 
 			foreach ( $notice_types as $notice_type ) {
 				if ( wc_notice_count( $notice_type ) > 0 ) {
 					foreach ( $all_notices[ $notice_type ] as $key => $notice ) {
-						$notices[ $notice_type ][$key] = $notice;
+						$notices[ $notice_type ][$key] = wc_kses_notice( $notice['notice'] );
 					}
 				}
 			}
 
 			wc_clear_notices();
 
-			return wc_kses_notice( $notices );
+			return $notices;
 		}
 
 		/**
