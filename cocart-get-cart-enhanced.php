@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.4
+ * Version:     1.6.5
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -420,7 +420,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  protected
 		 * @since   1.4.0
-		 * @version 1.6.3
+		 * @version 1.6.5
 		 * @param   array      $variation_data Array of data from the cart.
 		 * @param   WC_Product $product Product data.
 		 * @return  array
@@ -445,7 +445,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				} else {
 					// If this is a custom option slug, get the options name.
 					$value = apply_filters( 'cocart_variation_option_name', $value, null, $taxonomy, $product );
-					$label = wc_attribute_label( str_replace( 'attribute_', '', $name ), $product );
+					$label = wc_attribute_label( str_replace( 'attribute_', '', $key ), $product );
 				}
 
 				$return[ $label ] = $value;

@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.5 - 13th June, 2020
+
+* Fixed: Undefined variable `name` for formatted variable product data.
+
 ## v1.6.4 - 29th May, 2020
 
 * Fixed: Array to string conversion error for notices.
