@@ -6,11 +6,11 @@ This free add-on enhances the data returned for the cart and the items added to 
 
 ## Features
 
- * **NEW**: Cart returns currency.
- * **NEW**: Cart returns total weight.
- * **NEW**: Cart now returns items removed under extras.
- * **NEW**: Cart returns cross sell items based on items in the cart.
- * **NEW**: Cart returns enhanced for empty carts.
+ * Cart returns currency.
+ * Cart returns total weight.
+ * Cart now returns items removed under extras.
+ * Cart returns cross sell items based on items in the cart.
+ * Cart returns enhanced for empty carts.
  * Returns the cart key.
  * Returns the cart hash key.
  * Places the cart contents under a new array called `items`.
@@ -23,10 +23,10 @@ This free add-on enhances the data returned for the cart and the items added to 
 
 Each item added to the cart will also return the following: 
 
- * **NEW**: Returns variation data formatted.
- * **NEW**: Returns the product dimensions.
- * **NEW**: Returns minimum and maximum quantity of item can be purchased.
- * Return product price raw.
+ * Returns variation data formatted.
+ * Returns the product dimensions.
+ * Returns minimum and maximum quantity of item can be purchased.
+ * Returns product price raw.
  * Returns the product categories assigned.
  * Returns the product tags assigned.
  * Returns the product SKU.
@@ -36,7 +36,7 @@ Each item added to the cart will also return the following:
 
 ## Requirement
 
-You will need to be using CoCart **v2.0.0** and up before installing this add-on.
+You will need to be using CoCart **v2.1.0** and up before installing this add-on.
 
 ## Installation
 

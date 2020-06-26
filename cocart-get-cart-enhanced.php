@@ -268,6 +268,14 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 				}
 			}
 
+			/**
+			 * Filters totals.
+			 *
+			 * @since 1.6.6
+			 * @param array $new_totals All cart totals
+			 */
+			$new_totals = apply_filters( 'cocart_enhanced_totals', $new_totals );
+
 			$new_cart_contents['totals'] = $new_totals;
 
 			// Returns total weight of cart.

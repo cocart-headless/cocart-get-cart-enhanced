@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.6.6 - 26th June, 2020
+
+* Dev: Added `cocart_enhanced_totals` filter for totals.
+
 ## v1.6.5 - 13th June, 2020
 
 * Fixed: Undefined variable `name` for formatted variable product data.

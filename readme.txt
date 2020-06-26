@@ -4,12 +4,12 @@ Plugin URI: https://cocart.xyz
 Contributors: sebd86, cocartforwc
 Tags: woocommerce, cart, rest, rest-api, JSON
 Donate link: https://opencollective.com/cocart
-Requires at least: 5.0
-Requires PHP: 7.0
-Tested up to: 5.4.1
-Stable tag: 1.6.5
+Requires at least: 5.2
+Requires PHP: 7.2
+Tested up to: 5.4.2
+Stable tag: 1.6.6
 WC requires at least: 3.6.0
-WC tested up to: 4.2.0
+WC tested up to: 4.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,11 +21,11 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
- * **NEW**: Cart returns currency.
- * **NEW**: Cart returns total weight.
- * **NEW**: Cart now returns items removed under extras.
- * **NEW**: Cart returns cross sell items based on items in the cart.
- * **NEW**: Cart returns enhanced for empty carts.
+ * Cart returns currency.
+ * Cart returns total weight.
+ * Cart now returns items removed under extras.
+ * Cart returns cross sell items based on items in the cart.
+ * Cart returns enhanced for empty carts.
  * Returns the cart key.
  * Returns the cart hash key.
  * Places the cart contents under a new array called `items`.
@@ -38,10 +38,10 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will also return the following: 
 
- * **NEW**: Returns variation data formatted.
- * **NEW**: Returns the product dimensions.
- * **NEW**: Returns minimum and maximum quantity of item can be purchased.
- * Return product price raw.
+ * Returns variation data formatted.
+ * Returns the product dimensions.
+ * Returns minimum and maximum quantity of item can be purchased.
+ * Returns product price raw.
  * Returns the product categories assigned.
  * Returns the product tags assigned.
  * Returns the product SKU.
@@ -92,7 +92,7 @@ This plugin is created by [Sébastien Dumont](https://sebastiendumont.com).
 
 = Minimum Requirements =
 
-Visit the [WooCommerce server requirements documentation](https://docs.woocommerce.com/document/server-requirements/) for a detailed list of server requirements.
+You will need CoCart v2.1 or above.
 
 = Automatic installation =
 
