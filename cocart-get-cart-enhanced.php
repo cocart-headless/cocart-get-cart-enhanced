@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.6.6
+ * Version:     1.7.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -57,7 +57,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.5.1
+		 * @version 1.7.0
 		 * @param   array  $cart_contents - Cart contents before modifications.
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
@@ -65,6 +65,9 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
+			// Returns product type.
+			$cart_contents[ $item_key ]['product_type'] = $_product->get_type();
+
 			// Returns the product categories.
 			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_category_ids(), 'product_cat' );
 

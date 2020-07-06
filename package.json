@@ -1,7 +1,7 @@
 {
 	"title": "CoCart - Get Cart Enhanced",
 	"name": "cocart-get-cart-enhanced",
-	"version": "1.6.6",
+	"version": "1.7.0",
 	"private": false,
 	"contributors": [
 		"sebd86",
@@ -28,7 +28,15 @@
 	"description": "Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.",
 	"tags": "",
 	"keywords": [
+		"wordpress",
+		"wordpress-development",
+		"feature-plugin",
+		"plugin",
 		"woocommerce",
+		"woocommerce-api",
+		"woocommerce-extension",
+		"woocommerce-plugin",
+		"e-commerce",
 		"api",
 		"cart",
 		"rest",

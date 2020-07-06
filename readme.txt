@@ -7,7 +7,7 @@ Donate link: https://opencollective.com/cocart
 Requires at least: 5.2
 Requires PHP: 7.2
 Tested up to: 5.4.2
-Stable tag: 1.6.6
+Stable tag: 1.7.0
 WC requires at least: 3.6.0
 WC tested up to: 4.3.0
 License: GPLv3
@@ -26,18 +26,19 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
  * Cart now returns items removed under extras.
  * Cart returns cross sell items based on items in the cart.
  * Cart returns enhanced for empty carts.
- * Returns the cart key.
- * Returns the cart hash key.
+ * Cart returns the cart key.
+ * Cart returns the cart hash key.
  * Places the cart contents under a new array called `items`.
- * Returns the item count of all items in the cart.
- * Returns the shipping status of the cart.
- * Returns the payment status of the cart.
- * Returns coupons applied to the cart if enabled.
- * Returns additional fees applied to the cart.
- * Returns the cart totals.
+ * Cart returns the item count of all items in the cart.
+ * Cart returns the shipping status of the cart.
+ * Cart returns the payment status of the cart.
+ * Cart returns coupons applied to the cart if enabled.
+ * Cart returns additional fees applied to the cart.
+ * Cart returns the cart totals.
 
 Each item added to the cart will also return the following: 
 
+* **NEW** Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
  * Returns minimum and maximum quantity of item can be purchased.
@@ -68,7 +69,7 @@ A Slack community for developers, WordPress agencies and shop owners building th
 
 ### Built with developers in mind
 
-Extensible, adaptable, and open source — CoCart is created with developers in mind. If you’re interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoCart - Get Cart Enhanced on the GitHub repository](https://github.com/co-cart/cocart-get-cart-enhanced) and join the party.
+Extensible, adaptable, and open source — CoCart - Get Cart Enhanced is created with developers in mind. If you’re interested to jump in the project, there are opportunities for developers at all levels to get involved. [Contribute to CoCart - Get Cart Enhanced on the GitHub repository](https://github.com/co-cart/cocart-get-cart-enhanced) and join the party.
 
 ### Bug reports
 

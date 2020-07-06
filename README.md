@@ -11,18 +11,19 @@ This free add-on enhances the data returned for the cart and the items added to 
  * Cart now returns items removed under extras.
  * Cart returns cross sell items based on items in the cart.
  * Cart returns enhanced for empty carts.
- * Returns the cart key.
- * Returns the cart hash key.
+ * Cart returns the cart key.
+ * Cart returns the cart hash key.
  * Places the cart contents under a new array called `items`.
- * Returns the item count of all items in the cart.
- * Returns the shipping status of the cart.
- * Returns the payment status of the cart.
- * Returns coupons applied to the cart if enabled.
- * Returns additional fees applied to the cart.
- * Returns the cart totals.
+ * Cart returns the item count of all items in the cart.
+ * Cart returns the shipping status of the cart.
+ * Cart returns the payment status of the cart.
+ * Cart returns coupons applied to the cart if enabled.
+ * Cart returns additional fees applied to the cart.
+ * Cart returns the cart totals.
 
 Each item added to the cart will also return the following: 
 
+* **NEW** Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
  * Returns minimum and maximum quantity of item can be purchased.
