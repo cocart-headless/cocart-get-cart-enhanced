@@ -129,6 +129,14 @@ module.exports = function(grunt) {
 						to: "Description: <%= pkg.description %>"
 					},
 					{
+						from: /Requires at least:.*$/m,
+						to: "Requires at least: <%= pkg.requires %>"
+					},
+					{
+						from: /Requires PHP:.*$/m,
+						to: "Requires PHP: <%= pkg.requires_php %>"
+					},
+					{
 						from: /WC requires at least:.*$/m,
 						to: "WC requires at least: <%= pkg.wc_requires %>"
 					},
@@ -139,17 +147,12 @@ module.exports = function(grunt) {
 					{
 						from: /Version:.*$/m,
 						to: "Version:     <%= pkg.version %>"
-					},
-					{
-						from: /public static \$version = \'.*.'/m,
-						to: "public static $version = '<%= pkg.version %>'"
 					}
 				]
 			},
 			readme: {
 				src: [
 					'readme.txt',
-					'README.md'
 				],
 				overwrite: true,
 				replacements: [
@@ -162,10 +165,6 @@ module.exports = function(grunt) {
 						to: 'Requires PHP:$1$2<%= pkg.requires_php %>$3'
 					},
 					{
-						from: /Stable tag:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
-						to: 'Stable tag:$1$2<%= pkg.version %>$3'
-					},
-					{
 						from: /Tested up to:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
 						to: 'Tested up to:$1$2<%= pkg.tested_up_to %>$3'
 					},
@@ -176,6 +175,18 @@ module.exports = function(grunt) {
 					{
 						from: /WC tested up to:(\*\*|)(\s*?)[a-zA-Z0-9.-]+(\s*?)$/mi,
 						to: 'WC tested up to:$1$2<%= pkg.wc_tested_up_to %>$3'
+					},
+				]
+			},
+			stable: {
+				src: [
+					'readme.txt',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /Stable tag:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
+						to: 'Stable tag:$1$2<%= pkg.version %>$3'
 					},
 				]
 			}
@@ -241,7 +252,10 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'checktextdomain' ]);
 
 	// Update version of plugin.
-	grunt.registerTask( 'version', [ 'replace' ] );
+	grunt.registerTask( 'version', [ 'replace:php', 'replace:readme' ] );
+
+	// Update stable version of plugin.
+	grunt.registerTask( 'stable', [ 'replace:stable' ] );
 
 	/**
 	 * Run i18n related tasks.

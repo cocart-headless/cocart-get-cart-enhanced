@@ -1,6 +1,6 @@
 # CoCart - Get Cart Enhanced
 
-![CoCart Logo](https://cocart.xyz/wp-content/uploads/2019/09/Logo-1024x534.jpg.webp)
+<p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
 
 This free add-on enhances the data returned for the cart and the items added to it.
 
@@ -21,9 +21,10 @@ This free add-on enhances the data returned for the cart and the items added to 
  * Cart returns additional fees applied to the cart.
  * Cart returns the cart totals.
 
-Each item added to the cart will also return the following: 
+Each item added to the cart will also return the following:
 
-* **NEW** Returns the product type.
+ * **NEW** Returns the product slug.
+ * Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
  * Returns minimum and maximum quantity of item can be purchased.
