@@ -110,6 +110,13 @@ The manual installation method involves downloading the plugin and uploading it 
 
 Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
 
+== Screenshots ==
+
+1. Empty Cart "Enhanced Off
+2. Empty Cart "Enhanced On"
+3. Cart with Item "Enhanced Off"
+4. Cart with Item "Enhanced On"
+
 == Changelog ==
 
 [View the full changelog here](https://github.com/co-cart/cocart-get-cart-enhanced/blob/master/CHANGELOG.md).

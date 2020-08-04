@@ -1,5 +1,12 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.8.0 - 04th August, 2020
+
+* **NEW**: Each item now returns the product slug.
+* Added: Requirements to plugin header.
+* Added: Before and After screenshots.
+* Corrected: Requirements to match with CoCart Lite's current requirements.
+
 ## v1.7.0 - 6th July, 2020
 
 * **NEW**: Each item now returns the product type.
