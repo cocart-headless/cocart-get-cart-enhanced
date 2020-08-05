@@ -1,5 +1,10 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.9.0 - 06th August, 2020
+
+* **NEW**: Cross sell items now returns the product slug.
+* Fixed: Product slug returns from the parent product even if the product type is a variation.
+
 ## v1.8.0 - 04th August, 2020
 
 * **NEW**: Each item now returns the product slug.

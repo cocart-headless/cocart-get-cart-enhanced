@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.8.0
+ * Version:     1.9.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -59,7 +59,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.8.0
+		 * @version 1.9.0
 		 * @param   array  $cart_contents - Cart contents before modifications.
 		 * @param   int    $item_key
 		 * @param   array  $cart_item
@@ -68,7 +68,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Returns product slug.
-			$cart_contents[ $item_key ]['slug'] = $_product->get_slug();
+			$cart_contents[ $item_key ]['slug'] = $this->get_product_slug( $_product );
 
 			// Returns product type.
 			$cart_contents[ $item_key ]['product_type'] = $_product->get_type();
@@ -305,7 +305,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.6.0
-		 * @version 1.6.4
+		 * @version 1.9.0
 		 * @param   array $extras - Cart extras before filtered.
 		 * @return  array $extras - Cart extras after filtered.
 		 */
@@ -333,6 +333,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 					'product_id'             => $id,
 					'product_name'           => $cross_sell->get_name(),
 					'product_title'          => $cross_sell->get_title(),
+					'product_slug'           => $this->get_product_slug( $cross_sell ),
 					'product_price'          => html_entity_decode( strip_tags( wc_price( $cross_sell->get_price() ) ) ),
 					'product_regular_price'  => html_entity_decode( strip_tags( wc_price( $cross_sell->get_regular_price() ) ) ),
 					'product_sale_price'     => html_entity_decode( strip_tags( wc_price( $cross_sell->get_sale_price() ) ) ),
@@ -517,6 +518,28 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$cart_totals_fee_html = WC()->cart->display_prices_including_tax() ? wc_price( $fee->total + $fee->tax ) : wc_price( $fee->total );
 
 			return apply_filters( 'cocart_cart_totals_fee_html', $cart_totals_fee_html, $fee );
+		}
+
+		/**
+		 * Get the main product slug even if the product type is a variation.
+		 *
+		 * @access public
+		 * @since  1.9.0
+		 * @param  WC_Product $object
+		 * @return string
+		 */
+		public function get_product_slug( $object ) {
+			$product_type = $object->get_type();
+
+			if ( 'variable' === $product_type || 'variation' === $product_type ) {
+				$product = wc_get_product( $object->get_parent_id() );
+
+				$product_slug = $product->get_slug();
+			} else {
+				$product_slug = $object->get_slug();
+			}
+
+			return $product_slug;
 		}
 
 		/**

@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the CoCart - Get Cart Enhanced package.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoCart - Get Cart Enhanced 1.7.0\n"
+"Project-Id-Version: CoCart - Get Cart Enhanced 1.9.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/co-cart/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2020-07-06 17:42:12+00:00\n"
+"POT-Creation-Date: 2020-08-05 23:01:00+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,23 +25,23 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: cocart-get-cart-enhanced.php:115
+#: cocart-get-cart-enhanced.php:120
 msgid "In Stock"
 msgstr ""
 
-#: cocart-get-cart-enhanced.php:119
+#: cocart-get-cart-enhanced.php:124
 msgid "Out of Stock"
 msgstr ""
 
-#: cocart-get-cart-enhanced.php:123
+#: cocart-get-cart-enhanced.php:128
 msgid "Available on backorder"
 msgstr ""
 
-#: cocart-get-cart-enhanced.php:337
+#: cocart-get-cart-enhanced.php:343
 #. translators: %s: average rating
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: cocart-get-cart-enhanced.php:496
+#: cocart-get-cart-enhanced.php:502
 msgid "Free shipping coupon"
 msgstr ""
