@@ -23,7 +23,7 @@ This free add-on enhances the data returned for the cart and the items added to 
 
 Each item added to the cart will also return the following:
 
- * **NEW** Returns the product slug.
+ * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.

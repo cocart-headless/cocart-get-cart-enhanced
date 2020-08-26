@@ -5,7 +5,7 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.9.0
+ * Version:     1.9.1
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
@@ -191,7 +191,7 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.4.0
+		 * @version 1.9.1
 		 * @param   array $cart_contents     - Cart contents before modifications.
 		 * @return  array $new_cart_contents - Cart contents after modifications.
 		 */
@@ -222,15 +222,16 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Returns the payment status of the cart.
 			$new_cart_contents['needs_payment'] = $cart->needs_payment();
 
-			// Returns each coupon applied and coupon total applied.
+			// If coupons are enabled then get applied coupons.
 			$coupons = wc_coupons_enabled() ? $cart->get_applied_coupons() : array();
 
-			if ( ! empty( $coupons ) ) {
-				$new_cart_contents['coupons'] = array();
+			$new_cart_contents['coupons'] = array();
 
+			// If coupons are applied to the cart then expose each coupon applied.
+			if ( ! empty( $coupons ) ) {
 				foreach ( $coupons as $code => $coupon ) {
 					$new_cart_contents['coupons'][ $code ] = array(
-						'coupon'      => esc_attr( sanitize_title( $coupon ) ),
+						'coupon'      => wc_format_coupon_code( wp_unslash( $coupon ) ),
 						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
 						'saving'      => $this->coupon_html( $coupon, false ),
 						'saving_html' => $this->coupon_html( $coupon )

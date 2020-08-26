@@ -1,14 +1,25 @@
-# Folders and Grunt
-/build/
-/releases/
+# Editors
+.vscode
+
+# Grunt
 /node_modules/
 npm-debug.log
 
-# Various file types to ignore when exporting.
+# OS X metadata
 .DS_Store
+
+# Windows junk
 Thumbs.db
+
+# Languages
+/languages/*
+
+# Build & Releases
+/build/
+/releases/
+
+# Various file types to ignore when exporting.
 *.sh
 .gitconfig
 *.zip
 *.json
-*.yml

@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.9.1 - 26th August, 2020
+
+* Fixed: Coupons returned without losing special characters applied.
+
 ## v1.9.0 - 06th August, 2020
 
 * **NEW**: Cross sell items now returns the product slug.
