@@ -1,5 +1,12 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.9.2 - 22nd September, 2020
+
+* Fixed: Always empty product categories and tags.
+* Tested: Compatible with WooCommerce v4.5.2
+
+> This is a community release by [@tomsotte](https://github.com/tomsotte)
+
 ## v1.9.1 - 26th August, 2020
 
 * Fixed: Coupons returned without losing special characters applied.

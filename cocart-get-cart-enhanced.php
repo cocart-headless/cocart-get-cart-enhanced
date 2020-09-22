@@ -5,14 +5,14 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.9.1
+ * Version:     1.9.2
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
- * Requires at least: 5.0
+ * Requires at least: 5.2
  * Requires PHP: 7.0
  * WC requires at least: 4.0.0
- * WC tested up to: 4.4.0
+ * WC tested up to: 4.5.2
  *
  * Copyright: © 2020 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
