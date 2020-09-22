@@ -74,10 +74,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$cart_contents[ $item_key ]['product_type'] = $_product->get_type();
 
 			// Returns the product categories.
-			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_category_ids(), 'product_cat' );
+			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_id(), 'product_cat' );
 
 			// Returns the product tags.
-			$cart_contents[ $item_key ]['tags'] = get_the_terms( $_product->get_tag_ids(), 'product_tag' );
+			$cart_contents[ $item_key ]['tags'] = get_the_terms( $_product->get_id(), 'product_tag' );
 
 			// Returns the product SKU.
 			$cart_contents[ $item_key ]['sku'] = $_product->get_sku();
