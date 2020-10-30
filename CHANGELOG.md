@@ -1,5 +1,11 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.9.3 - 30th October, 2020
+
+* Fixed: Get product slug if variable product detected.
+* Tested: Compatible with CoCart v2.7
+* Tested: Compatible with WooCommerce v4.6.1
+
 ## v1.9.2 - 22nd September, 2020
 
 * Fixed: Always empty product categories and tags.
