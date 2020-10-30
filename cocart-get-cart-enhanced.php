@@ -5,14 +5,14 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.9.2
+ * Version:     1.9.3
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
  * Requires at least: 5.2
  * Requires PHP: 7.0
  * WC requires at least: 4.0.0
- * WC tested up to: 4.5.2
+ * WC tested up to: 4.6.1
  *
  * Copyright: © 2020 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
@@ -46,6 +46,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			// Returns cross sells under extras.
 			add_filter( 'cocart_enhanced_extras', array( $this, 'return_cross_sells' ) );
 
+			//add_filter( 'cocart_add_item_response', array( $this, 'foo' ) );
+
+			//add_filter( 'cocart_maybe_cart_is_empty', array( $this, 'maybe_validate_cart' ) );
+
 			// Load translation files.
 			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
@@ -53,6 +57,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			register_activation_hook( __FILE__, array( $this, 'activated' ) );
 			register_deactivation_hook( __FILE__, array( $this, 'deactivated' ) );
 		} // END __construct()
+
+		public function foo() {
+			return "The force is strong with this one";
+		}
 
 		/**
 		 * Returns additional product details for each item in the cart.
