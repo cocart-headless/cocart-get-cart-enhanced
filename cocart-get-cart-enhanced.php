@@ -524,15 +524,16 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		/**
 		 * Get the main product slug even if the product type is a variation.
 		 *
-		 * @access public
-		 * @since  1.9.0
-		 * @param  WC_Product $object
-		 * @return string
+		 * @access  public
+		 * @since   1.9.0
+		 * @version 1.9.3
+		 * @param   WC_Product $object
+		 * @return  string
 		 */
 		public function get_product_slug( $object ) {
 			$product_type = $object->get_type();
 
-			if ( 'variable' === $product_type || 'variation' === $product_type ) {
+			if ( 'variation' === $product_type ) {
 				$product = wc_get_product( $object->get_parent_id() );
 
 				$product_slug = $product->get_slug();
