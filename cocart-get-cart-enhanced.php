@@ -5,14 +5,14 @@
  * Description: Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     1.9.3
+ * Version:     1.10.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  *
  * Requires at least: 5.2
  * Requires PHP: 7.0
- * WC requires at least: 4.0.0
- * WC tested up to: 4.6.1
+ * WC requires at least: 4.0
+ * WC tested up to: 4.7
  *
  * Copyright: © 2020 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
@@ -147,6 +147,12 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			$cart_contents[ $item_key ]['min_purchase_quantity'] = $_product->get_min_purchase_quantity();
 			$cart_contents[ $item_key ]['max_purchase_quantity'] = $_product->get_max_purchase_quantity();
 
+			// Returns if the product is virtual.
+			$cart_contents[ $item_key ]['virtual'] = $_product->get_virtual();
+
+			// Returns if the product is downloadable.
+			$cart_contents[ $item_key ]['downloadable'] = $_product->get_downloadable();
+
 			// Returns product gallery images.
 			$gallery_ids = $_product->get_gallery_image_ids();
 
@@ -185,21 +191,22 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 		 * Enhances the returned cart contents.
 		 *
 		 * 1.  Returns cart currency.
-		 * 2.  Returns the cart hash.
-		 * 3.  Returns the cart key.
+		 * 2.  Returns the cart key.
+		 * 3.  Returns the cart hash.
 		 * 4.  Places the cart contents under a new array called `items`.
 		 * 5.  Returns the item count of all items in the cart.
 		 * 6.  Returns the shipping status of the cart.
 		 * 7.  Returns the payment status of the cart.
-		 * 8.  Returns coupons applied to the cart if enabled.
-		 * 9.  Returns additional fees applied to the cart.
-		 * 10. Returns the cart totals.
-		 * 11. Returns the total weight of the cart.
-		 * 12. Returns cart extras.
+		 * 8.  Returns shipping methods available if any.
+		 * 9.  Returns coupons applied to the cart if enabled.
+		 * 10. Returns additional fees applied to the cart.
+		 * 11. Returns the cart totals.
+		 * 12. Returns the total weight of the cart.
+		 * 13. Returns cart extras.
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 1.9.1
+		 * @version 1.10.0
 		 * @param   array $cart_contents     - Cart contents before modifications.
 		 * @return  array $new_cart_contents - Cart contents after modifications.
 		 */
@@ -229,6 +236,9 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 
 			// Returns the payment status of the cart.
 			$new_cart_contents['needs_payment'] = $cart->needs_payment();
+
+			// Returns shipping methods available if any.
+			$new_cart_contents['shipping_methods'] = $this->get_available_shipping_methods();
 
 			// If coupons are enabled then get applied coupons.
 			$coupons = wc_coupons_enabled() ? $cart->get_applied_coupons() : array();
@@ -260,6 +270,9 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 					);
 				}
 			}
+
+			// Calculate totals again to be sure they are correct.
+			WC()->cart->calculate_totals();
 
 			// Returns the cart totals.
 			$totals = $cart->get_totals();
@@ -550,6 +563,48 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
 			}
 
 			return $product_slug;
+		}
+
+		/**
+		 * Returns shipping methods available if any.
+		 *
+		 * @access public
+		 * @since  1.10.0
+		 * @return array - Available shipping methods or an empty array.
+		 */
+		public function get_available_shipping_methods() {
+			// Calculate shipping.
+			WC()->cart->calculate_shipping();
+
+			// Get chosen shipping methods if any set.
+			$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+			// Get shipping packages.
+			$packages          = WC()->shipping->get_packages();
+			$package           = $packages[0];
+			$rates             = $package['rates'];
+			$available_methods = array();
+
+			// Check that there are rates available.
+			if ( count( $rates ) > 0 ) {
+				foreach ( $rates as $key => $method ) {
+					$method_data = array(
+						'key'           => $key,
+						'method_id'     => $method->get_method_id(),
+						'instance_id'   => $method->instance_id,
+						'label'         => $method->get_label(),
+						'cost'          => $method->cost,
+						'html'          => html_entity_decode( strip_tags( wc_cart_totals_shipping_method_label( $method ) ) ),
+						'taxes'         => $method->taxes,
+						'chosen_method' => ($chosen_shipping_methods[0] === $key)
+					);
+
+					// Add available method to return.
+					$available_methods[$key] = $method_data;
+				}
+			}
+
+			return $available_methods;
 		}
 
 		/**

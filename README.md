@@ -1,4 +1,4 @@
-<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v1.9.3&label=&color=9a6fc4&style=flat-square"></a></h1>
+<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v1.10.0&label=&color=9a6fc4&style=flat-square"></a></h1>
 
 <p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
 
@@ -6,6 +6,7 @@
 
 ## Features
 
+* **NEW**: Returns shipping methods available if any and which one is chosen.
  * Cart returns currency.
  * Cart returns total weight.
  * Cart now returns items removed under extras.
@@ -23,6 +24,7 @@
 
 Each item added to the cart will also return the following:
 
+* **NEW**: Product returns virtual and downloadable status.
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
@@ -38,7 +40,7 @@ Each item added to the cart will also return the following:
 
 ## Requirement
 
-You will need to be using [CoCart **v2.1**](https://wordpress.org/plugins/cocart-get-cart-enhanced/) and up before installing this add-on.
+You will need to be using [CoCart **v2.1**](https://wordpress.org/plugins/cart-rest-api-for-woocommerce/) and up before installing this add-on.
 
 ## Download
 

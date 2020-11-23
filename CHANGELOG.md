@@ -1,5 +1,11 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v1.10.0 - 23rd November, 2020
+
+* **NEW**: Product returns virtual and downloadable status.
+* **NEW**: Returns shipping methods available if any and which one is chosen.
+* Enhanced: Cart totals are calculated again to be sure they are correct before returning totals.
+
 ## v1.9.3 - 30th October, 2020
 
 * Fixed: Get product slug if variable product detected.
