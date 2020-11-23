@@ -6,6 +6,8 @@
 * **NEW**: Returns shipping methods available if any and which one is chosen.
 * Enhanced: Cart totals are calculated again to be sure they are correct before returning totals.
 
+> This is a community release by [@joelpierre](https://github.com/joelpierre)
+
 ## v1.9.3 - 30th October, 2020
 
 * Fixed: Get product slug if variable product detected.
