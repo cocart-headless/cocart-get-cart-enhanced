@@ -11,6 +11,10 @@ npm-debug.log
 # Windows junk
 Thumbs.db
 
+# Composer
+/vendor/
+composer.lock
+
 # Languages
 /languages/*
 
