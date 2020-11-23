@@ -1,7 +1,7 @@
 === CoCart - Get Cart Enhanced === 
 Author URI: https://sebastiendumont.com
 Plugin URI: https://cocart.xyz
-Contributors: sebd86, cocartforwc
+Contributors: sebd86, cocartforwc, jppdesigns
 Tags: woocommerce, cart, rest, rest-api, JSON
 Donate link: https://www.buymeacoffee.com/sebastien
 Requires at least: 5.2
