@@ -6,7 +6,7 @@
 
 ## Features
 
-* **NEW**: Returns shipping methods available if any and which one is chosen.
+ * **NEW**: Returns shipping methods available if any and which one is chosen.
  * Cart returns currency.
  * Cart returns total weight.
  * Cart now returns items removed under extras.
@@ -24,7 +24,7 @@
 
 Each item added to the cart will also return the following:
 
-* **NEW**: Product returns virtual and downloadable status.
+ * **NEW**: Product returns virtual and downloadable status.
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
@@ -50,7 +50,7 @@ You will need to be using [CoCart **v2.1**](https://wordpress.org/plugins/cart-r
 
 ## Bug Reporting
 
-If you think you have found a bug in the plugin, please [open a new issue](https://github.com/co-cart/cocart-get-cart-enhanced/issues/new) and I will do my best to help you out.
+If you think you have found a bug in the plugin, please [open a new issue](https://github.com/co-cart/cocart-get-cart-enhanced/issues/new/choose) and I will do my best to help you out.
 
 ## Support CoCart
 
