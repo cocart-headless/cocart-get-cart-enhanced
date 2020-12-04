@@ -23,7 +23,10 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			add_filter( 'cocart_cart_contents', array( $this, 'return_product_details' ), 10, 4 );
 
 			// Check cart items.
-			add_filter( 'cocart_return_cart_contents', array( $this, 'check_cart_items' ), 98 );
+			add_filter( 'cocart_return_cart_contents', array( $this, 'check_cart_items' ), 97 );
+
+			// Check cart coupons.
+			add_filter( 'cocart_return_cart_contents', array( $this, 'check_cart_coupons' ), 98 );
 
 			// Enhances the returned cart contents.
 			remove_filter( 'cocart_return_cart_contents', array( 'CoCart_Cart_Enhanced_v1', 'enhance_cart_contents' ), 99 );
@@ -229,6 +232,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * Check all cart items for validity and stock.
 		 *
 		 * @access public
+		 * @since  2.0.0
 		 * @return $cart_contents
 		 */
 		public function check_cart_items( $cart_contents = array() ) {
@@ -252,6 +256,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * Looks through cart items and checks the products are not trashed or deleted.
 		 *
 		 * @access public
+		 * @since  2.0.0
 		 * @return bool|WP_Error
 		 */
 		public function check_cart_item_validity() {
@@ -275,6 +280,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * Looks through the cart to check each item is in stock. If not, add an error.
 		 *
 		 * @access public
+		 * @since  2.0.0
 		 * @return bool|WP_Error
 		 */
 		public function check_cart_item_stock() {
@@ -321,9 +327,29 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		} // END check_cart_item_stock()
 
 		/**
+		 * Check cart coupons for errors.
+		 *
+		 * @access public
+		 * @since  2.0.0
+		 */
+		public function check_cart_coupons() {
+			$cart = WC()->cart;
+
+			foreach ( $cart->get_applied_coupons() as $code ) {
+				$coupon = new WC_Coupon( $code );
+
+				if ( ! $coupon->is_valid() ) {
+					$coupon->add_coupon_message( 101 );
+					$cart->remove_coupon( $code );
+				}
+			}
+		} // END check_cart_coupons()
+
+		/**
 		 * Prepares a list of store currency data to return in responses.
 		 *
 		 * @access protected
+		 * @since  2.0.0
 		 * @return array
 		 */
 		protected function get_store_currency() {
