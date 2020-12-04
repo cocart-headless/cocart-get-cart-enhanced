@@ -22,6 +22,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			add_filter( 'cocart_return_cart_contents', array( $this, 'remove_parent_cart_item_key' ), 0 );
 			add_filter( 'cocart_return_removed_cart_contents', array( $this, 'remove_parent_cart_item_key' ), 0 );
 
+			// Check cart items.
+			add_filter( 'cocart_return_cart_contents', array( $this, 'check_cart_items' ), 97 );
+
+			// Check cart coupons.
+			add_filter( 'cocart_return_cart_contents', array( $this, 'check_cart_coupons' ), 98 );
+
 			// Enhances the returned cart contents.
 			add_filter( 'cocart_return_cart_contents', array( $this, 'enhance_cart_contents' ), 99 );
 			add_filter( 'cocart_return_cart_contents', array( $this, 'maybe_return_notices' ), 100 );
@@ -577,6 +583,123 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
 			return $available_methods;
 		}
+
+		/**
+		 * Check all cart items for validity and stock.
+		 *
+		 * @access public
+		 * @since  2.0.0
+		 * @return $cart_contents
+		 */
+		public function check_cart_items( $cart_contents = array() ) {
+			$result = $this->check_cart_item_validity();
+
+			if ( is_wp_error( $result ) ) {
+				wc_add_notice( $result->get_error_message(), 'error' );
+				$return = false;
+			}
+
+			$result = $this->check_cart_item_stock();
+
+			if ( is_wp_error( $result ) ) {
+				wc_add_notice( $result->get_error_message(), 'error' );
+			}
+
+			return $cart_contents;
+		} // END check_cart_items()
+
+		/**
+		 * Looks through cart items and checks the products are not trashed or deleted.
+		 *
+		 * @access public
+		 * @since  2.0.0
+		 * @return bool|WP_Error
+		 */
+		public function check_cart_item_validity() {
+			$return = true;
+
+			$cart = WC()->cart;
+
+			foreach ( $cart->get_cart() as $cart_item_key => $values ) {
+				$product = $values['data'];
+
+				if ( ! $product || ! $product->exists() || 'trash' === $product->get_status() ) {
+					$cart->set_quantity( $cart_item_key, 0 );
+					$return = new WP_Error( 'invalid', __( 'An item which is no longer available was removed from your cart.', 'cocart-get-cart-enhanced' ) );
+				}
+			}
+
+			return $return;
+		} // END check_cart_item_validity()
+
+		/**
+		 * Looks through the cart to check each item is in stock. If not, add an error.
+		 *
+		 * @access public
+		 * @since  2.0.0
+		 * @return bool|WP_Error
+		 */
+		public function check_cart_item_stock() {
+			$cart = WC()->cart;
+
+			$error                    = new WP_Error();
+			$product_qty_in_cart      = $cart->get_cart_item_quantities();
+			$current_session_order_id = isset( WC()->session->order_awaiting_payment ) ? absint( WC()->session->order_awaiting_payment ) : 0;
+
+			foreach ( $cart->get_cart() as $cart_item_key => $values ) {
+				$product = $values['data'];
+
+				// Check stock based on stock-status.
+				if ( ! $product->is_in_stock() ) {
+					/* translators: %s: product name */
+					$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock. Please edit your cart and try again. We apologize for any inconvenience caused.', 'cocart-get-cart-enhanced' ), $product->get_name() ) );
+					return $error;
+				}
+
+				// We only need to check products managing stock, with a limited stock qty.
+				if ( ! $product->managing_stock() || $product->backorders_allowed() ) {
+					continue;
+				}
+
+				// Check stock based on all items in the cart and consider any held stock within pending orders.
+				$held_stock     = wc_get_held_stock_quantity( $product, $current_session_order_id );
+				$required_stock = $product_qty_in_cart[ $product->get_stock_managed_by_id() ];
+
+				/**
+				 * Allows filter if product have enough stock to get added to the cart.
+				 *
+				 * @param bool       $has_stock If have enough stock.
+				 * @param WC_Product $product   Product instance.
+				 * @param array      $values    Cart item values.
+				 */
+				if ( apply_filters( 'cocart_cart_item_required_stock_is_not_enough', $product->get_stock_quantity() < ( $held_stock + $required_stock ), $product, $values ) ) {
+					/* translators: 1: product name 2: quantity in stock */
+					$error->add( 'out-of-stock', sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'cocart-get-cart-enhanced' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+					return $error;
+				}
+			}
+
+			return true;
+		} // END check_cart_item_stock()
+
+		/**
+		 * Check cart coupons for errors.
+		 *
+		 * @access public
+		 * @since  2.0.0
+		 */
+		public function check_cart_coupons() {
+			$cart = WC()->cart;
+
+			foreach ( $cart->get_applied_coupons() as $code ) {
+				$coupon = new WC_Coupon( $code );
+
+				if ( ! $coupon->is_valid() ) {
+					$coupon->add_coupon_message( 101 );
+					$cart->remove_coupon( $code );
+				}
+			}
+		} // END check_cart_coupons()
 
 	} // END class
 
