@@ -557,7 +557,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$available_methods = array();
 
 			// Check that there are rates available.
-			if ( count( $rates ) > 0 ) {
+			if ( count( (array) $rates ) > 0 ) {
 				foreach ( $rates as $key => $method ) {
 					$method_data = array(
 						'key'           => $key,
