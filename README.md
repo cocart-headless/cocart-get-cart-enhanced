@@ -1,4 +1,4 @@
-<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v1.10.0&label=&color=9a6fc4&style=flat-square"></a></h1>
+<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v2.0.0&label=&color=9a6fc4&style=flat-square"></a></h1>
 
 <p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
 
@@ -6,7 +6,8 @@
 
 ## Features
 
- * **NEW**: Returns shipping methods available if any and which one is chosen.
+* **NEW**: Checks for items in cart for validity and stock before returning the updated cart.
+* **NEW**: Checks for coupons applied to the cart for validity before returning the updated cart.
  * Cart returns currency.
  * Cart returns total weight.
  * Cart now returns items removed under extras.
@@ -19,12 +20,13 @@
  * Cart returns the shipping status of the cart.
  * Cart returns the payment status of the cart.
  * Cart returns coupons applied to the cart if enabled.
+ * Cart returns shipping methods available if any and which one is chosen.
  * Cart returns additional fees applied to the cart.
  * Cart returns the cart totals.
 
 Each item added to the cart will also return the following:
 
- * **NEW**: Product returns virtual and downloadable status.
+ * Returns virtual and downloadable status.
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
