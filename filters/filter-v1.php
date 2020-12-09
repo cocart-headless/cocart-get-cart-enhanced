@@ -355,11 +355,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Returns the cart key.
 		 *
 		 * @access  public
+		 * @static
 		 * @since   1.3.0
-		 * @version 1.6.2
+		 * @version 2.0.0
 		 * @return  string
 		 */
-		public function get_cart_key() {
+		public static function get_cart_key() {
 			if ( ! class_exists( 'CoCart_Session_Handler' ) || ! WC()->session instanceof CoCart_Session_Handler ) {
 				return;
 			}
@@ -435,13 +436,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Format variation data, for example convert slugs such as attribute_pa_size to Size.
 		 *
 		 * @access  public
+		 * @static
 		 * @since   1.4.0
 		 * @version 2.0.0
 		 * @param   array      $variation_data Array of data from the cart.
 		 * @param   WC_Product $product Product data.
 		 * @return  array
 		 */
-		public function format_variation_data( $variation_data, $product ) {
+		public static function format_variation_data( $variation_data, $product ) {
 			$return = array();
 
 			if ( empty( $variation_data ) ) {
@@ -523,12 +525,13 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Get the main product slug even if the product type is a variation.
 		 *
 		 * @access  public
+		 * @static
 		 * @since   1.9.0
-		 * @version 1.9.3
+		 * @version 2.0.0
 		 * @param   WC_Product $object
 		 * @return  string
 		 */
-		public function get_product_slug( $object ) {
+		public static function get_product_slug( $object ) {
 			$product_type = $object->get_type();
 
 			if ( 'variation' === $product_type ) {
@@ -545,11 +548,13 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Returns shipping methods available if any.
 		 *
-		 * @access public
-		 * @since  1.10.0
-		 * @return array - Available shipping methods or an empty array.
+		 * @access  public
+		 * @static
+		 * @since   1.10.0
+		 * @version 2.0.0
+		 * @return  array - Available shipping methods or an empty array.
 		 */
-		public function get_available_shipping_methods() {
+		public static function get_available_shipping_methods() {
 			// Calculate shipping.
 			WC()->cart->calculate_shipping();
 
