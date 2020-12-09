@@ -21,7 +21,8 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
-* **NEW**: Returns shipping methods available if any and which one is chosen.
+ * **NEW**: Added a check for items in cart for validity and stock before returning the updated cart.
+ * **NEW**: Added a check for coupons applied to the cart for validity before returning the updated cart.
  * Cart returns currency.
  * Cart returns total weight.
  * Cart now returns items removed under extras.
@@ -31,6 +32,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
  * Cart returns the cart hash key.
  * Places the cart contents under a new array called `items`.
  * Cart returns the item count of all items in the cart.
+ * Cart returns shipping methods available if any and which one is chosen.
  * Cart returns the shipping status of the cart.
  * Cart returns the payment status of the cart.
  * Cart returns coupons applied to the cart if enabled.
@@ -39,7 +41,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will also return the following:
 
-* **NEW**: Product returns virtual and downloadable status.
+ * **NEW**: Product returns virtual and downloadable status.
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
