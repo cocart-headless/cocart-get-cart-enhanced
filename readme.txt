@@ -41,7 +41,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will also return the following:
 
- * **NEW**: Product returns virtual and downloadable status.
+ * Returns virtual and downloadable status.
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
