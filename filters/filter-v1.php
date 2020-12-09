@@ -625,12 +625,23 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
 			$cart = WC()->cart;
 
-			foreach ( $cart->get_cart() as $cart_item_key => $values ) {
-				$product = $values['data'];
+			foreach ( $cart->get_cart() as $cart_item_key => $cart_item ) {
+				$product = $cart_item['data'];
 
 				if ( ! $product || ! $product->exists() || 'trash' === $product->get_status() ) {
 					$cart->set_quantity( $cart_item_key, 0 );
-					$return = new WP_Error( 'invalid', __( 'An item which is no longer available was removed from your cart.', 'cocart-get-cart-enhanced' ) );
+					$return = new WP_Error( 'cocart_cart_product_invalid', __( 'An item which is no longer available was removed from your cart.', 'cocart-get-cart-enhanced' ), 400 );
+				}
+
+				if ( $product->is_sold_individually() && $cart_item['quantity'] > 1 ) {
+					$return = new WP_Error( 'cocart_cart_product_sold_individually',
+						sprintf(
+							/* translators: %s: product name */
+							__( 'There are too many &quot;%s&quot; in the cart. Only 1 can be purchased.', 'cocart-get-cart-enhanced' ),
+							$product->get_name()
+						),
+						400
+					);
 				}
 			}
 
