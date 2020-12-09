@@ -1,13 +1,15 @@
 # Changelog for CoCart Get Cart Enhanced
 
-## v2.0.0 - ??
+## v2.0.0 - 9th December, 2020
 
-* **NEW**: Preview cart response for CoCart v3.0 API v2
+* **NEW**: Preview cart response for CoCart v3.0 API v2 (Requires `cocart_preview_api_v2` set `true` to enable).
 * **NEW**: Added a check for items in cart for validity and stock before returning the updated cart.
 * **NEW**: Added a check for coupons applied to the cart for validity before returning the updated cart.
 * Tested: Compatible with PHP 8
 * Tested: Compatible with CoCart v2.8
 * Tested: Compatible with WooCommerce v4.8
+
+> Previewing the new cart response is still a working progress and is by no means complete. Use only for experimenting and to provide feedback.
 
 ## v1.10.0 - 23rd November, 2020
 
