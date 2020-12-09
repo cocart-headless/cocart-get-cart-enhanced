@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: CoCart - Get Cart Enhanced 2.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/co-cart/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2020-11-27 09:01:05+00:00\n"
+"POT-Creation-Date: 2020-12-09 17:02:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,39 +25,42 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: filters/filter-v1.php:99 filters/filter-v2.php:87
+#: filters/filter-v1.php:105 filters/filter-v2.php:84
 msgid "In Stock"
 msgstr ""
 
-#: filters/filter-v1.php:103 filters/filter-v2.php:91
+#: filters/filter-v1.php:109 filters/filter-v2.php:88
 msgid "Out of Stock"
 msgstr ""
 
-#: filters/filter-v1.php:107 filters/filter-v2.php:95
+#: filters/filter-v1.php:113 filters/filter-v2.php:92
 msgid "Available on backorder"
 msgstr ""
 
-#: filters/filter-v1.php:336
+#: filters/filter-v1.php:342
 #. translators: %s: average rating
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: filters/filter-v1.php:495
+#: filters/filter-v1.php:503
 msgid "Free shipping coupon"
 msgstr ""
 
-#: filters/filter-v2.php:266
+#: filters/filter-v1.php:633
 msgid "An item which is no longer available was removed from your cart."
 msgstr ""
 
-#: filters/filter-v2.php:293
+#: filters/filter-v1.php:640
 #. translators: %s: product name
-msgid ""
-"Sorry, \"%s\" is not in stock. Please edit your cart and try again. We "
-"apologize for any inconvenience caused."
+msgid "There are too many &quot;%s&quot; in the cart. Only 1 can be purchased."
 msgstr ""
 
-#: filters/filter-v2.php:315
+#: filters/filter-v1.php:671
+#. translators: %s: product name
+msgid "Sorry, \"%s\" is not in stock and cannot be purchased."
+msgstr ""
+
+#: filters/filter-v1.php:693
 #. translators: 1: product name 2: quantity in stock
 msgid ""
 "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s "
