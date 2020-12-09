@@ -19,11 +19,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 */
 		public function __construct() {
 			// Filters in additional product data for all items.
-			remove_filter( 'cocart_cart_contents', array( 'CoCart_Cart_Enhanced_v1', 'return_product_details' ), 10 );
 			add_filter( 'cocart_cart_contents', array( $this, 'return_product_details' ), 10, 4 );
 
 			// Enhances the returned cart contents.
-			remove_filter( 'cocart_return_cart_contents', array( 'CoCart_Cart_Enhanced_v1', 'enhance_cart_contents' ), 99 );
 			add_filter( 'cocart_return_cart_contents', array( $this, 'enhance_cart_contents' ), 99 );
 		} // END __construct()
 
