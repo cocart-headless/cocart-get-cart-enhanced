@@ -181,38 +181,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			}
 
 			// Returns the cart totals.
-			$totals = $cart->get_totals();
-
-			$new_totals = array();
-
-			$ignore_convert = array(
-				'shipping_taxes',
-				'cart_contents_taxes',
-				'fee_taxes'
-			);
-
-			foreach( $totals as $type => $sum ) {
-				if ( in_array( $type, $ignore_convert ) ) {
-					$new_totals[ $type ] = $sum;
-				} else {
-					if ( is_string( $sum ) ) {
-						$new_totals[ $type ] = html_entity_decode( strip_tags( wc_price( $sum ) ) );
-					}
-					else {
-						$new_totals[ $type ] = html_entity_decode( strip_tags( wc_price( strval( $sum ) ) ) );
-					}
-				}
-			}
-
-			/**
-			 * Filters totals.
-			 *
-			 * @since 1.6.6
-			 * @param array $new_totals All cart totals
-			 */
-			$new_totals = apply_filters( 'cocart_enhanced_totals', $new_totals );
-
-			$new_cart_contents['totals'] = $new_totals;
+			$new_cart_contents['totals'] = $cart->get_totals();
 
 			// Returns extra cart data and can be filtered.
 			$new_cart_contents['extras'] = apply_filters( 'cocart_enhanced_extras', array(
