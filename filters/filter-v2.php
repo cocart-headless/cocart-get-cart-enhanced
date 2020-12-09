@@ -139,7 +139,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				'cart_hash'        => $cart->get_cart_hash(),
 				'cart_key'         => CoCart_Cart_Enhanced_v1::get_cart_key(),
 				'currency'         => $this->get_store_currency(),
-				'items'            => $cart_contents,
+				'items'            => $cart_contents['items'],
 				'item_count'       => $cart->get_cart_contents_count(),
 				'items_weight'     => array(
 					'total'       => wc_get_weight( $cart->get_cart_contents_weight(), get_option( 'woocommerce_weight_unit' ) ),
