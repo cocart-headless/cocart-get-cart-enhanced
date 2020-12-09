@@ -668,7 +668,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 				// Check stock based on stock-status.
 				if ( ! $product->is_in_stock() ) {
 					/* translators: %s: product name */
-					$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock. Please edit your cart and try again. We apologize for any inconvenience caused.', 'cocart-get-cart-enhanced' ), $product->get_name() ) );
+					$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock and cannot be purchased.', 'cocart-get-cart-enhanced' ), $product->get_name() ) );
 					return $error;
 				}
 
