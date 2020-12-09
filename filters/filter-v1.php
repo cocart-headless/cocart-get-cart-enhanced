@@ -703,8 +703,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 *
 		 * @access public
 		 * @since  2.0.0
+		 * @return $cart_contents
 		 */
-		public function check_cart_coupons() {
+		public function check_cart_coupons( $cart_contents = array() ) {
 			$cart = WC()->cart;
 
 			foreach ( $cart->get_applied_coupons() as $code ) {
@@ -715,6 +716,8 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 					$cart->remove_coupon( $code );
 				}
 			}
+
+			return $cart_contents;
 		} // END check_cart_coupons()
 
 	} // END class
