@@ -107,8 +107,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Load filters to enhance the cart and items.
 	 *
 	 * @access public
+	 * @static
 	 */
-	public function include_filters() {
+	public static function include_filters() {
 		include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v1.php';
 
 		// If enabled, cart will enhance with API v2 preview.
