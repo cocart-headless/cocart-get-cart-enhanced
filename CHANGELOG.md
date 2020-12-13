@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v2.0.1 - 13th December, 2020
+
+* Dev: Re-done the main file so the plugin can be packaged with composer.
+
 ## v2.0.0 - 9th December, 2020
 
 * **NEW**: Preview cart response for CoCart v3.0 API v2 (Requires `cocart_preview_api_v2` set `true` to enable).

@@ -20,93 +20,26 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-if ( ! class_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
-	class CoCart_Get_Cart_Enhanced {
+defined( 'ABSPATH' ) || exit;
 
-		/**
-		 * Load the plugin.
-		 *
-		 * @access public
-		 */
-		public function __construct() {
-			// Load filters.
-			add_action( 'init', array( $this, 'include_filters' ) );
+if ( ! defined( 'COCART_GET_CART_ENHANCED' ) ) {
+	define( 'COCART_GET_CART_ENHANCED', __FILE__ );
+}
 
-			// Load translation files.
-			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+// Include the main CoCart Get Cart Enhanced class.
+if ( ! class_exists( 'CoCart_Get_Cart_Enhanced', false ) ) {
+	include_once untrailingslashit( plugin_dir_path( COCART_GET_CART_ENHANCED ) ) . '/includes/class-cocart-get-cart-enhanced.php';
+}
 
-			// Plugin activation and deactivation.
-			register_activation_hook( __FILE__, array( $this, 'activated' ) );
-			register_deactivation_hook( __FILE__, array( $this, 'deactivated' ) );
-		} // END __construct()
+/**
+ * Returns the main instance of CoCart Get Cart Enhanced and only runs if it does not already exists.
+ *
+ * @return CoCart Get Cart Enhanced
+ */
+if ( ! function_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
+	function CoCart_Get_Cart_Enhanced() {
+		return CoCart_Get_Cart_Enhanced::init();
+	}
 
-		/**
-		 * Load filters to enhance the cart and items.
-		 *
-		 * @access public
-		 */
-		public function include_filters() {
-			include_once dirname( __FILE__ ) . '/' . 'filters/filter-v1.php';
-
-			// If enabled, cart will enhance with API v2 preview.
-			if ( apply_filters( 'cocart_preview_api_v2', false ) ) {
-				include_once dirname( __FILE__ ) . '/' . 'filters/filter-v2.php';
-			}
-		} // include_filters()
-
-		/**
-		 * Make the plugin translation ready.
-		 *
-		 * Translations should be added in the WordPress language directory:
-		 *      - WP_LANG_DIR/plugins/cocart-get-cart-enhanced-LOCALE.mo
-		 *
-		 * @access public
-		 * @return void
-		 */
-		public function load_plugin_textdomain() {
-			load_plugin_textdomain( 'cocart-get-cart-enhanced', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		}
-
-		/**
-		 * Runs when the plugin is activated.
-		 *
-		 * Adds plugin to list of installed CoCart add-ons.
-		 *
-		 * @access public
-		 */
-		public function activated() {
-			$addons_installed = get_site_option( 'cocart_addons_installed', array() );
-
-			$plugin = plugin_basename( __FILE__ );
-
-			// Check if plugin is already added to list of installed add-ons.
-			if ( ! in_array( $plugin, $addons_installed, true ) ) {
-				array_push( $addons_installed, $plugin );
-				update_site_option( 'cocart_addons_installed', $addons_installed );
-			}
-		} // END activated()
-
-		/**
-		 * Runs when the plugin is deactivated.
-		 *
-		 * Removes plugin from list of installed CoCart add-ons.
-		 *
-		 * @access public
-		 */
-		public function deactivated() {
-			$addons_installed = get_site_option( 'cocart_addons_installed', array() );
-
-			$plugin = plugin_basename( __FILE__ );
-			
-			// Remove plugin from list of installed add-ons.
-			if ( in_array( $plugin, $addons_installed, true ) ) {
-				$addons_installed = array_diff( $addons_installed, array( $plugin ) );
-				update_site_option( 'cocart_addons_installed', $addons_installed );
-			}
-		} // END deactivated()
-
-	} // END class
-
-} // END if class exists
-
-new CoCart_Get_Cart_Enhanced();
+	CoCart_Get_Cart_Enhanced();
+}
