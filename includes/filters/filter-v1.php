@@ -145,7 +145,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
 
 			return $cart_contents;
-		}
+		} // END return_product_details()
 
 		/**
 		 * Returns the cart contents without the cart item key as the parent array.
@@ -162,7 +162,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			return $new_cart_contents;
-		}
+		} // END remove_parent_cart_item_key()
 
 		/**
 		 * Enhances the returned cart contents.
@@ -297,7 +297,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			) );
 
 			return $new_cart_contents;
-		}
+		} // END enhance_cart_contents()
 
 		/**
 		 * Returns cross sells based on the items in the cart.
@@ -349,7 +349,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$extras['cross_sells'] = apply_filters( 'cocart_cross_sell_contents', $extras['cross_sells'] );
 
 			return $extras;
-		}
+		} // END return_cross_sells()
 
 		/**
 		 * Returns the cart key.
@@ -382,7 +382,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			return $cart_key;
-		}
+		} // END get_cart_key()
 
 		/**
 		 * Return notices in cart if any.
@@ -404,7 +404,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$cart_contents['notices'] = $notice_count > 0 ? $this->cocart_print_notices() : array();
 
 			return $cart_contents;
-		}
+		} // END maybe_return_notices()
 
 		/**
 		 * Returns messages and errors which are stored in the session, then clears them.
@@ -430,7 +430,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			wc_clear_notices();
 
 			return $notices;
-		}
+		} // END cocart_print_notices()
 
 		/**
 		 * Format variation data, for example convert slugs such as attribute_pa_size to Size.
@@ -470,7 +470,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			return $return;
-		}
+		} // END format_variation_data()
 
 		/**
 		 * Get coupon in HTML.
@@ -506,7 +506,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$discount_amount_html = apply_filters( 'cocart_coupon_discount_amount_html', $discount_amount_html, $coupon );
 
 			return $discount_amount_html;
-		}
+		} // END coupon_html()
 
 		/**
 		 * Get the fee value.
@@ -519,7 +519,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			$cart_totals_fee_html = WC()->cart->display_prices_including_tax() ? wc_price( $fee->total + $fee->tax ) : wc_price( $fee->total );
 
 			return apply_filters( 'cocart_cart_totals_fee_html', $cart_totals_fee_html, $fee );
-		}
+		} // END fee_html()
 
 		/**
 		 * Get the main product slug even if the product type is a variation.
@@ -543,7 +543,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			return $product_slug;
-		}
+		} // END get_product_slug()
 
 		/**
 		 * Returns shipping methods available if any.
@@ -587,7 +587,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			return $available_methods;
-		}
+		} // END get_available_shipping_methods()
 
 		/**
 		 * Check all cart items for validity and stock.

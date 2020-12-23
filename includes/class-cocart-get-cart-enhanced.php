@@ -24,7 +24,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * @access public
 	 * @static
 	 */
-	public static $version = '1.0.0';
+	public static $version = '2.0.2';
 
 	/**
 	 * Initiate CoCart Get Cart Enhanced.
@@ -124,8 +124,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Adds plugin to list of installed CoCart add-ons.
 	 *
 	 * @access public
+	 * @static
 	 */
-	public function activated() {
+	public static function activated() {
 		$addons_installed = get_site_option( 'cocart_addons_installed', array() );
 
 		$plugin = plugin_basename( COCART_GET_CART_ENHANCED );
@@ -143,8 +144,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Removes plugin from list of installed CoCart add-ons.
 	 *
 	 * @access public
+	 * @static
 	 */
-	public function deactivated() {
+	public static function deactivated() {
 		$addons_installed = get_site_option( 'cocart_addons_installed', array() );
 
 		$plugin = plugin_basename( COCART_GET_CART_ENHANCED );
