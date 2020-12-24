@@ -1,6 +1,6 @@
 # Changelog for CoCart Get Cart Enhanced
 
-## v2.0.2 - 23th December, 2020
+## v2.0.2 - 23rd December, 2020
 
 * Corrected: Package version with the version of the plugin.
 * Enhanced: Cross sells is cleaner if you are previewing the cart response for CoCart v3.0 API v2.
