@@ -7,7 +7,7 @@
  * Use only for experimenting.
  * 
  * @since   2.0.0
- * @version 2.0.2
+ * @version 2.0.3
  */
 if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
@@ -125,7 +125,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 2.0.0
+		 * @version 2.0.3
 		 * @param   array $cart_contents     - Cart contents before modifications.
 		 * @return  array $new_cart_contents - Cart contents after modifications.
 		 */
@@ -149,7 +149,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				),
 				'needs_shipping'   => $cart->needs_shipping(),
 				'needs_payment'    => $cart->needs_payment(),
-				'shipping_methods' => CoCart_Cart_Enhanced_v1::get_available_shipping_methods(),
+				'shipping'         => $this->get_shipping_details(),
 				'coupons'          => array()
 			);
 
@@ -158,8 +158,8 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			// If coupons are applied to the cart then expose each coupon applied.
 			if ( ! empty( $coupons ) ) {
-				foreach ( $coupons as $code => $coupon ) {
-					$new_cart_contents['coupons'][ $code ] = array(
+				foreach ( $coupons as $i => $coupon ) {
+					$new_cart_contents['coupons'][] = array(
 						'coupon'      => wc_format_coupon_code( wp_unslash( $coupon ) ),
 						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
 						'saving'      => CoCart_Cart_Enhanced_v1::coupon_html( $coupon, false ),
@@ -286,6 +286,76 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			return $extras;
 		} // END return_cross_sells()
+
+		/**
+		 * Returns shipping details.
+		 *
+		 * @access public
+		 * @static
+		 * @since  2.0.3
+		 * @return array.
+		 */
+		public static function get_shipping_details() {
+			// Get shipping packages.
+			$packages = WC()->shipping->get_packages();
+
+			$details = array(
+				'total_packages'          => count( (array) $packages ),
+				'show_package_details'    => count( (array) $packages ) > 1,
+				'has_calculated_shipping' => WC()->customer->has_calculated_shipping(),
+				'packages'                => array()
+			);
+
+			$package_key = 1;
+
+			foreach ( $packages as $i => $package ) {
+				$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+				$product_names = array();
+
+				if ( count( (array) $packages ) > 1 ) {
+					foreach ( $package['contents'] as $item_id => $values ) {
+						$product_names[ $item_id ] = $values['data']->get_name() . ' x' . $values['quantity'];
+					}
+
+					$product_names = apply_filters( 'cocart_shipping_package_details_array', $product_names, $package );
+				}
+
+				$rates = array();
+
+				$details['packages'][$package_key] = array(
+					/* translators: %d: shipping package number */
+					'package_name'          => apply_filters( 'cocart_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'cocart-get-cart-enhanced' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'cocart-get-cart-enhanced' ), $i, $package ),
+					'rates'                 => $package['rates'],
+					'package_details'       => implode( ', ', $product_names ),
+					'index'                 => $i,
+					'chosen_method'         => $chosen_method,
+					'formatted_destination' => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+				);
+
+				// Check that there are rates available for the package.
+				if ( count( (array) $package['rates'] ) > 0 ) {
+					// Return each rate.
+					foreach ( $package['rates'] as $key => $method ) {
+						$rates[$key] = array(
+							'key'           => $key,
+							'method_id'     => $method->get_method_id(),
+							'instance_id'   => $method->instance_id,
+							'label'         => $method->get_label(),
+							'cost'          => $method->cost,
+							'html'          => html_entity_decode( strip_tags( wc_cart_totals_shipping_method_label( $method ) ) ),
+							'taxes'         => $method->taxes,
+							'chosen_method' => ($chosen_method === $key)
+						);
+					}
+				}
+
+				$details['packages'][$package_key]['rates'] = $rates;
+
+				$package_key++;
+			}
+
+			return $details;
+		} // END get_shipping_details()
 
 	} // END class
 

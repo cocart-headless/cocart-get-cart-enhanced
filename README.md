@@ -1,4 +1,4 @@
-<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v2.0.2&label=&color=9a6fc4&style=flat-square"></a></h1>
+<h1 align="center">CoCart - Get Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v2.0.3&label=&color=9a6fc4&style=flat-square"></a></h1>
 
 <p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
 
@@ -39,6 +39,8 @@ Each item added to the cart will also return the following:
  * Returns the product weight and unit.
  * Returns the product stock status.
  * Returns the product gallery if any.
+
+> To preview the new cart response for CoCart v3.0 API v2. Apply filter `cocart_preview_api_v2` set to `true` to enable.
 
 ## Requirement
 

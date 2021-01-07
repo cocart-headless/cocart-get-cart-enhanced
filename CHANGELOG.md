@@ -1,5 +1,15 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v2.0.3 - 07th January, 2021
+
+* Corrected: Coupons now return as an object if more than one coupon is applied.
+
+### CoCart v3.0 API v2 Preview
+
+* Enhanced: Shipping details now return along with each package and the available rates.
+* Dev: New `cocart_shipping_package_details_array` filter for filtering package details listed per package.
+* Dev: New `cocart_shipping_package_name` filter for renaming the package name.
+
 ## v2.0.2 - 23rd December, 2020
 
 * Corrected: Package version with the version of the plugin.
