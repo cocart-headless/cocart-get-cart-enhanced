@@ -183,7 +183,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 *
 		 * @access  public
 		 * @since   1.0.0
-		 * @version 2.0.3
+		 * @version 2.0.4
 		 * @param   array $cart_contents     - Cart contents before modifications.
 		 * @return  array $new_cart_contents - Cart contents after modifications.
 		 */
@@ -226,7 +226,6 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			if ( ! empty( $coupons ) ) {
 				foreach ( $coupons as $i => $coupon ) {
 					$new_cart_contents['coupons'][] = array(
-						'code' => $code,
 						'coupon'      => wc_format_coupon_code( wp_unslash( $coupon ) ),
 						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
 						'saving'      => $this->coupon_html( $coupon, false ),
@@ -552,7 +551,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * @access  public
 		 * @static
 		 * @since   1.10.0
-		 * @version 2.0.3
+		 * @version 2.0.4
 		 * @return  array - Available shipping methods or an empty array.
 		 */
 		public static function get_available_shipping_methods() {
@@ -562,10 +561,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			// Get shipping packages.
 			$packages = WC()->shipping->get_packages();
 
+			// Container for available methods.
+			$available_methods = array();
+
 			foreach ( $packages as $i => $package ) {
-				$chosen_method     = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-				$rates             = $package['rates'];
-				$available_methods = array();
+				$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+				$rates         = $package['rates'];
 	
 				// Check that there are rates available.
 				if ( count( (array) $rates ) > 0 ) {

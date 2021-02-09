@@ -1,5 +1,11 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v2.0.4 - 09th Febuary, 2021
+
+* Fixed: Undefined `$code` by removing it as it returns nothing of important. One less error.
+* Tweaked: Moved `$available_methods` container up a few lines so each package returns fully.
+* Tested: Compatible with WooCommerce v4.9
+
 ## v2.0.3 - 07th January, 2021
 
 * Corrected: Coupons now return as an object if more than one coupon is applied.

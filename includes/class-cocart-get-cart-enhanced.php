@@ -24,7 +24,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * @access public
 	 * @static
 	 */
-	public static $version = '2.0.3';
+	public static $version = '2.0.4';
 
 	/**
 	 * Initiate CoCart Get Cart Enhanced.
