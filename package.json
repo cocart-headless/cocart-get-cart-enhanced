@@ -1,7 +1,7 @@
 {
-	"title": "CoCart - Get Cart Enhanced",
+	"title": "CoCart - Cart Enhanced",
 	"name": "cocart-get-cart-enhanced",
-	"version": "2.0.4",
+	"version": "3.0.0",
 	"private": false,
 	"contributors": [
 		"sebd86",
@@ -20,13 +20,13 @@
 		"url": "https://github.com/co-cart/cocart-get-cart-enhanced/issues"
 	},
 	"requires": "5.4",
-	"requires_php": "7.0",
-	"tested_up_to": "5.6",
+	"requires_php": "7.3",
+	"tested_up_to": "5.7",
 	"wc_requires": "4.3",
-	"wc_tested_up_to": "4.9",
+	"wc_tested_up_to": "5.3",
 	"license": "GPL-3.0",
 	"copyright": "Copyright (c) 2021, Sébastien Dumont",
-	"description": "Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.",
+	"description": "Enhances the cart response to return additional details.",
 	"tags": "",
 	"keywords": [
 		"wordpress",
@@ -42,7 +42,11 @@
 		"cart",
 		"rest",
 		"rest-api",
-		"JSON"
+		"JSON",
+		"decoupled",
+		"headless",
+		"headless-wordpress",
+		"headless-woocommerce"
 	],
 	"scripts": {
 		"test": "grunt",
@@ -52,7 +56,7 @@
 		"release": "grunt zip"
 	},
 	"devDependencies": {
-		"grunt": "1.3.0",
+		"grunt": "1.4.0",
 		"grunt-checktextdomain": "1.0.1",
 		"grunt-contrib-clean": "2.0.0",
 		"grunt-contrib-compress": "2.0.0",

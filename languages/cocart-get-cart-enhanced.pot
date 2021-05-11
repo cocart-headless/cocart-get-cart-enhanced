@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the CoCart - Get Cart Enhanced package.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoCart - Get Cart Enhanced 2.0.4\n"
+"Project-Id-Version: CoCart - Cart Enhanced 3.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/co-cart/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2021-02-09 18:37:29+00:00\n"
+"POT-Creation-Date: 2021-05-11 17:54:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,19 +25,23 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: includes/filters/filter-v1.php:105 includes/filters/filter-v2.php:88
+#: includes/filters/filter-v1.php:105 includes/filters/filter-v2-preview.php:88
+#: includes/filters/filter-v2.php:47
 msgid "In Stock"
 msgstr ""
 
-#: includes/filters/filter-v1.php:109 includes/filters/filter-v2.php:92
+#: includes/filters/filter-v1.php:109 includes/filters/filter-v2-preview.php:92
+#: includes/filters/filter-v2.php:51
 msgid "Out of Stock"
 msgstr ""
 
-#: includes/filters/filter-v1.php:113 includes/filters/filter-v2.php:96
+#: includes/filters/filter-v1.php:113 includes/filters/filter-v2-preview.php:96
+#: includes/filters/filter-v2.php:55
 msgid "Available on backorder"
 msgstr ""
 
-#: includes/filters/filter-v1.php:342 includes/filters/filter-v2.php:278
+#: includes/filters/filter-v1.php:342
+#: includes/filters/filter-v2-preview.php:278
 #. translators: %s: average rating
 msgid "Rated %s out of 5"
 msgstr ""
@@ -67,13 +71,13 @@ msgid ""
 "available). We apologize for any inconvenience caused."
 msgstr ""
 
-#: includes/filters/filter-v2.php:327
+#: includes/filters/filter-v2-preview.php:327
 #. translators: %d: shipping package number
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
-#: includes/filters/filter-v2.php:327
+#: includes/filters/filter-v2-preview.php:327
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""

@@ -2,14 +2,14 @@
 Author URI: https://sebastiendumont.com
 Plugin URI: https://cocart.xyz
 Contributors: sebd86, cocartforwc, jppdesigns
-Tags: woocommerce, cart, rest, rest-api, JSON
+Tags: woocommerce, cart, rest-api, decoupled, headless
 Donate link: https://www.buymeacoffee.com/sebastien
 Requires at least: 5.4
-Requires PHP: 7.0
-Tested up to: 5.6
+Requires PHP: 7.3
+Tested up to: 5.7
 Stable tag: 2.0.4
 WC requires at least: 4.3
-WC tested up to: 4.9
+WC tested up to: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,8 +21,16 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
- * **NEW**: Added a check for items in cart for validity and stock before returning the updated cart.
- * **NEW**: Added a check for coupons applied to the cart for validity before returning the updated cart.
+#### 11th April 2021
+
+The majority of these features will already be available in CoCart API v2. Only a few of these features will be used to enhance the cart response.
+
+If you are still using API v1 then all features listed below will still be available.
+
+----
+
+ * Checks for items in cart for validity and stock before returning the updated cart.
+ * Checks for coupons applied to the cart for validity before returning the updated cart.
  * Cart returns currency.
  * Cart returns total weight.
  * Cart now returns items removed under extras.
@@ -41,19 +49,20 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will also return the following:
 
- * Returns virtual and downloadable status.
+ * Returns virtual and downloadable status. - **Enhances API v2**
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
  * Returns minimum and maximum quantity of item can be purchased.
  * Returns product price raw.
- * Returns the product categories assigned.
- * Returns the product tags assigned.
+ * Returns the product categories assigned. - **Enhances API v2**
+ * Returns the product tags assigned. - **Enhances API v2**
  * Returns the product SKU.
  * Returns the product weight and unit.
- * Returns the product stock status.
- * Returns the product gallery if any.
+ * Returns the product stock status. - **Enhances API v2**
+ * Returns the product gallery if any. - **Enhances API v2**
+ * Returns the product permalink. - **Enhances API v2**
 
 Want more? [Upgrade to CoCart Pro](https://cocart.xyz/pro/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart).
 
@@ -61,7 +70,9 @@ Want more? [Upgrade to CoCart Pro](https://cocart.xyz/pro/?utm_medium=wp.org&utm
 
 We also have other **[add-ons](https://cocart.xyz/add-ons/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** that extend CoCart to enhance your development and your customers shopping experience.
 
-* **[Products](https://cocart.xyz/add-ons/products/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** provides a public version of WooCommerce REST API for accessing products, categories, tags, attributes and even reviews without the need to authenticate.
+* **[CoCart - Carts in Session](https://github.com/co-cart/cocart-carts-in-session)** allows you to view all the carts in session via the WordPress admin. - **FREE**
+* **[CoCart - CORS](https://wordpress.org/plugins/cocart-cors/)** simply filters the session cookie to allow CoCart to work across multiple domains. - **FREE**
+* **[CoCart Products](https://cocart.xyz/add-ons/products/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** provides access to non-sensitive product information, categories, tags, attributes and even reviews from your store without the need to authenticate.
 * **[Advanced Custom Fields](https://cocart.xyz/add-ons/advanced-custom-fields/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** extends CoCart Products add-on by returning all your advanced custom fields for products. - **REQUIRES COCART PRODUCTS**
 * **[Yoast SEO](https://cocart.xyz/add-ons/yoast-seo/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** extends CoCart Products add-on by returning Yoast SEO data for products, product categories and product tags. - **REQUIRES COCART PRODUCTS**
 * and more add-ons in development.
@@ -82,13 +93,10 @@ Bug reports for CoCart - Get Cart Enhanced are welcomed in the [CoCart - Get Car
 
 ### More information
 
-* [Visit the CoCart website](https://cocart.xyz/?utm_source=wordpressorg&utm_medium=wp.org&utm_campaign=readme).
-* [Documentation](https://docs.cocart.xyz/)
+* The [CoCart plugin](https://cocart.xyz/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart) official website.
+* The CoCart [Documentation](https://docs.cocart.xyz/)
 * [Subscribe to updates](http://eepurl.com/dKIYXE)
-* [Like and Follow on Facebook](https://www.facebook.com/cocartforwc/)
-* [Follow on Twitter](https://twitter.com/cart_co)
-* [Follow on Instagram](https://www.instagram.com/co_cart/)
-* [GitHub](https://github.com/co-cart)
+* Like, Follow and Star on [Facebook](https://www.facebook.com/cocartforwc/), [Twitter](https://twitter.com/cart_co), [Instagram](https://www.instagram.com/co_cart/) and [GitHub](https://github.com/co-cart/co-cart)
 
 = Credits =
 
@@ -99,6 +107,10 @@ This plugin is created by [Sébastien Dumont](https://sebastiendumont.com).
 = Minimum Requirements =
 
 You will need CoCart v2.1 or above.
+
+* WordPress v5.4
+* WooCommerce v4.3
+* PHP v7.3
 
 = Automatic installation =
 
@@ -116,10 +128,10 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 == Screenshots ==
 
-1. Empty Cart "Enhanced Off
-2. Empty Cart "Enhanced On"
-3. Cart with Item "Enhanced Off"
-4. Cart with Item "Enhanced On"
+1. Empty Cart "Enhanced Off (API v1)
+2. Empty Cart "Enhanced On" (API v1)
+3. Cart with Item "Enhanced Off" (API v1)
+4. Cart with Item "Enhanced On" (API v1)
 
 == Changelog ==
 

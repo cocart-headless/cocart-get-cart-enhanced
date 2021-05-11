@@ -1,6 +1,6 @@
 <?php
 /**
- * CoCart Get Cart Enhanced core setup.
+ * CoCart - Cart Enhanced core setup.
  *
  * @author   Sébastien Dumont
  * @category Package
@@ -24,7 +24,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * @access public
 	 * @static
 	 */
-	public static $version = '2.0.4';
+	public static $version = '3.0.0';
 
 	/**
 	 * Initiate CoCart Get Cart Enhanced.
@@ -52,7 +52,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * @return string
 	 */
 	public static function get_name() {
-		return 'CoCart Get Cart Enhanced';
+		return 'CoCart - Cart Enhanced';
 	}
 
 	/**
@@ -111,10 +111,11 @@ final class CoCart_Get_Cart_Enhanced {
 	 */
 	public static function include_filters() {
 		include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v1.php';
+		include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v2.php';
 
-		// If enabled, cart will enhance with API v2 preview.
+		// If enabled, cart will enhance API v1.
 		if ( apply_filters( 'cocart_preview_api_v2', false ) ) {
-			include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v2.php';
+			include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v2-preview.php';
 		}
 	} // include_filters()
 
