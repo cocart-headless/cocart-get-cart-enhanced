@@ -34,7 +34,7 @@
 		"issues": "https://github.com/co-cart/cocart-get-cart-enhanced/issues"
 	},
 	"require": {
-		"composer/installers": "1.10.0",
+		"composer/installers": "1.11.0",
 		"woocommerce/woocommerce-sniffs": "0.1.0"
 	},
 	"scripts": {
