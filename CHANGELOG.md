@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.0.0 - 11th April, 2021
+
+* Compatible: CoCart v3.0
+
 ## v2.0.4 - 09th Febuary, 2021
 
 * Fixed: Undefined `$code` by removing it as it returns nothing of important. One less error.
