@@ -1,6 +1,6 @@
 # Changelog for CoCart Get Cart Enhanced
 
-## v3.0.0 - 11th April, 2021
+## v3.0.0 - 11th May, 2021
 
 * Compatible: CoCart v3.0
 

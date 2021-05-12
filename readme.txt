@@ -1,4 +1,4 @@
-=== CoCart - Get Cart Enhanced === 
+=== CoCart - Cart Enhanced === 
 Author URI: https://sebastiendumont.com
 Plugin URI: https://cocart.xyz
 Contributors: sebd86, cocartforwc, jppdesigns
