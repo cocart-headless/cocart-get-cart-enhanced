@@ -21,7 +21,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
-#### 11th April 2021
+#### 11th May 2021
 
 The majority of these features will already be available in CoCart API v2. Only a few of these features will be used to enhance the cart response.
 
