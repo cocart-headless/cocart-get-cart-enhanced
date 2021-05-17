@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.0.1 - 17th May, 2021
+
+* **NEW**: Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
+
 ## v3.0.0 - 11th May, 2021
 
 * Compatible: CoCart v3.0

@@ -17,6 +17,9 @@
 		public function __construct() {
 			// Filters in additional product data for all items.
 			add_filter( 'cocart_cart_items', array( $this, 'return_product_details' ), 10, 4 );
+
+			// Filters in discount status of items and the discounted price if any.
+			add_filter( 'cocart_cart_items', array( $this, 'is_item_discounted' ), 10, 4 );
 		} // END __construct()
 
 		/**
@@ -31,8 +34,8 @@
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Additional meta.
-			$cart_contents[ $item_key ]['meta' ]['virtual'] = $_product->get_virtual();
-			$cart_contents[ $item_key ]['meta' ]['downloadable'] = $_product->get_downloadable();
+			$cart_contents[ $item_key ]['meta']['virtual'] = $_product->get_virtual();
+			$cart_contents[ $item_key ]['meta']['downloadable'] = $_product->get_downloadable();
 
 			// Categories and Tags.
 			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_id(), 'product_cat' );
@@ -89,6 +92,41 @@
 
 			return $cart_contents;
 		} // END return_product_details()
+
+		/**
+		 * Returns the discount status of items and the discounted price if any.
+		 *
+		 * @access  public
+		 * @param   array  $cart_contents - Cart contents before modifications.
+		 * @param   int    $item_key
+		 * @param   array  $cart_item
+		 * @param   object $_product
+		 * @return  array  $cart_contents - Cart contents after modifications.
+		 */
+		public function is_item_discounted( $cart_contents, $item_key, $cart_item, $_product ) {
+			$price         = (int) $cart_contents[ $item_key ]['price'];
+			$quantity      = (int) $cart_contents[ $item_key ]['quantity']['value'];
+			$item_subtotal = $cart_contents[ $item_key ]['totals']['subtotal'];
+
+			$original_subtotal   = ($price*$quantity);
+			$is_subtotal_matched = true;
+			$discounted_price    = "";
+
+			if ( $original_subtotal != $item_subtotal ) {
+				$is_subtotal_matched = false;
+				$discounted_price    = ($item_subtotal/$quantity);
+			}
+
+			if ( $is_subtotal_matched ) {
+				$cart_contents[ $item_key ]['is_discounted'] = false;
+			} else {
+				$cart_contents[ $item_key ]['is_discounted'] = true;
+			}
+
+			$cart_contents[ $item_key ]['price_discounted'] = wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+
+			return $cart_contents;
+		} // END is_item_discounted()
 
 	} // END class
 

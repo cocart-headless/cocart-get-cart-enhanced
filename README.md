@@ -1,4 +1,4 @@
-<h1 align="center">CoCart - Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v3.0.0&label=&color=9a6fc4&style=flat-square"></a></h1>
+<h1 align="center">CoCart - Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v3.0.1&label=&color=9a6fc4&style=flat-square"></a></h1>
 
 <p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
 
@@ -34,6 +34,7 @@ If you are still using API v1 then all features listed below will still be avail
 
 Each item added to the cart will also return the following:
 
+ * **NEW**: Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
  * Returns virtual and downloadable status. - **Enhances API v2**
  * Returns the product slug.
  * Returns the product type.
