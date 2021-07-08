@@ -3,7 +3,7 @@
  * Filters CoCart to enhance the get-cart response for "v1" of the REST API.
  *
  * @since   1.0.0
- * @version 2.0.3
+ * @version 3.0.2
  */
 if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
@@ -357,7 +357,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * @access  public
 		 * @static
 		 * @since   1.3.0
-		 * @version 2.0.0
+		 * @version 3.0.2
 		 * @return  string
 		 */
 		public static function get_cart_key() {
@@ -378,7 +378,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
 			// Check if we requested to load a specific cart.
 			if ( isset( $_REQUEST['cart_key'] ) || isset( $_REQUEST['id'] ) ) {
-				$cart_key = isset( $_REQUEST['cart_key'] ) ? $_REQUEST['cart_key'] : $_REQUEST['id'];
+				$cart_key = isset( $_REQUEST['cart_key'] ) ? esc_html( $_REQUEST['cart_key'] ) : esc_html( $_REQUEST['id'] );
 			}
 
 			return $cart_key;

@@ -1,7 +1,7 @@
 {
 	"title": "CoCart - Cart Enhanced",
 	"name": "cocart-get-cart-enhanced",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"private": false,
 	"contributors": [
 		"sebd86",
@@ -23,7 +23,7 @@
 	"requires_php": "7.3",
 	"tested_up_to": "5.7",
 	"wc_requires": "4.3",
-	"wc_tested_up_to": "5.3",
+	"wc_tested_up_to": "5.4",
 	"license": "GPL-3.0",
 	"copyright": "Copyright (c) 2021, Sébastien Dumont",
 	"description": "Enhances the cart response to return additional details.",

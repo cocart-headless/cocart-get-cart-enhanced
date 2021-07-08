@@ -1,5 +1,9 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.0.2 - 08th July, 2021
+
+* Fix: Escape any HTML passed when returning the cart key.
+
 ## v3.0.1 - 17th May, 2021
 
 * **NEW**: Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
