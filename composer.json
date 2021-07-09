@@ -21,7 +21,7 @@
 	],
 	"license": "GPL-3.0-or-later",
 	"prefer-stable": true,
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"authors": [
 		{
 			"name": "Sébastien Dumont",
@@ -35,14 +35,14 @@
 	},
 	"require": {
 		"composer/installers": "1.11.0",
-		"woocommerce/woocommerce-sniffs": "0.1.0"
+		"co-cart/cocart-sniffs": "0.0.1"
 	},
 	"scripts": {
 		"phpcs": [
-			"phpcs . -s -p -n"
+			"phpcs -s -p"
 		],
 		"phpcs-pre-commit": [
-			"phpcs . -s -p -n"
+			"phpcs -s -p -n"
 		],
 		"phpcbf": [
 			"phpcbf . -p"
