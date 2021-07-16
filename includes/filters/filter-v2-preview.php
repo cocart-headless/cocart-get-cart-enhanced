@@ -5,10 +5,14 @@
  * This is still a working progress and is by no means complete.
  * It is a preview of the new cart response in the coming v3 of CoCart for v2 of it's REST API.
  * Use only for experimenting.
- * 
+ *
+ * @author  Sébastien Dumont
+ * @package Filters
  * @since   2.0.0
- * @version 2.0.3
+ * @version 3.0.3
+ * @license GPL-2.0+
  */
+
 if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 	class CoCart_Cart_Enhanced_v2 {
@@ -36,9 +40,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * @since   1.0.0
 		 * @version 2.0.0
 		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key
-		 * @param   array  $cart_item
-		 * @param   object $_product
+		 * @param   int    $item_key - Unique identifier for item in cart.
+		 * @param   array  $cart_item - Item details.
+		 * @param   object $_product - Product data.
 		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
@@ -50,7 +54,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				'line_price'     => isset( $cart_item['line_total'] ) ? $cart_item['line_total'] : $_product->get_price() * wc_stock_amount( $cart_item['quantity'] ),
 				'quantity'       => $cart_item['quantity'],
 				'slug'           => CoCart_Cart_Enhanced_v1::get_product_slug( $_product ),
-				'meta' => array(
+				'meta'           => array(
 					'type'                  => $_product->get_type(),
 					'virtual'               => $_product->get_virtual(),
 					'downloadable'          => $_product->get_downloadable(),
@@ -59,14 +63,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 					'min_purchase_quantity' => $_product->get_min_purchase_quantity(),
 					'max_purchase_quantity' => $_product->get_max_purchase_quantity(),
 					'weight'                => ! empty( $_product->get_weight() ) ? array(
-						'weight'            => $_product->get_weight(),
-						'unit'              => get_option( 'woocommerce_weight_unit' )
+						'weight' => $_product->get_weight(),
+						'unit'   => get_option( 'woocommerce_weight_unit' ),
 					) : array(),
-					'variation_data'        => CoCart_Cart_Enhanced_v1::format_variation_data( $cart_item['variation'], $_product )
+					'variation_data'        => CoCart_Cart_Enhanced_v1::format_variation_data( $cart_item['variation'], $_product ),
 				),
 				'categories'     => get_the_terms( $_product->get_id(), 'product_cat' ),
 				'tags'           => get_the_terms( $_product->get_id(), 'product_tag' ),
-				'cart_item_data' => apply_filters( 'cocart_cart_item_data', array() )
+				'cart_item_data' => apply_filters( 'cocart_cart_item_data', array() ),
 			);
 
 			$dimensions = $_product->get_dimensions( false );
@@ -75,7 +79,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 					'length' => $dimensions['length'],
 					'width'  => $dimensions['width'],
 					'height' => $dimensions['height'],
-					'unit'   => get_option( 'woocommerce_dimension_unit' )
+					'unit'   => get_option( 'woocommerce_dimension_unit' ),
 				);
 			}
 
@@ -83,7 +87,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			$status = $_product->get_stock_status();
 			$color  = '#a46497';
 
-			switch( $status ) {
+			switch ( $status ) {
 				case 'instock':
 					$status = __( 'In Stock', 'cocart-get-cart-enhanced' );
 					$color  = '#7ad03a';
@@ -100,7 +104,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			$cart_contents[ $item_key ]['stock_status'] = array(
 				'status'         => $status,
 				'stock_quantity' => $_product->get_stock_quantity(),
-				'hex_color'      => $color
+				'hex_color'      => $color,
 			);
 
 			// Returns product gallery images.
@@ -109,7 +113,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			$cart_contents[ $item_key ]['gallery'] = array();
 
 			if ( ! empty( $gallery_ids ) ) {
-				foreach( $gallery_ids as $image_id ) {
+				foreach ( $gallery_ids as $image_id ) {
 					$cart_contents[ $item_key ]['gallery'][ $image_id ] = wp_get_attachment_image_src( $image_id, apply_filters( 'cocart_item_gallery_thumbnail_size', 'woocommerce_thumbnail' ) );
 				}
 			}
@@ -138,19 +142,19 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			// Format new cart contents.
 			$new_cart_contents = array(
-				'cart_hash'        => $cart->get_cart_hash(),
-				'cart_key'         => CoCart_Cart_Enhanced_v1::get_cart_key(),
-				'currency'         => $this->get_store_currency(),
-				'items'            => $cart_contents['items'],
-				'item_count'       => $cart->get_cart_contents_count(),
-				'items_weight'     => array(
+				'cart_hash'      => $cart->get_cart_hash(),
+				'cart_key'       => CoCart_Cart_Enhanced_v1::get_cart_key(),
+				'currency'       => $this->get_store_currency(),
+				'items'          => $cart_contents['items'],
+				'item_count'     => $cart->get_cart_contents_count(),
+				'items_weight'   => array(
 					'total'       => wc_get_weight( $cart->get_cart_contents_weight(), get_option( 'woocommerce_weight_unit' ) ),
-					'weight_unit' => get_option( 'woocommerce_weight_unit' )
+					'weight_unit' => get_option( 'woocommerce_weight_unit' ),
 				),
-				'needs_shipping'   => $cart->needs_shipping(),
-				'needs_payment'    => $cart->needs_payment(),
-				'shipping'         => $this->get_shipping_details(),
-				'coupons'          => array()
+				'needs_shipping' => $cart->needs_shipping(),
+				'needs_payment'  => $cart->needs_payment(),
+				'shipping'       => $this->get_shipping_details(),
+				'coupons'        => array(),
 			);
 
 			// If coupons are enabled then get applied coupons.
@@ -163,7 +167,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 						'coupon'      => wc_format_coupon_code( wp_unslash( $coupon ) ),
 						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
 						'saving'      => CoCart_Cart_Enhanced_v1::coupon_html( $coupon, false ),
-						'saving_html' => CoCart_Cart_Enhanced_v1::coupon_html( $coupon )
+						'saving_html' => CoCart_Cart_Enhanced_v1::coupon_html( $coupon ),
 					);
 				}
 			}
@@ -177,7 +181,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				foreach ( $cart_fees as $key => $fee ) {
 					$new_cart_contents['cart_fees'][ $key ] = array(
 						'name' => esc_html( $fee->name ),
-						'fee'  => html_entity_decode( strip_tags( CoCart_Cart_Enhanced_v1::fee_html( $fee ) ) )
+						'fee'  => html_entity_decode( wp_strip_all_tags( CoCart_Cart_Enhanced_v1::fee_html( $fee ) ) ),
 					);
 				}
 			}
@@ -187,7 +191,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			// Returns extra cart data and can be filtered.
 			$new_cart_contents['extras'] = apply_filters( 'cocart_enhanced_extras', array(
-				'removed_items' => $cart->get_removed_cart_contents()
+				'removed_items' => $cart->get_removed_cart_contents(),
 			) );
 
 			return $new_cart_contents;
@@ -257,7 +261,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			$extras['cross_sells'] = array();
 
-			foreach( $cross_sells as $cross_sell ) {
+			foreach ( $cross_sells as $cross_sell ) {
 				$id = $cross_sell->get_id();
 
 				$thumbnail_id  = apply_filters( 'cocart_cross_sell_item_thumbnail', $cross_sell->get_image_id() );
@@ -278,7 +282,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 						esc_html__( 'Rated %s out of 5', 'cocart-get-cart-enhanced' ), esc_html( $cross_sell->get_average_rating() )
 					) : '',
 					'on_sale'        => $cross_sell->is_on_sale() ? true : false,
-					'type'           => $cross_sell->get_type()
+					'type'           => $cross_sell->get_type(),
 				);
 			}
 
@@ -303,7 +307,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				'total_packages'          => count( (array) $packages ),
 				'show_package_details'    => count( (array) $packages ) > 1,
 				'has_calculated_shipping' => WC()->customer->has_calculated_shipping(),
-				'packages'                => array()
+				'packages'                => array(),
 			);
 
 			$package_key = 1;
@@ -322,7 +326,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 				$rates = array();
 
-				$details['packages'][$package_key] = array(
+				$details['packages'][ $package_key ] = array(
 					/* translators: %d: shipping package number */
 					'package_name'          => apply_filters( 'cocart_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'cocart-get-cart-enhanced' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'cocart-get-cart-enhanced' ), $i, $package ),
 					'rates'                 => $package['rates'],
@@ -336,20 +340,20 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				if ( count( (array) $package['rates'] ) > 0 ) {
 					// Return each rate.
 					foreach ( $package['rates'] as $key => $method ) {
-						$rates[$key] = array(
+						$rates[ $key ] = array(
 							'key'           => $key,
 							'method_id'     => $method->get_method_id(),
 							'instance_id'   => $method->instance_id,
 							'label'         => $method->get_label(),
 							'cost'          => $method->cost,
-							'html'          => html_entity_decode( strip_tags( wc_cart_totals_shipping_method_label( $method ) ) ),
+							'html'          => html_entity_decode( wp_strip_all_tags( wc_cart_totals_shipping_method_label( $method ) ) ),
 							'taxes'         => $method->taxes,
-							'chosen_method' => ($chosen_method === $key)
+							'chosen_method' => ( $chosen_method === $key ),
 						);
 					}
 				}
 
-				$details['packages'][$package_key]['rates'] = $rates;
+				$details['packages'][ $package_key ]['rates'] = $rates;
 
 				$package_key++;
 			}

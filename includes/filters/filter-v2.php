@@ -2,10 +2,14 @@
 /**
  * Filters CoCart cart response to add additional data for "API v2".
  *
- * @since 3.0.0
+ * @author  Sébastien Dumont
+ * @package Filters
+ * @since   3.0.0
+ * @version 3.0.3
+ * @license GPL-2.0+
  */
 
- if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
+if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 	class CoCart_Cart_Enhanced_v2 {
 
@@ -27,25 +31,25 @@
 		 *
 		 * @access  public
 		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key
-		 * @param   array  $cart_item
-		 * @param   object $_product
+		 * @param   int    $item_key - Unique identifier for item in cart.
+		 * @param   array  $cart_item - Item details.
+		 * @param   object $_product - Product data.
 		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Additional meta.
-			$cart_contents[ $item_key ]['meta']['virtual'] = $_product->get_virtual();
+			$cart_contents[ $item_key ]['meta']['virtual']      = $_product->get_virtual();
 			$cart_contents[ $item_key ]['meta']['downloadable'] = $_product->get_downloadable();
 
 			// Categories and Tags.
 			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_id(), 'product_cat' );
-			$cart_contents[ $item_key ]['tags'] = get_the_terms( $_product->get_id(), 'product_tag' );
+			$cart_contents[ $item_key ]['tags']       = get_the_terms( $_product->get_id(), 'product_tag' );
 
 			// Product stock status.
 			$status = $_product->get_stock_status();
 			$color  = '#a46497';
 
-			switch( $status ) {
+			switch ( $status ) {
 				case 'instock':
 					$status = __( 'In Stock', 'cocart-get-cart-enhanced' );
 					$color  = '#7ad03a';
@@ -62,7 +66,7 @@
 			$cart_contents[ $item_key ]['stock_status'] = array(
 				'status'         => $status,
 				'stock_quantity' => $_product->get_stock_quantity(),
-				'hex_color'      => $color
+				'hex_color'      => $color,
 			);
 
 			// Product gallery images.
@@ -71,7 +75,7 @@
 			$cart_contents[ $item_key ]['gallery'] = array();
 
 			if ( ! empty( $gallery_ids ) ) {
-				foreach( $gallery_ids as $image_id ) {
+				foreach ( $gallery_ids as $image_id ) {
 					$gallery_id = apply_filters( 'cocart_item_gallery', $image_id, $cart_item, $item_key );
 
 					$gallery_src = wp_get_attachment_image_src( $gallery_id, apply_filters( 'cocart_item_gallery_thumbnail_size', 'woocommerce_thumbnail' ) );
@@ -98,9 +102,9 @@
 		 *
 		 * @access  public
 		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key
-		 * @param   array  $cart_item
-		 * @param   object $_product
+		 * @param   int    $item_key - Unique identifier for item in cart.
+		 * @param   array  $cart_item - Item details.
+		 * @param   object $_product - Product data.
 		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function is_item_discounted( $cart_contents, $item_key, $cart_item, $_product ) {
@@ -108,13 +112,13 @@
 			$quantity      = (int) $cart_contents[ $item_key ]['quantity']['value'];
 			$item_subtotal = $cart_contents[ $item_key ]['totals']['subtotal'];
 
-			$original_subtotal   = ($price*$quantity);
+			$original_subtotal   = ( $price * $quantity );
 			$is_subtotal_matched = true;
-			$discounted_price    = "";
+			$discounted_price    = '';
 
-			if ( $original_subtotal != $item_subtotal ) {
+			if ( $original_subtotal !== $item_subtotal ) {
 				$is_subtotal_matched = false;
-				$discounted_price    = ($item_subtotal/$quantity);
+				$discounted_price    = ( $item_subtotal / $quantity );
 			}
 
 			if ( $is_subtotal_matched ) {

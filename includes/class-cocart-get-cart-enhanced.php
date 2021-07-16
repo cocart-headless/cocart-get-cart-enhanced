@@ -2,9 +2,10 @@
 /**
  * CoCart - Cart Enhanced core setup.
  *
- * @author   Sébastien Dumont
- * @category Package
- * @license  GPL-2.0+
+ * @author  Sébastien Dumont
+ * @package Cart Enhanced
+ * @version 3.0.3
+ * @license GPL-2.0+
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,8 +24,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 *
 	 * @access public
 	 * @static
+	 * @var string
 	 */
-	public static $version = '3.0.2';
+	public static $version = '3.0.3';
 
 	/**
 	 * Initiate CoCart Get Cart Enhanced.
@@ -151,7 +153,7 @@ final class CoCart_Get_Cart_Enhanced {
 		$addons_installed = get_site_option( 'cocart_addons_installed', array() );
 
 		$plugin = plugin_basename( COCART_GET_CART_ENHANCED );
-		
+
 		// Remove plugin from list of installed add-ons.
 		if ( in_array( $plugin, $addons_installed, true ) ) {
 			$addons_installed = array_diff( $addons_installed, array( $plugin ) );

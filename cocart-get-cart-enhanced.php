@@ -1,23 +1,24 @@
 <?php
-/*
+/**
  * Plugin Name: CoCart - Cart Enhanced
  * Plugin URI:  https://cocart.xyz
  * Description: Enhances the cart response to return additional details.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     3.0.2
+ * Version:     3.0.3
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
- *
  * Requires at least: 5.4
  * Requires PHP: 7.3
  * WC requires at least: 4.3
- * WC tested up to: 5.4
+ * WC tested up to: 5.5
  *
  * Copyright: © 2021 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package CoCart Cart Enhanced
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -37,7 +38,10 @@ if ( ! class_exists( 'CoCart_Get_Cart_Enhanced', false ) ) {
  * @return CoCart - Cart Enhanced
  */
 if ( ! function_exists( 'CoCart_Get_Cart_Enhanced' ) ) {
-	function CoCart_Get_Cart_Enhanced() {
+	/**
+	 * Initialize CoCart Cart Enhanced.
+	 */
+	function CoCart_Get_Cart_Enhanced() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
 		return CoCart_Get_Cart_Enhanced::init();
 	}
 

@@ -1,5 +1,13 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.0.3 - 16th July, 2021
+
+> This release keeps up with WordPress code standards.
+
+* Fixed: Yoda conditions.
+* Dev: Documented parameter comments for functions that were missing.
+* Dev: Change the use of `strip_tags()` function to `wp_strip_all_tags()` function instead.
+
 ## v3.0.2 - 08th July, 2021
 
 * Fix: Escape any HTML passed when returning the cart key.
