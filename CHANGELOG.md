@@ -1,5 +1,10 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.0.4 - 23rd July, 2021
+
+* Dev: Package file added for better composer packaging support.
+* Dev: Minimum requirement for WordPress is now v5.5
+
 ## v3.0.3 - 16th July, 2021
 
 > This release keeps up with WordPress code standards.

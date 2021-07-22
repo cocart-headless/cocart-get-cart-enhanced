@@ -121,7 +121,10 @@ module.exports = function(grunt) {
 		// Bump version numbers (replace with version in package.json)
 		replace: {
 			container: {
-				src: [ '<%= pkg.name %>.php' ],
+				src: [
+					'<%= pkg.name %>.php',
+					'includes/class-<%= pkg.name %>.php',
+				],
 				overwrite: true,
 				replacements: [
 					{
@@ -147,16 +150,22 @@ module.exports = function(grunt) {
 					{
 						from: /Version:.*$/m,
 						to: "Version:     <%= pkg.version %>"
-					}
-				]
-			},
-			package: {
-				src: [ 'includes/class-<%= pkg.name %>.php' ],
-				overwrite: true,
-				replacements: [
+					},
 					{
 						from: /public static \$version = \'.*.'/m,
 						to: "public static $version = '<%= pkg.version %>'"
+					},
+				]
+			},
+			package: {
+				src: [
+					'load-package.php',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /@version .*$/m,
+						to: "@version <%= pkg.version %>"
 					},
 				]
 			},
