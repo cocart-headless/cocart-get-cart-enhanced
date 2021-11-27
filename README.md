@@ -1,8 +1,23 @@
-<h1 align="center">CoCart - Cart Enhanced <a href="https://github.com/co-cart/cocart-get-cart-enhanced/releases/latest/"><img src="https://img.shields.io/static/v1?goVersion=&message=v3.0.4&label=&color=9a6fc4&style=flat-square"></a></h1>
+<h1 align="center">CoCart - Cart Enhanced</h1>
 
-<p align="center"><img src="https://raw.githubusercontent.com/co-cart/co-cart/master/.github/Logo-1024x534.png.webp" alt="CoCart" /></p>
+<p align="center"><img src="https://cocart.xyz/wp-content/uploads/2021/11/cocart-home-default.png.webp" alt="CoCart Logo" /></p>
 
-<p align="center">This free add-on enhances the data returned for the cart and the items added to it.</p>
+<p align="center">
+	<a href="https://wordpress.org/" target="_blank">
+		<img src="https://img.shields.io/static/v1?label=&message=5.5+-+5.8&color=blue&style=flat-square&logo=wordpress&logoColor=white" alt="WordPress Versions">
+	</a>
+	<a href="https://woocommerce.com/" target="_blank">
+		<img src="https://img.shields.io/static/v1?label=&message=4.3+-+5.9&color=96588A&style=flat-square&logo=woocommerce&logoColor=white" alt="WooCommerce Versions">
+	</a>
+	<a href="https://www.php.net/" target="_blank">
+		<img src="https://img.shields.io/static/v1?label=&message=7.0+-+8.0&color=777bb4&style=flat-square&logo=php&logoColor=white" alt="PHP Versions">
+	</a>
+	<a href="https://wordpress.org/plugins/cocart-get-cart-enhanced/">
+		<img src="https://poser.pugx.org/co-cart/cocart-get-cart-enhanced/v/stable" alt="Latest Stable Version">
+	</a>
+</p>
+
+<p align="center">This free add-on enhances the cart response by returning additional data for both the cart and the items added to it.</p>
 
 ## Features
 
@@ -68,9 +83,7 @@ If you think you have found a bug in the plugin, please [open a new issue](https
 
 ## Support CoCart
 
-If you or your company use CoCart or appreciate the work I’m doing in open source, please consider donating via one of the links available on right hand side under "**Sponsor this project**" or [purchasing CoCart Pro](https://cocart.xyz/pro/?utm_medium=gh&utm_source=github&utm_campaign=readme&utm_content=cocart) where you not just get the full cart experience but also support me directly so I can continue maintaining CoCart and keep evolving the project.
-
-Please also consider starring ✨ and sharing 👍 the project repo! This helps the project getting known and grow with the community. 🙏
+Please consider starring ✨ and sharing 👍 the project repo! This helps the project getting known and grow with the community. 🙏
 
 Thank you for your support! 🙌
 
@@ -80,21 +93,24 @@ Thank you for your support! 🙌
 
 We have different channels at your disposal where you can find information about the CoCart project, discuss it and get involved:
 
-[![Twitter: cart_co](https://img.shields.io/twitter/follow/cart_co?style=social)](https://twitter.com/cart_co) [![CoCart Github Stars](https://img.shields.io/github/stars/co-cart/cocart-get-cart-enhanced?style=social)](https://github.com/co-cart/cocart-get-cart-enhanced)
+[![Twitter: cocartapi](https://img.shields.io/twitter/follow/cocartapi?style=social)](https://twitter.com/cocartapi) [![CoCart Github Stars](https://img.shields.io/github/stars/co-cart/cocart-get-cart-enhanced?style=social)](https://github.com/co-cart/cocart-get-cart-enhanced)
 
 <ul>
-  <li>📖 <strong>Docs</strong>: this is the place to learn how to build amazing sites with CoCart. <a href="https://docs.cocart.xyz/#getting-started">Get started!</a></li>
-  <li>👪 <strong>Community</strong>: use our Slack chat room to share any doubts, feedback and meet great people. This is your place too to share <a href="https://cocart.xyz/community/">how are you planning to use CoCart!</a></li>
+  <li>📖 <strong>Docs</strong>: this is the place to learn how to use CoCart API. <a href="https://docs.cocart.xyz/#getting-started">Get started!</a></li>
+  <li>🧰 <strong>Resources</strong>: this is the hub of all CoCart resources to help you build a headless store. <a href="https://cocart.dev/?utm_medium=gh&utm_source=github&utm_campaign=readme&utm_content=cocart">Get resources!</a></li>
+  <li>👪 <strong>Community</strong>: use our Slack chat room to share any doubts, feedback and meet great people. This is your place too to share <a href="https://cocart.xyz/community/?utm_medium=gh&utm_source=github&utm_campaign=readme&utm_content=cocart">how are you planning to use CoCart!</a></li>
   <li>🐞 <strong>GitHub</strong>: we use GitHub for bugs and pull requests, doubts are solved with the community.</li>
-  <li>🐦 <strong>Social media</strong>: a more informal place to interact with CoCart users, reach out to us on <a href="https://twitter.com/cart_co">Twitter.</a></li>
-  <li>💌 <strong>Newsletter</strong>: do you want to receive the latest plugin updates and news? Subscribe <a href="https://twitter.com/cart_co">here.</a></li>
+  <li>🐦 <strong>Social media</strong>: a more informal place to interact with CoCart users, reach out to us on <a href="https://twitter.com/cocartapi">Twitter.</a></li>
+  <li>💌 <strong>Newsletter</strong>: do you want to receive the latest plugin updates and news? Subscribe <a href="https://twitter.com/cocartapi">here.</a></li>
 </ul>
+
+---
 
 ## Get involved
 
 Do you like the idea of creating a headless ecommerce with WooCommerce? Got questions or feedback? We'd love to hear from you. Come join our [community](https://cocart.xyz/community/)! ❤️
 
-CoCart also welcomes contributions. There are many ways to support the project (and get free swag)! If you don't know where to start, this guide might help >> [How to contribute?](https://github.com/co-cart/co-cart/blob/master/.github/CONTRIBUTING.md).
+CoCart Lite also welcomes contributions. There are many ways to support the project! If you don't know where to start, this guide might help >> [How to contribute?](https://github.com/co-cart/co-cart/blob/master/.github/CONTRIBUTING.md).
 
 ---
 
