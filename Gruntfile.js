@@ -286,6 +286,12 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask( 'update-pot', [ 'checktextdomain', 'makepot' ]);
 
+	/**
+	 * Creates a deployable plugin zipped up ready to upload
+	 * and install on a WordPress installation.
+	 */
+	 grunt.registerTask( 'zip', [ 'copy:build', 'compress:zip', 'clean:build' ] );
+
 	// Build Plugin.
 	grunt.registerTask( 'build', [ 'version', 'update-pot', 'zip' ] );
 
