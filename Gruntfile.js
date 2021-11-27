@@ -1,3 +1,9 @@
+/**
+ * Build automation scripts.
+ * 
+ * @package CoCart
+ */
+
 module.exports = function(grunt) {
 	'use strict';
 
@@ -41,7 +47,7 @@ module.exports = function(grunt) {
 						'poedit': true,                                       // Includes common Poedit headers.
 						'x-poedit-keywordslist': true,                        // Include a list of all possible gettext functions.
 						'Report-Msgid-Bugs-To': 'https://github.com/co-cart/cocart-get-cart-enhanced/issues',
-						'language-team': 'Sébastien Dumont <mailme@sebastiendumont.com>',
+						'language-team': 'Sébastien Dumont <translate@cocart.xyz>',
 						'language': 'en_US'
 					},
 					processPot: function( pot ) {
@@ -157,18 +163,6 @@ module.exports = function(grunt) {
 					},
 				]
 			},
-			package: {
-				src: [
-					'load-package.php',
-				],
-				overwrite: true,
-				replacements: [
-					{
-						from: /@version .*$/m,
-						to: "@version <%= pkg.version %>"
-					},
-				]
-			},
 			readme: {
 				src: [ 'readme.txt' ],
 				overwrite: true,
@@ -202,6 +196,18 @@ module.exports = function(grunt) {
 					{
 						from: /Stable tag:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
 						to: 'Stable tag:$1$2<%= pkg.version %>$3'
+					},
+				]
+			},
+			package: {
+				src: [
+					'load-package.php',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /@version .*$/m,
+						to: "@version <%= pkg.version %>"
 					},
 				]
 			}
@@ -280,9 +286,10 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask( 'update-pot', [ 'checktextdomain', 'makepot' ]);
 
-	/**
-	 * Creates a deployable plugin zipped up ready to upload
-	 * and install on a WordPress installation.
-	 */
-	grunt.registerTask( 'zip', [ 'copy:build', 'compress', 'clean:build' ]);
+	// Build Plugin.
+	grunt.registerTask( 'build', [ 'version', 'update-pot', 'zip' ] );
+
+	// Ready for release.
+	grunt.registerTask( 'ready', [ 'version', 'stable', 'update-pot', 'zip' ] );
+
 };
