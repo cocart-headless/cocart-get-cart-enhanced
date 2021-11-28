@@ -29,12 +29,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		/**
 		 * Returns additional product details for each item in the cart.
 		 *
-		 * @access  public
-		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key - Unique identifier for item in cart.
-		 * @param   array  $cart_item - Item details.
-		 * @param   object $_product - Product data.
-		 * @return  array  $cart_contents - Cart contents after modifications.
+		 * @access public
+		 * @param  array  $cart_contents - Cart contents before modifications.
+		 * @param  int    $item_key      - Unique identifier for item in cart.
+		 * @param  array  $cart_item     - Item details.
+		 * @param  object $_product      - Product data.
+		 * @return array  $cart_contents - Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Additional meta.
@@ -83,7 +83,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 					/**
 					 * Filters the source of the product gallery image.
 					 *
-					 * @param   string $gallery_src URL of the product gallery image.
+					 * @param string $gallery_src URL of the product gallery image.
 					 */
 					$gallery_src = apply_filters( 'cocart_item_thumbnail_src', $gallery_src[0], $cart_item, $item_key, $removed_item );
 
