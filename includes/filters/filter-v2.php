@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   3.0.0
- * @version 3.0.3
+ * @version 3.1.0
  * @license GPL-2.0+
  */
 
@@ -101,6 +101,8 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * Returns the discount status of items and the discounted price if any.
 		 *
 		 * @access  public
+		 * @since   3.0.1
+		 * @version 3.1.0
 		 * @param   array  $cart_contents - Cart contents before modifications.
 		 * @param   int    $item_key - Unique identifier for item in cart.
 		 * @param   array  $cart_item - Item details.
@@ -108,25 +110,23 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * @return  array  $cart_contents - Cart contents after modifications.
 		 */
 		public function is_item_discounted( $cart_contents, $item_key, $cart_item, $_product ) {
-			$price         = (int) $cart_contents[ $item_key ]['price'];
-			$quantity      = (int) $cart_contents[ $item_key ]['quantity']['value'];
-			$item_subtotal = $cart_contents[ $item_key ]['totals']['subtotal'];
+			$regular_price    = $_product->get_regular_price();
+			$sale_price       = $_product->get_sale_price();
+			$quantity         = (int) $cart_contents[ $item_key ]['quantity']['value'];
+			$discounted_price = 0;
 
-			$original_subtotal   = ( $price * $quantity );
-			$is_subtotal_matched = true;
-			$discounted_price    = '';
-
-			if ( $original_subtotal !== $item_subtotal ) {
-				$is_subtotal_matched = false;
-				$discounted_price    = ( $item_subtotal / $quantity );
+			if ( $_product->is_on_sale() ) {
+				$discounted_price += ( $regular_price - $sale_price ) * $quantity;
 			}
 
-			if ( $is_subtotal_matched ) {
-				$cart_contents[ $item_key ]['is_discounted'] = false;
-			} else {
+			if ( $discounted_price > 0 ) {
 				$cart_contents[ $item_key ]['is_discounted'] = true;
+			} else {
+				$cart_contents[ $item_key ]['is_discounted'] = false;
 			}
 
+			$cart_contents[ $item_key ]['price_regular']    = wc_format_decimal( $regular_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_sale']       = wc_format_decimal( $sale_price, wc_get_price_decimals() );
 			$cart_contents[ $item_key ]['price_discounted'] = wc_format_decimal( $discounted_price, wc_get_price_decimals() );
 
 			return $cart_contents;
