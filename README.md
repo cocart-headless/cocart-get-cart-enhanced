@@ -49,7 +49,8 @@ If you are still using API v1 then all features listed below will still be avail
 
 Each item added to the cart will also return the following:
 
- * **NEW**: Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
+ * **NEW** Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
+ * Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
  * Returns virtual and downloadable status. - **Enhances API v2**
  * Returns the product slug.
  * Returns the product type.
