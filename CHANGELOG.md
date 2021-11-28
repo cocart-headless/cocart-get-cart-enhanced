@@ -1,5 +1,24 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.1.0 - 28th November, 2021
+
+### What's New?
+
+* Each item now returns the regular and sale price just before price discounted.
+
+### Bug Fixes
+
+* Corrected discounted price value per item.
+
+### Tweaks
+
+* Updated POT file to change language team email address.
+
+### Compatibility
+
+* Tested with WooCommerce v5.9 ✔️
+* Tested with WordPress v5.9 ✔️
+
 ## v3.0.4 - 23rd July, 2021
 
 * Dev: Package file added for better composer packaging support.
