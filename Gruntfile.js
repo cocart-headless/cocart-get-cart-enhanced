@@ -230,6 +230,7 @@ module.exports = function(grunt) {
 							'!<%= pkg.name %>-svn/**',
 							'!node_modules/**',
 							'!releases/**',
+							'!vendor/**',
 							'readme.txt'
 						],
 						dest: 'build/',
