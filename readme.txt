@@ -3,7 +3,6 @@ Author URI: https://sebastiendumont.com
 Plugin URI: https://cocart.xyz
 Contributors: cocartforwc, sebd86, jppdesigns
 Tags: woocommerce, cart, rest-api, decoupled, headless
-Donate link: https://www.buymeacoffee.com/sebastien
 Requires at least: 5.6
 Requires PHP: 7.3
 Tested up to: 5.9
@@ -92,13 +91,13 @@ This plugin is created by [Sébastien Dumont](https://sebastiendumont.com).
 
 You will need CoCart v2.1 or above.
 
-* WordPress v5.5
+* WordPress v5.6
 * WooCommerce v4.3
 * PHP v7.3
 
 = Recommended Requirements =
 
-* WordPress v5.6 or higher.
+* WordPress v5.8 or higher.
 * WooCommerce v5.2 or higher.
 * PHP v7.4
 
