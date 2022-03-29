@@ -1,6 +1,6 @@
 ---
 name: "🐛 Bug report"
-about: "Create a report to help me improve CoCart: Get Cart Enhanced"
+about: "Create a report to help me improve CoCart: Cart Enhanced"
 title: "ISBAT ..."
 labels: "priority:low"
 assignees: ''
@@ -15,7 +15,7 @@ assignees: ''
 <!-- Mark completed items with an [x] -->
 
 - [ ] I have searched for similar issues in both open and closed tickets and cannot find a duplicate.
-- [ ] The issue still exists against the latest `master` branch of CoCart: Get Cart Enhanced on GitHub (this is **not** the same version as on WordPress.org!)
+- [ ] The issue still exists against the latest `master` branch of CoCart: Cart Enhanced on GitHub (this is **not** the same version as on WordPress.org!)
 - [ ] I have attempted to find the simplest possible steps to reproduce the issue.
 - [ ] I have included a failing test as a pull request (Optional)
 - [ ] I have installed the requirements to run this plugin.

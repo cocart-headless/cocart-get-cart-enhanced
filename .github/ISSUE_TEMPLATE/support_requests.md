@@ -1,6 +1,6 @@
 ---
 name: "❓ Support Request"
-about: "I have a question about how to use CoCart: Get Cart Enhanced"
+about: "I have a question about how to use CoCart: Cart Enhanced"
 title: ""
 labels: "state:unsupported"
 assignees: ""
