@@ -1,5 +1,17 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.2.0 - 29th March, 2022
+
+### What's New?
+
+* Tweaked: Prices returned are consistent with other monetary values.
+
+### Compatibility
+
+* Tested with CoCart v3.1 and up ✔️
+* Tested with WooCommerce v6.3
+* Tested with WordPress v5.9 ✔️
+
 ## v3.1.0 - 28th November, 2021
 
 ### What's New?

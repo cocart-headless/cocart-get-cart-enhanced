@@ -4,12 +4,12 @@ Plugin URI: https://cocart.xyz
 Contributors: cocartforwc, sebd86, jppdesigns
 Tags: woocommerce, cart, rest-api, decoupled, headless
 Donate link: https://www.buymeacoffee.com/sebastien
-Requires at least: 5.5
+Requires at least: 5.6
 Requires PHP: 7.3
-Tested up to: 5.8
+Tested up to: 5.9
 Stable tag: 3.1.0
 WC requires at least: 4.3
-WC tested up to: 5.9
+WC tested up to: 6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,42 +21,15 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 = Features =
 
-#### 11th May 2021
+Each item added to the cart will return the following:
 
-The majority of these features will already be available in CoCart API v2. Only a few of these features will be used to enhance the cart response.
-
-If you are still using API v1 then all features listed below will still be available.
-
-----
-
- * Checks for items in cart for validity and stock before returning the updated cart.
- * Checks for coupons applied to the cart for validity before returning the updated cart.
- * Cart returns currency.
- * Cart returns total weight.
- * Cart now returns items removed under extras.
- * Cart returns cross sell items based on items in the cart.
- * Cart returns enhanced for empty carts.
- * Cart returns the cart key.
- * Cart returns the cart hash key.
- * Places the cart contents under a new array called `items`.
- * Cart returns the item count of all items in the cart.
- * Cart returns shipping methods available if any and which one is chosen.
- * Cart returns the shipping status of the cart.
- * Cart returns the payment status of the cart.
- * Cart returns coupons applied to the cart if enabled.
- * Cart returns additional fees applied to the cart.
- * Cart returns the cart totals.
-
-Each item added to the cart will also return the following:
-
- * **NEW** Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
+ * Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
  * Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
  * Returns virtual and downloadable status. - **Enhances API v2**
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
- * Returns minimum and maximum quantity of item can be purchased.
  * Returns product price raw.
  * Returns the product categories assigned. - **Enhances API v2**
  * Returns the product tags assigned. - **Enhances API v2**
@@ -80,11 +53,10 @@ Want more? [Upgrade to CoCart Pro](https://cocart.xyz/pro/?utm_medium=wp.org&utm
 
 #### Other Add-ons to further enhance your cart.
 
-We also have other **[add-ons](https://cocart.xyz/add-ons/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** that extend CoCart to enhance your development and your customers shopping experience.
+We also have other add-ons that extend CoCart to enhance your development and your customers shopping experience.
 
 * **[CoCart - CORS](https://wordpress.org/plugins/cocart-cors/)** simply filters the session cookie to allow CoCart to work across multiple domains. - **FREE**
-* **[Advanced Custom Fields](https://cocart.xyz/add-ons/advanced-custom-fields/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** extends CoCart Products add-on by returning all your advanced custom fields for products. - **REQUIRES COCART PRODUCTS**
-* **[Yoast SEO](https://cocart.xyz/add-ons/yoast-seo/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** extends CoCart Products add-on by returning Yoast SEO data for products, product categories and product tags. - **REQUIRES COCART PRODUCTS**
+* **[Advanced Custom Fields](https://cocart.xyz/add-ons/advanced-custom-fields/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)** extends the products API by returning all your advanced custom fields for products.
 * and more add-ons in development.
 
 They work with the FREE version of CoCart already, and these add-ons of course come with support too.

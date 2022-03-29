@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   3.0.0
- * @version 3.1.0
+ * @version 3.2.0
  * @license GPL-2.0+
  */
 
@@ -102,7 +102,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 *
 		 * @access  public
 		 * @since   3.0.1
-		 * @version 3.1.0
+		 * @version 3.2.0
 		 * @param   array  $cart_contents - Cart contents before modifications.
 		 * @param   int    $item_key - Unique identifier for item in cart.
 		 * @param   array  $cart_item - Item details.
@@ -125,9 +125,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				$cart_contents[ $item_key ]['is_discounted'] = false;
 			}
 
-			$cart_contents[ $item_key ]['price_regular']    = wc_format_decimal( $regular_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_sale']       = wc_format_decimal( $sale_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_discounted'] = wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price, wc_get_price_decimals() ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price, wc_get_price_decimals() ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price, wc_get_price_decimals() ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
 
 			return $cart_contents;
 		} // END is_item_discounted()

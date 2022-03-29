@@ -4,13 +4,13 @@
 
 <p align="center">
 	<a href="https://wordpress.org/" target="_blank">
-		<img src="https://img.shields.io/static/v1?label=&message=5.5+-+5.8&color=blue&style=flat-square&logo=wordpress&logoColor=white" alt="WordPress Versions">
+		<img src="https://img.shields.io/static/v1?label=&message=5.6+-+5.9&color=blue&style=flat-square&logo=wordpress&logoColor=white" alt="WordPress Versions">
 	</a>
 	<a href="https://woocommerce.com/" target="_blank">
-		<img src="https://img.shields.io/static/v1?label=&message=4.3+-+5.9&color=96588A&style=flat-square&logo=woocommerce&logoColor=white" alt="WooCommerce Versions">
+		<img src="https://img.shields.io/static/v1?label=&message=4.3+-+6.3&color=96588A&style=flat-square&logo=woocommerce&logoColor=white" alt="WooCommerce Versions">
 	</a>
 	<a href="https://www.php.net/" target="_blank">
-		<img src="https://img.shields.io/static/v1?label=&message=7.0+-+8.0&color=777bb4&style=flat-square&logo=php&logoColor=white" alt="PHP Versions">
+		<img src="https://img.shields.io/static/v1?label=&message=7.3+-+8.0&color=777bb4&style=flat-square&logo=php&logoColor=white" alt="PHP Versions">
 	</a>
 	<a href="https://wordpress.org/plugins/cocart-get-cart-enhanced/">
 		<img src="https://poser.pugx.org/co-cart/cocart-get-cart-enhanced/v/stable" alt="Latest Stable Version">
@@ -21,42 +21,15 @@
 
 ## Features
 
-**As of 11th May 2021**
+Each item added to the cart will return the following:
 
-The majority of these features will already be available in CoCart API v2. Only a few of these features will be used to enhance the cart response.
-
-If you are still using API v1 then all features listed below will still be available.
-
-----
-
- * Checks for items in cart for validity and stock before returning the updated cart.
- * Checks for coupons applied to the cart for validity before returning the updated cart.
- * Cart returns currency.
- * Cart returns total weight.
- * Cart now returns items removed under extras.
- * Cart returns cross sell items based on items in the cart.
- * Cart returns enhanced for empty carts.
- * Cart returns the cart key.
- * Cart returns the cart hash key.
- * Places the cart contents under a new array called `items`.
- * Cart returns the item count of all items in the cart.
- * Cart returns the shipping status of the cart.
- * Cart returns the payment status of the cart.
- * Cart returns coupons applied to the cart if enabled.
- * Cart returns shipping methods available if any and which one is chosen.
- * Cart returns additional fees applied to the cart.
- * Cart returns the cart totals.
-
-Each item added to the cart will also return the following:
-
- * **NEW** Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
+ * Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
  * Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
  * Returns virtual and downloadable status. - **Enhances API v2**
  * Returns the product slug.
  * Returns the product type.
  * Returns variation data formatted.
  * Returns the product dimensions.
- * Returns minimum and maximum quantity of item can be purchased.
  * Returns product price raw.
  * Returns the product categories assigned. - **Enhances API v2**
  * Returns the product tags assigned. - **Enhances API v2**
@@ -66,11 +39,9 @@ Each item added to the cart will also return the following:
  * Returns the product gallery if any. - **Enhances API v2**
  * Returns the product permalink. - **Enhances API v2**
 
-> To preview the new cart response for CoCart v3.0 API v2. Apply filter `cocart_preview_api_v2` set to `true` to enable.
-
 ## Requirement
 
-You will need to be using [CoCart **v2.1**](https://wordpress.org/plugins/cart-rest-api-for-woocommerce/) and up before installing this add-on.
+You will need to be using [CoCart v2.1](https://wordpress.org/plugins/cart-rest-api-for-woocommerce/) or up before installing this add-on.
 
 ## Download
 
