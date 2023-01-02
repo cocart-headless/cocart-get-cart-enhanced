@@ -5,13 +5,13 @@
  * Description: Enhances the cart response to return additional details.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     3.2.0
+ * Version:     4.0.0
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  * Requires at least: 5.6
- * Requires PHP: 7.3
- * WC requires at least: 4.3
- * WC tested up to: 6.3
+ * Requires PHP: 7.4
+ * WC requires at least: 6.4
+ * WC tested up to: 7.2
  *
  * Copyright: © 2022 Sébastien Dumont, (mailme@sebastiendumont.com)
  *

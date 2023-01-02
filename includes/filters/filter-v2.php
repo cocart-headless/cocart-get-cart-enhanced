@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   3.0.0
- * @version 3.2.0
+ * @version 4.0.0
  * @license GPL-2.0+
  */
 
@@ -30,16 +30,27 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 * Returns additional product details for each item in the cart.
 		 *
 		 * @access public
-		 * @param  array  $cart_contents - Cart contents before modifications.
-		 * @param  int    $item_key      - Unique identifier for item in cart.
-		 * @param  array  $cart_item     - Item details.
-		 * @param  object $_product      - Product data.
-		 * @return array  $cart_contents - Cart contents after modifications.
+		 *
+		 * @since   3.0.0 Introduced.
+		 * @version 4.0.0
+		 *
+		 * @param array  $cart_contents Cart contents before modifications.
+		 * @param int    $item_key      Unique identifier for item in cart.
+		 * @param array  $cart_item     Item details.
+		 * @param object $_product      Product data.
+		 *
+		 * @return array $cart_contents Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Additional meta.
-			$cart_contents[ $item_key ]['meta']['virtual']      = $_product->get_virtual();
-			$cart_contents[ $item_key ]['meta']['downloadable'] = $_product->get_downloadable();
+			if ( isset( $cart_contents[ $item_key ]['meta'] ) ) {
+				if ( ! empty( $cart_contents[ $item_key ]['meta']['variation'] ) ) {
+					$cart_contents[ $item_key ]['meta']['variation']['parent_id'] = $_product->get_parent_id();
+				}
+				$cart_contents[ $item_key ]['meta']['attributes']   = function_exists( 'cocart_format_attribute_data' ) ? cocart_format_attribute_data( $_product ) : array();
+				$cart_contents[ $item_key ]['meta']['virtual']      = $_product->get_virtual();
+				$cart_contents[ $item_key ]['meta']['downloadable'] = $_product->get_downloadable();
+			}
 
 			// Categories and Tags.
 			$cart_contents[ $item_key ]['categories'] = get_the_terms( $_product->get_id(), 'product_cat' );
@@ -100,14 +111,17 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		/**
 		 * Returns the discount status of items and the discounted price if any.
 		 *
-		 * @access  public
-		 * @since   3.0.1
-		 * @version 3.2.0
-		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key - Unique identifier for item in cart.
-		 * @param   array  $cart_item - Item details.
-		 * @param   object $_product - Product data.
-		 * @return  array  $cart_contents - Cart contents after modifications.
+		 * @access public
+		 *
+		 * @since   3.0.1 Introduced.
+		 * @version 4.0.0
+		 *
+		 * @param array  $cart_contents Cart contents before modifications.
+		 * @param int    $item_key      Unique identifier for item in cart.
+		 * @param array  $cart_item     Item details.
+		 * @param object $_product      Product data.
+		 *
+		 * @return array $cart_contents Cart contents after modifications.
 		 */
 		public function is_item_discounted( $cart_contents, $item_key, $cart_item, $_product ) {
 			$regular_price    = $_product->get_regular_price();
@@ -125,9 +139,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				$cart_contents[ $item_key ]['is_discounted'] = false;
 			}
 
-			$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price, wc_get_price_decimals() ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price, wc_get_price_decimals() ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price, wc_get_price_decimals() ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
+			$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
 
 			return $cart_contents;
 		} // END is_item_discounted()
