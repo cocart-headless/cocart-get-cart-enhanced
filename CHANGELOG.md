@@ -1,5 +1,17 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v3.3.0 - 1st April, 2023
+
+### What's New?
+
+* Return discount type for any coupons applied.
+
+### Compatibility
+
+* Tested with CoCart v3.8 ✔️
+* Tested with WooCommerce v7.5
+* Tested with WordPress v6.2 ✔️
+
 ## v3.2.0 - 29th March, 2022
 
 ### What's New?

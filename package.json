@@ -1,7 +1,7 @@
 {
 	"title": "CoCart - Cart Enhanced",
 	"name": "cocart-get-cart-enhanced",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"private": false,
 	"contributors": [
 		"sebd86",
@@ -21,11 +21,11 @@
 	},
 	"requires": "5.6",
 	"requires_php": "7.3",
-	"tested_up_to": "5.9",
+	"tested_up_to": "6.2",
 	"wc_requires": "4.3",
-	"wc_tested_up_to": "6.3",
+	"wc_tested_up_to": "7.5",
 	"license": "GPL-3.0",
-	"copyright": "Copyright (c) 2022, Sébastien Dumont",
+	"copyright": "Copyright (c) 2023, Sébastien Dumont",
 	"description": "Enhances the cart response to return additional details.",
 	"tags": "",
 	"keywords": [
