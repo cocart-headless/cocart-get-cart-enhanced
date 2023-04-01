@@ -229,11 +229,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			// If coupons are applied to the cart then expose each coupon applied.
 			if ( ! empty( $coupons ) ) {
 				foreach ( $coupons as $i => $coupon ) {
+					$data = new WC_Coupon( $coupon );
+
 					$new_cart_contents['coupons'][] = array(
-						'coupon'      => wc_format_coupon_code( wp_unslash( $coupon ) ),
-						'label'       => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
-						'saving'      => $this->coupon_html( $coupon, false ),
-						'saving_html' => $this->coupon_html( $coupon ),
+						'coupon'        => wc_format_coupon_code( wp_unslash( $coupon ) ),
+						'label'         => esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ),
+						'discount_type' => $data->get_discount_type(),
+						'saving'        => $this->coupon_html( $coupon, false ),
+						'saving_html'   => $this->coupon_html( $coupon ),
 					);
 				}
 			}
