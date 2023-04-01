@@ -68,7 +68,7 @@
 
 * Compatible: CoCart v3.0
 
-## v2.0.4 - 09th Febuary, 2021
+## v2.0.4 - 09th February, 2021
 
 * Fixed: Undefined `$code` by removing it as it returns nothing of important. One less error.
 * Tweaked: Moved `$available_methods` container up a few lines so each package returns fully.
