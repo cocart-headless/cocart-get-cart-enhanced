@@ -11,9 +11,9 @@
  * Requires at least: 5.6
  * Requires PHP: 7.4
  * WC requires at least: 6.4
- * WC tested up to: 7.2
+ * WC tested up to: 7.8
  *
- * Copyright: © 2022 Sébastien Dumont, (mailme@sebastiendumont.com)
+ * Copyright: © 2023 Sébastien Dumont, (mailme@sebastiendumont.com)
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
