@@ -38,7 +38,7 @@
 		"issues": "https://github.com/co-cart/cocart-get-cart-enhanced/issues"
 	},
 	"require": {
-		"composer/installers": "2.1.1",
+		"composer/installers": "2.2.0",
 		"co-cart/cocart-sniffs": "0.0.2"
 	},
 	"scripts": {
