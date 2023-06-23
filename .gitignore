@@ -13,7 +13,6 @@ Thumbs.db
 
 # Composer
 /vendor/
-composer.lock
 
 # Languages
 /languages/*
