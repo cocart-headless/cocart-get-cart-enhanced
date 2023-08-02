@@ -1,18 +1,19 @@
 # Changelog for CoCart Get Cart Enhanced
 
-## v4.0.0 - ?? ??, 2023
+## v4.0.0 - 2nd August, 2023
 
 ### What's New?
 
+* Added parent ID for a variation.
 * Added visible product attributes for other products that is not a variation product.
-* Added parent ID of variation.
 * Added more validation should required fields not be available in the request.
+* Removed WooCommerce plugin headers to prevent incompatibility warning message when using "HPOS" feature.
 
 ### Compatibility
 
-* Tested with CoCart v4.0 ✔️
-* Tested with WooCommerce v7.2
-* Tested with WordPress v6.1 ✔️
+* Ready for CoCart v4.0 ✔️
+* Tested with WooCommerce v7.9
+* Tested with WordPress v6.2 ✔️
 
 ## v3.2.0 - 29th March, 2022
 
