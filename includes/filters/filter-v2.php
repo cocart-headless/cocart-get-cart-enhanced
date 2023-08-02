@@ -104,7 +104,11 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			}
 
 			// Permalink of product if visible.
-			$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
+			if ( version_compare( COCART_VERSION, '4.0.0', '>=' ) ) {
+				$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
+			} else {
+				$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? function_exists( 'cocart_get_permalink' ) ? cocart_get_permalink( get_permalink( $_product->get_id() ) ) : $_product->get_permalink( $cart_item ) : '';
+			}
 
 			return $cart_contents;
 		} // END return_product_details()
@@ -139,9 +143,16 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				$cart_contents[ $item_key ]['is_discounted'] = false;
 			}
 
-			$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
-			$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+			// Identify version of CoCart installed to return the following values correctly.
+			if ( version_compare( COCART_VERSION, '4.0.0', '>=' ) ) {
+				$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+			} else {
+				$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price, wc_get_price_decimals() ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price, wc_get_price_decimals() ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price, wc_get_price_decimals() ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+			}
 
 			return $cart_contents;
 		} // END is_item_discounted()
