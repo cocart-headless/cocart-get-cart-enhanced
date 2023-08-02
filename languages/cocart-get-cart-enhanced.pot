@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: CoCart - Cart Enhanced 4.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/co-cart/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2023-01-02 16:21:03+00:00\n"
+"POT-Creation-Date: 2023-08-02 15:02:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,46 +25,46 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: includes/filters/filter-v1.php:109 includes/filters/filter-v2-preview.php:92
-#: includes/filters/filter-v2.php:65
+#: includes/filters/filter-v1.php:112 includes/filters/filter-v2-preview.php:92
+#: includes/filters/filter-v2.php:66
 msgid "In Stock"
 msgstr ""
 
-#: includes/filters/filter-v1.php:113 includes/filters/filter-v2-preview.php:96
-#: includes/filters/filter-v2.php:69
+#: includes/filters/filter-v1.php:116 includes/filters/filter-v2-preview.php:96
+#: includes/filters/filter-v2.php:70
 msgid "Out of Stock"
 msgstr ""
 
-#: includes/filters/filter-v1.php:117
-#: includes/filters/filter-v2-preview.php:100 includes/filters/filter-v2.php:73
+#: includes/filters/filter-v1.php:120
+#: includes/filters/filter-v2-preview.php:100 includes/filters/filter-v2.php:74
 msgid "Available on backorder"
 msgstr ""
 
-#: includes/filters/filter-v1.php:345
+#: includes/filters/filter-v1.php:357
 #: includes/filters/filter-v2-preview.php:282
 #. translators: %s: average rating
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: includes/filters/filter-v1.php:505
+#: includes/filters/filter-v1.php:535
 msgid "Free shipping coupon"
 msgstr ""
 
-#: includes/filters/filter-v1.php:638
+#: includes/filters/filter-v1.php:682
 msgid "An item which is no longer available was removed from your cart."
 msgstr ""
 
-#: includes/filters/filter-v1.php:645
+#: includes/filters/filter-v1.php:689
 #. translators: %s: product name
 msgid "There are too many &quot;%s&quot; in the cart. Only 1 can be purchased."
 msgstr ""
 
-#: includes/filters/filter-v1.php:676
+#: includes/filters/filter-v1.php:722
 #. translators: %s: product name
 msgid "Sorry, \"%s\" is not in stock and cannot be purchased."
 msgstr ""
 
-#: includes/filters/filter-v1.php:698
+#: includes/filters/filter-v1.php:744
 #. translators: 1: product name 2: quantity in stock
 msgid ""
 "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s "
