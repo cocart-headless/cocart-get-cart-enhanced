@@ -23,7 +23,7 @@
 	"requires_php": "7.4",
 	"tested_up_to": "6.2",
 	"wc_requires": "6.4",
-	"wc_tested_up_to": "7.8",
+	"wc_tested_up_to": "7.9",
 	"license": "GPL-3.0",
 	"copyright": "Copyright (c) 2023, Sébastien Dumont",
 	"description": "Enhances the cart response to return additional details.",
