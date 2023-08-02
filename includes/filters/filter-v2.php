@@ -31,8 +31,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 *
 		 * @access public
 		 *
-		 * @since   3.0.0 Introduced.
-		 * @version 4.0.0
+		 * @since 3.0.0 Introduced.
+		 * @since 4.0.0 Added parent ID for a variation.
+		 * @since 4.0.0 Added visible product attributes for all products that is not a variation product.
 		 *
 		 * @param array  $cart_contents Cart contents before modifications.
 		 * @param int    $item_key      Unique identifier for item in cart.
@@ -113,8 +114,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 		 *
 		 * @access public
 		 *
-		 * @since   3.0.1 Introduced.
-		 * @version 4.0.0
+		 * @since 3.0.1 Introduced.
 		 *
 		 * @param array  $cart_contents Cart contents before modifications.
 		 * @param int    $item_key      Unique identifier for item in cart.

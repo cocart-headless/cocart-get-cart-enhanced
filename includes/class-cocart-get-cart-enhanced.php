@@ -4,7 +4,7 @@
  *
  * @author  Sébastien Dumont
  * @package Cart Enhanced
- * @version 3.0.3
+ * @version 4.0.0
  * @license GPL-2.0+
  */
 
@@ -23,7 +23,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Plugin Version
 	 *
 	 * @access public
+	 *
 	 * @static
+	 *
 	 * @var string
 	 */
 	public static $version = '4.0.0';
@@ -32,14 +34,15 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Initiate CoCart Get Cart Enhanced.
 	 *
 	 * @access public
+	 *
 	 * @static
 	 */
 	public static function init() {
-		// Load translation files.
-		add_action( 'init', array( __CLASS__, 'load_plugin_textdomain' ), 0 );
-
 		// Load filters.
 		add_action( 'init', array( __CLASS__, 'include_filters' ) );
+
+		// Load translation files.
+		add_action( 'init', array( __CLASS__, 'load_plugin_textdomain' ), 0 );
 
 		// Plugin activation and deactivation.
 		register_activation_hook( COCART_GET_CART_ENHANCED, array( __CLASS__, 'activated' ) );
@@ -50,7 +53,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Return the name of the package.
 	 *
 	 * @access public
+	 *
 	 * @static
+	 *
 	 * @return string
 	 */
 	public static function get_name() {
@@ -61,7 +66,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Return the version of the package.
 	 *
 	 * @access public
+	 *
 	 * @static
+	 *
 	 * @return string
 	 */
 	public static function get_version() {
@@ -72,7 +79,9 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Return the path to the package.
 	 *
 	 * @access public
+	 *
 	 * @static
+	 *
 	 * @return string
 	 */
 	public static function get_path() {
@@ -80,35 +89,10 @@ final class CoCart_Get_Cart_Enhanced {
 	}
 
 	/**
-	 * Load the plugin translations if any ready.
-	 *
-	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
-	 *
-	 * Locales found in:
-	 *      - WP_LANG_DIR/cocart-get-cart-enhanced/cocart-get-cart-enhanced-LOCALE.mo
-	 *      - WP_LANG_DIR/plugins/cocart-get-cart-enhanced-LOCALE.mo
-	 *
-	 * @access public
-	 * @static
-	 */
-	public static function load_plugin_textdomain() {
-		if ( function_exists( 'determine_locale' ) ) {
-			$locale = determine_locale();
-		} else {
-			$locale = is_admin() ? get_user_locale() : get_locale();
-		}
-
-		$locale = apply_filters( 'plugin_locale', $locale, 'cocart-get-cart-enhanced' );
-
-		unload_textdomain( 'cocart-get-cart-enhanced' );
-		load_textdomain( 'cocart-get-cart-enhanced', WP_LANG_DIR . '/cocart-get-cart-enhanced/cocart-get-cart-enhanced-' . $locale . '.mo' );
-		load_plugin_textdomain( 'cocart-get-cart-enhanced', false, plugin_basename( dirname( COCART_GET_CART_ENHANCED ) ) . '/languages' );
-	} // END load_plugin_textdomain()
-
-	/**
 	 * Load filters to enhance the cart and items.
 	 *
 	 * @access public
+	 *
 	 * @static
 	 */
 	public static function include_filters() {
@@ -127,6 +111,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Adds plugin to list of installed CoCart add-ons.
 	 *
 	 * @access public
+	 *
 	 * @static
 	 */
 	public static function activated() {
@@ -147,6 +132,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 * Removes plugin from list of installed CoCart add-ons.
 	 *
 	 * @access public
+	 *
 	 * @static
 	 */
 	public static function deactivated() {
@@ -160,5 +146,32 @@ final class CoCart_Get_Cart_Enhanced {
 			update_site_option( 'cocart_addons_installed', $addons_installed );
 		}
 	} // END deactivated()
+
+	/**
+	 * Load the plugin translations if any ready.
+	 *
+	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
+	 *
+	 * Locales found in:
+	 *      - WP_LANG_DIR/cocart-get-cart-enhanced/cocart-get-cart-enhanced-LOCALE.mo
+	 *      - WP_LANG_DIR/plugins/cocart-get-cart-enhanced-LOCALE.mo
+	 *
+	 * @access public
+	 *
+	 * @static
+	 */
+	public static function load_plugin_textdomain() {
+		if ( function_exists( 'determine_locale' ) ) {
+			$locale = determine_locale();
+		} else {
+			$locale = is_admin() ? get_user_locale() : get_locale();
+		}
+
+		$locale = apply_filters( 'plugin_locale', $locale, 'cocart-get-cart-enhanced' );
+
+		unload_textdomain( 'cocart-get-cart-enhanced' );
+		load_textdomain( 'cocart-get-cart-enhanced', WP_LANG_DIR . '/cocart-get-cart-enhanced/cocart-get-cart-enhanced-' . $locale . '.mo' );
+		load_plugin_textdomain( 'cocart-get-cart-enhanced', false, plugin_basename( dirname( COCART_GET_CART_ENHANCED ) ) . '/languages' );
+	} // END load_plugin_textdomain()
 
 } // END class

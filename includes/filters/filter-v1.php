@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   1.0.0
- * @version 3.0.3
+ * @version 4.0.0
  * @license GPL-2.0+
  */
 
@@ -47,13 +47,16 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Returns additional product details for each item in the cart.
 		 *
 		 * @access  public
-		 * @since   1.0.0
+		 *
+		 * @since   1.0.0 Introduced.
 		 * @version 1.9.0
-		 * @param   array  $cart_contents - Cart contents before modifications.
-		 * @param   int    $item_key - Unique identifier for item in cart.
-		 * @param   array  $cart_item - Item details.
-		 * @param   object $_product - Product data.
-		 * @return  array  $cart_contents - Cart contents after modifications.
+		 *
+		 * @param array  $cart_contents Cart contents before modifications.
+		 * @param int    $item_key      Unique identifier for item in cart.
+		 * @param array  $cart_item     Item details.
+		 * @param object $_product      Product data.
+		 *
+		 * @return array $cart_contents Cart contents after modifications.
 		 */
 		public function return_product_details( $cart_contents, $item_key, $cart_item, $_product ) {
 			// Returns product slug.
@@ -155,8 +158,10 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Returns the cart contents without the cart item key as the parent array.
 		 *
 		 * @access public
-		 * @param  array $cart_contents - Cart contents before modification.
-		 * @return array $cart_contents - Cart contents after modification.
+		 *
+		 * @param array $cart_contents Cart contents before modification.
+		 *
+		 * @return array $cart_contents Cart contents after modification.
 		 */
 		public function remove_parent_cart_item_key( $cart_contents ) {
 			$new_cart_contents = array();
@@ -185,11 +190,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * 12. Returns the total weight of the cart.
 		 * 13. Returns cart extras.
 		 *
-		 * @access  public
-		 * @since   1.0.0
+		 * @access public
+		 *
+		 * @since   1.0.0 Introduced.
 		 * @version 2.0.4
-		 * @param   array $cart_contents     - Cart contents before modifications.
-		 * @return  array $new_cart_contents - Cart contents after modifications.
+		 *
+		 * @param array $cart_contents Cart contents before modifications.
+		 *
+		 * @return array $new_cart_contents Cart contents after modifications.
 		 */
 		public function enhance_cart_contents( $cart_contents = array() ) {
 			$new_cart_contents = array();
@@ -281,7 +289,8 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			/**
 			 * Filters totals.
 			 *
-			 * @since 1.6.6
+			 * @since 1.6.6 Introduced.
+			 *
 			 * @param array $new_totals All cart totals
 			 */
 			$new_totals = apply_filters( 'cocart_enhanced_totals', $new_totals );
@@ -305,11 +314,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Returns cross sells based on the items in the cart.
 		 *
-		 * @access  public
-		 * @since   1.6.0
+		 * @access public
+		 *
+		 * @since   1.6.0 Introduced.
 		 * @version 1.9.0
-		 * @param   array $extras - Cart extras before filtered.
-		 * @return  array $extras - Cart extras after filtered.
+		 *
+		 * @param array $extras Cart extras before filtered.
+		 *
+		 * @return array $extras Cart extras after filtered.
 		 */
 		public function return_cross_sells( $extras = array() ) {
 			// Get visible cross sells then sort them at random.
@@ -357,17 +369,16 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Returns the cart key.
 		 *
-		 * @access  public
+		 * @access public
+		 *
 		 * @static
-		 * @since   1.3.0
-		 * @version 3.0.2
-		 * @return  string
+		 *
+		 * @since 1.3.0 Introduced.
+		 * @since 4.0.0 Removed the need to check the session handler for CoCart.
+		 *
+		 * @return string
 		 */
 		public static function get_cart_key() {
-			if ( ! class_exists( 'CoCart_Session_Handler' ) || ! WC()->session instanceof CoCart_Session_Handler ) {
-				return;
-			}
-
 			// Current user ID.
 			$cart_key = strval( get_current_user_id() );
 
@@ -390,11 +401,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Return notices in cart if any.
 		 *
-		 * @access  public
-		 * @since   1.1.0
+		 * @access public
+		 *
+		 * @since   1.1.0 Introduced.
 		 * @version 1.6.4
-		 * @param   array $cart_contents - Cart contents before modifications.
-		 * @return  array $cart_contents - Cart contents after modifications.
+		 *
+		 * @param array $cart_contents Cart contents before modifications.
+		 *
+		 * @return array $cart_contents Cart contents after modifications.
 		 */
 		public function maybe_return_notices( $cart_contents = array() ) {
 			$notice_count = 0;
@@ -412,10 +426,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Returns messages and errors which are stored in the session, then clears them.
 		 *
-		 * @access  public
-		 * @since   1.1.0
+		 * @access public
+		 *
+		 * @since   1.1.0 Introduced.
 		 * @version 1.6.4
-		 * @return  array
+		 *
+		 * @return array
 		 */
 		protected function cocart_print_notices() {
 			$all_notices  = WC()->session->get( 'wc_notices', array() );
@@ -438,12 +454,16 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Format variation data, for example convert slugs such as attribute_pa_size to Size.
 		 *
-		 * @access  public
+		 * @access public
+		 *
 		 * @static
-		 * @since   1.4.0
+		 *
+		 * @since   1.4.0 Introduced.
 		 * @version 2.0.0
-		 * @param   array      $variation_data Array of data from the cart.
-		 * @param   WC_Product $product Product data.
+		 *
+		 * @param array      $variation_data Array of data from the cart.
+		 * @param WC_Product $product        Product data.
+		 *
 		 * @return  array
 		 */
 		public static function format_variation_data( $variation_data, $product ) {
@@ -479,10 +499,13 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Get coupon in HTML.
 		 *
 		 * @access public
-		 * @since  1.4.0
-		 * @param  string|WC_Coupon $coupon Coupon data or code.
-		 * @param  bool             $formatted Formats the saving amount.
-		 * @return string           The coupon in HTML.
+		 *
+		 * @since 1.4.0 Introduced.
+		 *
+		 * @param string|WC_Coupon $coupon Coupon data or code.
+		 * @param bool             $formatted Formats the saving amount.
+		 *
+		 * @return string The coupon in HTML.
 		 */
 		public function coupon_html( $coupon, $formatted = true ) {
 			if ( is_string( $coupon ) ) {
@@ -514,7 +537,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Get the fee value.
 		 *
 		 * @access public
-		 * @since 1.5.0
+		 *
+		 * @since 1.5.0 Introduced.
+		 *
 		 * @param object $fee Fee data.
 		 */
 		public function fee_html( $fee ) {
@@ -526,12 +551,16 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Get the main product slug even if the product type is a variation.
 		 *
-		 * @access  public
+		 * @access public
+		 *
 		 * @static
-		 * @since   1.9.0
+		 *
+		 * @since   1.9.0 Introduced.
 		 * @version 2.0.0
-		 * @param   WC_Product $object - Product data.
-		 * @return  string
+		 *
+		 * @param WC_Product $object Product data.
+		 *
+		 * @return string
 		 */
 		public static function get_product_slug( $object ) {
 			$product_type = $object->get_type();
@@ -550,11 +579,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		/**
 		 * Returns shipping methods available if any.
 		 *
-		 * @access  public
+		 * @access public
+		 *
 		 * @static
-		 * @since   1.10.0
+		 *
+		 * @since   1.10.0 Introduced.
 		 * @version 2.0.4
-		 * @return  array - Available shipping methods or an empty array.
+		 *
+		 * @return array Available shipping methods or an empty array.
 		 */
 		public static function get_available_shipping_methods() {
 			// Calculate shipping.
@@ -597,9 +629,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Check all cart items for validity and stock.
 		 *
 		 * @access public
-		 * @since  2.0.0
-		 * @param  array $cart_contents - Cart contents.
-		 * @return array $cart_contents - Cart contents.
+		 *
+		 * @since 2.0.0 Introduced.
+		 *
+		 * @param array $cart_contents Cart contents.
+		 *
+		 * @return array $cart_contents Cart contents.
 		 */
 		public function check_cart_items( $cart_contents = array() ) {
 			$result = $this->check_cart_item_validity();
@@ -622,7 +657,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Looks through cart items and checks the products are not trashed or deleted.
 		 *
 		 * @access public
-		 * @since  2.0.0
+		 *
+		 * @since 2.0.0 Introduced.
+		 *
 		 * @return bool|WP_Error
 		 */
 		public function check_cart_item_validity() {
@@ -657,7 +694,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Looks through the cart to check each item is in stock. If not, add an error.
 		 *
 		 * @access public
-		 * @since  2.0.0
+		 *
+		 * @since 2.0.0 Introduced.
+		 *
 		 * @return bool|WP_Error
 		 */
 		public function check_cart_item_stock() {
@@ -707,9 +746,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 * Check cart coupons for errors.
 		 *
 		 * @access public
-		 * @since  2.0.0
-		 * @param  array $cart_contents - Cart contents.
-		 * @return array $cart_contents - Cart contents.
+		 *
+		 * @since 2.0.0 Introduced.
+		 *
+		 * @param array $cart_contents Cart contents.
+		 *
+		 * @return array $cart_contents Cart contents.
 		 */
 		public function check_cart_coupons( $cart_contents = array() ) {
 			$cart = WC()->cart;
