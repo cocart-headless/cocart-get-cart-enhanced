@@ -13,6 +13,17 @@
 
 * Ready for CoCart v4.0 ✔️
 * Tested with WooCommerce v7.9
+
+## v3.3.0 - 1st April, 2023
+
+### What's New?
+
+* Return discount type for any coupons applied.
+
+### Compatibility
+
+* Tested with CoCart v3.8 ✔️
+* Tested with WooCommerce v7.5
 * Tested with WordPress v6.2 ✔️
 
 ## v3.2.0 - 29th March, 2022
@@ -71,7 +82,7 @@
 
 * Compatible: CoCart v3.0
 
-## v2.0.4 - 09th Febuary, 2021
+## v2.0.4 - 09th February, 2021
 
 * Fixed: Undefined `$code` by removing it as it returns nothing of important. One less error.
 * Tweaked: Moved `$available_methods` container up a few lines so each package returns fully.
