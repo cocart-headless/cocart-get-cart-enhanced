@@ -222,7 +222,7 @@ module.exports = function(grunt) {
 						src: [
 							'**',
 							'!.*',
-							'!**/*.{gif,jpg,jpeg,js,json,log,md,png,scss,sh,txt,xml,zip}',
+							'!**/*.{gif,jpg,jpeg,js,json,log,lock,md,png,scss,sh,txt,xml,zip}',
 							'!.*/**',
 							'!.DS_Store',
 							'!.htaccess',
@@ -230,6 +230,7 @@ module.exports = function(grunt) {
 							'!<%= pkg.name %>-svn/**',
 							'!node_modules/**',
 							'!releases/**',
+							'!svn/**',
 							'!vendor/**',
 							'readme.txt'
 						],
