@@ -5,7 +5,7 @@
  * Description: Enhances the cart response to return additional details.
  * Author:      Sébastien Dumont
  * Author URI:  https://sebastiendumont.com
- * Version:     4.0.0
+ * Version:     4.0.1
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  * Requires at least: 5.6

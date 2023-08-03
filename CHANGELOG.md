@@ -1,5 +1,11 @@
 # Changelog for CoCart Get Cart Enhanced
 
+## v4.0.1 - 3rd August, 2023
+
+### Bug Fix
+
+* Fixed Uncaught TypeError for `cocart_prepare_money_response()` with CoCart v4.
+
 ## v4.0.0 - 2nd August, 2023
 
 ### What's New?
