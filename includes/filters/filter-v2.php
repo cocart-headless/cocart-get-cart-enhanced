@@ -149,9 +149,9 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
 				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
 			} else {
-				$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price, wc_get_price_decimals() ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
-				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price, wc_get_price_decimals() ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
-				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price, wc_get_price_decimals() ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
+				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
 			}
 
 			return $cart_contents;
