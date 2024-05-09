@@ -1,7 +1,7 @@
 {
-	"name": "co-cart/cocart-get-cart-enhanced",
-	"description": "Enhances the get cart response to return the cart totals, coupons applied, additional product details and notices.",
-	"homepage": "https://cocart.xyz",
+	"name": "cocart-headless/cocart-get-cart-enhanced",
+	"description": "Enhances CoCart's cart REST API response.",
+	"homepage": "https://cocartapi.com",
 	"type": "wordpress-plugin",
 	"keywords": [
 		"wordpress",
@@ -35,13 +35,14 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/co-cart/cocart-get-cart-enhanced/issues"
+		"issues": "https://github.com/cocart-headless/cocart-get-cart-enhanced/issues"
 	},
 	"require": {
-		"composer/installers": "2.2.0"
+		"composer/installers": "^2.0"
 	},
 	"require-dev": {
-		"co-cart/cocart-sniffs": "0.0.2"
+		"cocart-headless/cocart-sniffs": "0.0.3",
+		"automattic/vipwpcs": "^3.0"
 	},
 	"scripts": {
 		"phpcs": [

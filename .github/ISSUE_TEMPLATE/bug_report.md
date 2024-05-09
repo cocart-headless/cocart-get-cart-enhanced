@@ -1,12 +1,12 @@
 ---
 name: "🐛 Bug report"
-about: "Create a report to help me improve CoCart: Cart Enhanced"
+about: "Create a report to help me improve CoCart: Cart API Enhanced"
 title: "ISBAT ..."
 labels: "priority:low"
 assignees: ''
 ---
 
-<!-- Hi there! This form is for reporting bugs and issues specific to the CoCart: Get Cart Enhanced plugin. This is not a support portal. -->
+<!-- Hi there! This form is for reporting bugs and issues specific to the CoCart: Cart API Enhanced plugin. This is not a support portal. -->
 
 <!-- Please be as descriptive as possible; issues lacking the below details, or for any other reason than to report a bug, may be closed without action. -->
 
@@ -15,7 +15,7 @@ assignees: ''
 <!-- Mark completed items with an [x] -->
 
 - [ ] I have searched for similar issues in both open and closed tickets and cannot find a duplicate.
-- [ ] The issue still exists against the latest `master` branch of CoCart: Cart Enhanced on GitHub (this is **not** the same version as on WordPress.org!)
+- [ ] The issue still exists against the latest `master` branch of CoCart: Cart API Enhanced on GitHub (this is **not** the same version as on WordPress.org!)
 - [ ] I have attempted to find the simplest possible steps to reproduce the issue.
 - [ ] I have included a failing test as a pull request (Optional)
 - [ ] I have installed the requirements to run this plugin.

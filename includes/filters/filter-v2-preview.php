@@ -3,13 +3,13 @@
  * Filters CoCart to enhance the get-cart response for "v2" of the REST API.
  *
  * This is still a working progress and is by no means complete.
- * It is a preview of the new cart response in the coming v3 of CoCart for v2 of it's REST API.
+ * It is a preview of the new cart response in the coming v3 of CoCart for API v2 of it's REST API.
  * Use only for experimenting.
  *
  * @author  Sébastien Dumont
  * @package Filters
  * @since   2.0.0
- * @version 3.0.3
+ * @version 4.0.2
  * @license GPL-2.0+
  */
 
@@ -327,8 +327,11 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 				$rates = array();
 
 				$details['packages'][ $package_key ] = array(
-					/* translators: %d: shipping package number */
-					'package_name'          => apply_filters( 'cocart_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'cocart-get-cart-enhanced' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'cocart-get-cart-enhanced' ), $i, $package ),
+					'package_name'          => apply_filters( 'cocart_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf(
+						/* translators: %d: shipping package number */
+						_x( 'Shipping %d', 'shipping packages', 'cocart-get-cart-enhanced' ),
+						( $i + 1 )
+					) : _x( 'Shipping', 'shipping packages', 'cocart-get-cart-enhanced' ), $i, $package ),
 					'rates'                 => $package['rates'],
 					'package_details'       => implode( ', ', $product_names ),
 					'index'                 => $i,
@@ -355,12 +358,11 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 				$details['packages'][ $package_key ]['rates'] = $rates;
 
-				$package_key++;
+				++$package_key;
 			}
 
 			return $details;
 		} // END get_shipping_details()
-
 	} // END class
 
 } // END if class exists

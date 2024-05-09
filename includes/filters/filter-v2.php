@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   3.0.0
- * @version 4.0.0
+ * @version 4.0.2
  * @license GPL-2.0+
  */
 
@@ -104,7 +104,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			}
 
 			// Permalink of product if visible.
-			if ( version_compare( COCART_VERSION, '4.0.0', '>=' ) ) {
+			if ( version_compare( COCART_VERSION, '5.0.0', '>=' ) ) {
 				$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
 			} else {
 				$cart_contents[ $item_key ]['permalink'] = $_product->is_visible() ? function_exists( 'cocart_get_permalink' ) ? cocart_get_permalink( get_permalink( $_product->get_id() ) ) : $_product->get_permalink( $cart_item ) : '';
@@ -144,7 +144,7 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 			}
 
 			// Identify version of CoCart installed to return the following values correctly.
-			if ( version_compare( COCART_VERSION, '4.0.0', '>=' ) ) {
+			if ( version_compare( COCART_VERSION, '5.0.0', '>=' ) ) {
 				$cart_contents[ $item_key ]['price_regular']    = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $regular_price ) : wc_format_decimal( $regular_price, wc_get_price_decimals() );
 				$cart_contents[ $item_key ]['price_sale']       = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $sale_price ) : wc_format_decimal( $sale_price, wc_get_price_decimals() );
 				$cart_contents[ $item_key ]['price_discounted'] = function_exists( 'cocart_prepare_money_response' ) ? cocart_prepare_money_response( $discounted_price ) : wc_format_decimal( $discounted_price, wc_get_price_decimals() );
@@ -156,7 +156,6 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v2' ) ) {
 
 			return $cart_contents;
 		} // END is_item_discounted()
-
 	} // END class
 
 } // END if class exists

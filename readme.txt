@@ -1,18 +1,16 @@
-=== CoCart - Cart Enhanced === 
-Author URI: https://sebastiendumont.com
-Plugin URI: https://cocart.xyz
+=== CoCart - Cart API Enhanced === 
 Contributors: cocartforwc, sebd86, jppdesigns
-Tags: woocommerce, rest-api, api, decoupled, headless, cart
+Tags: woocommerce, rest-api, decoupled, headless, cart
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.2.2
-Stable tag: 4.0.1
-WC requires at least: 6.4
-WC tested up to: 7.9
+Tested up to: 6.5
+Stable tag: 4.0.2
+WC requires at least: 4.3
+WC tested up to: 8.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Enhances the data returned for the cart and the items added to it.
+Enhances CoCart's cart REST API response.
 
 == Description ==
 
@@ -39,18 +37,17 @@ Each item added to the cart will return the following:
  * Returns the product gallery if any. - **Enhances API v2**
  * Returns the product permalink. - **Enhances API v2**
 
-Want more? [Upgrade to CoCart Pro](https://cocart.xyz/pro/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart).
+Want more? [See what we have in store](https://cocartapi.com/pricing/?utm_medium=website&utm_source=wpplugindirectory&utm_campaign=readme&utm_content=readmelink).
 
 ★★★★★
 > An excellent plugin, which makes building a headless WooCommerce experience a breeze. Easy to use, nearly zero setup time. [Harald Schneider](https://wordpress.org/support/topic/excellent-plugin-8062/)
 
-## 🧰 Tools and Libraries
+## 🧰 Developer Tools
 
-* **[CoCart Beta Tester](https://github.com/co-cart/cocart-beta-tester)** allows you to easily update to prerelease versions of CoCart Lite for testing and development purposes.
-* **[CoCart VSCode](https://github.com/co-cart/cocart-vscode)** extension for Visual Studio Code adds snippets and autocompletion of functions, classes and hooks.
-* **[CoCart Product Support Boilerplate](https://github.com/co-cart/cocart-product-support-boilerplate)** provides a basic boilerplate for supporting a different product types to add to the cart with validation including adding your own parameters.
-* **[CoCart Cart Callback Example](https://github.com/co-cart/cocart-cart-callback-example)** provides you an example of registering a callback that can be triggered when updating the cart.
-* **[CoCart Tweaks](https://github.com/co-cart/co-cart-tweaks)** provides a starting point for developers to tweak CoCart to their needs.
+* **[CoCart Beta Tester](https://github.com/cocart-headless/cocart-beta-tester)** allows you to easily update to pre-release versions of CoCart for testing and development purposes.
+* **[CoCart VSCode](https://github.com/cocart-headless/cocart-vscode)** extension for Visual Studio Code adds snippets and autocompletion of functions, classes and hooks.
+* **[CoCart Product Support Boilerplate](https://github.com/cocart-headless/cocart-product-support-boilerplate)** provides a basic boilerplate for supporting a different product types to add to the cart with validation including adding your own parameters.
+* **[CoCart Cart Callback Example](https://github.com/cocart-headless/cocart-cart-callback-example)** provides you an example of registering a callback that can be triggered when updating the cart.
 
 #### 👍 Add-ons to further enhance CoCart
 
@@ -68,28 +65,30 @@ They work with the core of CoCart already, and these add-ons of course come with
 
 #### More testimonials
 
-[See the wall of love](https://cocart.xyz/wall-of-love/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart).
+[See the wall of love](https://cocartapi.com/wall-of-love/?utm_medium=website&utm_source=wpplugindirectory&utm_campaign=readme&utm_content=readmelink).
 
 ### ⌨️ Join our growing community
 
 A Discord community for developers, WordPress agencies and shop owners building the fastest and best headless WooCommerce stores with CoCart.
 
-[Join our community](https://cocart.xyz/community/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)
+[Join our community](https://cocartapi.com/community/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart)
 
 ### 🐞 Bug reports
 
-Bug reports for CoCart - Cart Enhanced are welcomed in the [CoCart - Cart Enhanced repository on GitHub](https://github.com/co-cart/cocart-get-cart-enhanced). Please note that GitHub is not a support forum, and that issues that aren’t properly qualified as bugs will be closed.
+Bug reports for CoCart - Cart API Enhanced are welcomed in the [CoCart - Cart API Enhanced repository on GitHub](https://github.com/cocart-headless/cocart-get-cart-enhanced). Please note that GitHub is not a support forum, and that issues that aren’t properly qualified as bugs will be closed.
 
 ### More information
 
-* The [CoCart plugin](https://cocart.xyz/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=cocart) official website.
-* The CoCart [Documentation](https://docs.cocart.xyz/)
+* The official [CoCart API plugin](https://cocartapi.com/?utm_medium=website&utm_source=wpplugindirectory&utm_campaign=readme&utm_content=readmelink) website.
+* [CoCart for Developers](https://cocart.dev/?utm_medium=website&utm_source=wpplugindirectory&utm_campaign=readme&utm_content=readmelink), an official hub for resources you need to be productive with CoCart and keep track of everything that is happening with the API.
+* [CoCart API Reference](https://docs.cocart.xyz/)
 * [Subscribe to updates](http://eepurl.com/dKIYXE)
-* Like, Follow and Star on [Facebook](https://www.facebook.com/cocartforwc/), [Twitter](https://twitter.com/cocartapi), [Instagram](https://www.instagram.com/co_cart/) and [GitHub](https://github.com/co-cart/co-cart)
+* Like, Follow and Star on [Facebook](https://www.facebook.com/cocartforwc/), [Twitter](https://twitter.com/cocartapi), [Instagram](https://www.instagram.com/cocartheadless/) and [GitHub](https://github.com/co-cart/co-cart)
 
 #### 💯 Credits
 
-This plugin is created by [Sébastien Dumont](https://sebastiendumont.com).
+This plugin is developed and maintained by [Sébastien Dumont](https://twitter.com/sebd86).
+Founder of [CoCart Headless, LLC](https://twitter.com/cocartheadless).
 
 == Installation ==
 
@@ -109,9 +108,9 @@ You will need CoCart v2.1 or above.
 
 = Automatic installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of CoCart - Cart Enhanced, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of CoCart - Cart API Enhanced, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-In the search field type "CoCart Cart Enhanced" and click Search Plugins. Once you’ve found the plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking "Install Now".
+In the search field type "CoCart Cart API Enhanced" and click Search Plugins. Once you’ve found the plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking "Install Now".
 
 = Manual installation =
 
@@ -119,9 +118,9 @@ The manual installation method involves downloading the plugin and uploading it 
 
 = Upgrading =
 
-It is recommended that anytime you want to update "CoCart Cart Enhanced" that you get familiar with what's changed in the release.
+It is recommended that anytime you want to update "CoCart Cart API Enhanced" that you get familiar with what's changed in the release.
 
-CoCart Cart Enhanced uses Semver practices. The summary of Semver versioning is as follows:
+CoCart Cart API Enhanced uses Semver practices. The summary of Semver versioning is as follows:
 
 - *MAJOR* version when you make incompatible API changes.
 - *MINOR* version when you add functionality in a backwards compatible manner.
@@ -138,4 +137,4 @@ You can read more about the details of Semver at [semver.org](https://semver.org
 
 == Changelog ==
 
-[View the full changelog here](https://github.com/co-cart/cocart-get-cart-enhanced/blob/master/CHANGELOG.md).
+[View the full changelog here](https://github.com/cocart-headless/cocart-get-cart-enhanced/blob/master/CHANGELOG.md).

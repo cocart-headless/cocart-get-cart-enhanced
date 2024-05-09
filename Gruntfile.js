@@ -41,13 +41,13 @@ module.exports = function(grunt) {
 						'node_modules'
 					],
 					mainFile: '<%= pkg.name %>.php', // Main project file.
-					potComments: 'Copyright (c) {year} Sébastien Dumont\nThis file is distributed under the same license as the CoCart - Get Cart Enhanced package.', // The copyright at the beginning of the POT file.
+					potComments: 'Copyright (c) {year} CoCart Headless, LLC\nThis file is distributed under the same license as the CoCart - Cart API Enhanced package.', // The copyright at the beginning of the POT file.
 					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 					potHeaders: {
 						'poedit': true,                                       // Includes common Poedit headers.
 						'x-poedit-keywordslist': true,                        // Include a list of all possible gettext functions.
-						'Report-Msgid-Bugs-To': 'https://github.com/co-cart/cocart-get-cart-enhanced/issues',
-						'language-team': 'Sébastien Dumont <translate@cocart.xyz>',
+						'Report-Msgid-Bugs-To': 'https://github.com/cocart-headless/cocart-get-cart-enhanced/issues',
+						'language-team': 'CoCart Headless, LLC <translate@cocart.xyz>',
 						'language': 'en_US'
 					},
 					processPot: function( pot ) {

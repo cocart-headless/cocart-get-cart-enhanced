@@ -1,17 +1,17 @@
-# Copyright (c) 2023 Sébastien Dumont
-# This file is distributed under the same license as the CoCart - Get Cart Enhanced package.
+# Copyright (c) 2024 CoCart Headless, LLC
+# This file is distributed under the same license as the CoCart - Cart API Enhanced package.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoCart - Cart Enhanced 4.0.1\n"
+"Project-Id-Version: CoCart - Cart API Enhanced 4.0.2\n"
 "Report-Msgid-Bugs-To: "
-"https://github.com/co-cart/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2023-08-03 15:35:01+00:00\n"
+"https://github.com/cocart-headless/cocart-get-cart-enhanced/issues\n"
+"POT-Creation-Date: 2024-05-09 20:23:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Sébastien Dumont <translate@cocart.xyz>\n"
+"Language-Team: CoCart Headless, LLC <translate@cocart.xyz>\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Country: United States\n"
@@ -27,396 +27,57 @@ msgstr ""
 
 #: includes/filters/filter-v1.php:112 includes/filters/filter-v2-preview.php:92
 #: includes/filters/filter-v2.php:66
-#: svn/tags/1.10.0/cocart-get-cart-enhanced.php:128
-#: svn/tags/1.3.0/cocart-get-cart-enhanced.php:90
-#: svn/tags/1.4.0/cocart-get-cart-enhanced.php:96
-#: svn/tags/1.5.0/cocart-get-cart-enhanced.php:109
-#: svn/tags/1.6.0/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.1/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.2/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.3/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.4/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.5/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.6.6/cocart-get-cart-enhanced.php:112
-#: svn/tags/1.7.0/cocart-get-cart-enhanced.php:115
-#: svn/tags/1.8.0/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.9.0/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.9.1/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.9.2/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.9.3/cocart-get-cart-enhanced.php:128
-#: svn/tags/2.0.0/filters/filter-v1.php:105
-#: svn/tags/2.0.0/filters/filter-v2.php:84
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:105
-#: svn/tags/2.0.1/includes/filters/filter-v2.php:84
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:105
-#: svn/tags/2.0.2/includes/filters/filter-v2.php:88
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:105
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:88
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:105
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:88
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:105
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:88
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:105
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:88
-#: svn/tags/3.0.0/includes/filters/filter-v2.php:47
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:105
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:88
-#: svn/tags/3.0.1/includes/filters/filter-v2.php:50
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:105
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:88
-#: svn/tags/3.0.2/includes/filters/filter-v2.php:50
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:109
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.0.3/includes/filters/filter-v2.php:54
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:109
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.0.4/includes/filters/filter-v2.php:54
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:109
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.1.0/includes/filters/filter-v2.php:54
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:109
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.2.0/includes/filters/filter-v2.php:54
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:109
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.3.0/includes/filters/filter-v2.php:54
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:112
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:92
-#: svn/tags/4.0.0/includes/filters/filter-v2.php:66
-#: svn/trunk/includes/filters/filter-v1.php:112
-#: svn/trunk/includes/filters/filter-v2-preview.php:92
-#: svn/trunk/includes/filters/filter-v2.php:66
 msgid "In Stock"
 msgstr ""
 
 #: includes/filters/filter-v1.php:116 includes/filters/filter-v2-preview.php:96
 #: includes/filters/filter-v2.php:70
-#: svn/tags/1.10.0/cocart-get-cart-enhanced.php:132
-#: svn/tags/1.3.0/cocart-get-cart-enhanced.php:94
-#: svn/tags/1.4.0/cocart-get-cart-enhanced.php:100
-#: svn/tags/1.5.0/cocart-get-cart-enhanced.php:113
-#: svn/tags/1.6.0/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.1/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.2/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.3/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.4/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.5/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.6.6/cocart-get-cart-enhanced.php:116
-#: svn/tags/1.7.0/cocart-get-cart-enhanced.php:119
-#: svn/tags/1.8.0/cocart-get-cart-enhanced.php:124
-#: svn/tags/1.9.0/cocart-get-cart-enhanced.php:124
-#: svn/tags/1.9.1/cocart-get-cart-enhanced.php:124
-#: svn/tags/1.9.2/cocart-get-cart-enhanced.php:124
-#: svn/tags/1.9.3/cocart-get-cart-enhanced.php:132
-#: svn/tags/2.0.0/filters/filter-v1.php:109
-#: svn/tags/2.0.0/filters/filter-v2.php:88
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:109
-#: svn/tags/2.0.1/includes/filters/filter-v2.php:88
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:109
-#: svn/tags/2.0.2/includes/filters/filter-v2.php:92
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:109
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:92
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:109
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:92
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:109
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:92
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:109
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.0.0/includes/filters/filter-v2.php:51
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:109
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.0.1/includes/filters/filter-v2.php:54
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:109
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:92
-#: svn/tags/3.0.2/includes/filters/filter-v2.php:54
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:113
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.0.3/includes/filters/filter-v2.php:58
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:113
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.0.4/includes/filters/filter-v2.php:58
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:113
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.1.0/includes/filters/filter-v2.php:58
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:113
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.2.0/includes/filters/filter-v2.php:58
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:113
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.3.0/includes/filters/filter-v2.php:58
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:116
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:96
-#: svn/tags/4.0.0/includes/filters/filter-v2.php:70
-#: svn/trunk/includes/filters/filter-v1.php:116
-#: svn/trunk/includes/filters/filter-v2-preview.php:96
-#: svn/trunk/includes/filters/filter-v2.php:70
 msgid "Out of Stock"
 msgstr ""
 
 #: includes/filters/filter-v1.php:120
 #: includes/filters/filter-v2-preview.php:100 includes/filters/filter-v2.php:74
-#: svn/tags/1.10.0/cocart-get-cart-enhanced.php:136
-#: svn/tags/1.3.0/cocart-get-cart-enhanced.php:98
-#: svn/tags/1.4.0/cocart-get-cart-enhanced.php:104
-#: svn/tags/1.5.0/cocart-get-cart-enhanced.php:117
-#: svn/tags/1.6.0/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.1/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.2/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.3/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.4/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.5/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.6.6/cocart-get-cart-enhanced.php:120
-#: svn/tags/1.7.0/cocart-get-cart-enhanced.php:123
-#: svn/tags/1.8.0/cocart-get-cart-enhanced.php:128
-#: svn/tags/1.9.0/cocart-get-cart-enhanced.php:128
-#: svn/tags/1.9.1/cocart-get-cart-enhanced.php:128
-#: svn/tags/1.9.2/cocart-get-cart-enhanced.php:128
-#: svn/tags/1.9.3/cocart-get-cart-enhanced.php:136
-#: svn/tags/2.0.0/filters/filter-v1.php:113
-#: svn/tags/2.0.0/filters/filter-v2.php:92
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:113
-#: svn/tags/2.0.1/includes/filters/filter-v2.php:92
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:113
-#: svn/tags/2.0.2/includes/filters/filter-v2.php:96
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:113
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:96
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:113
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:96
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:113
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:96
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:113
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.0.0/includes/filters/filter-v2.php:55
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:113
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.0.1/includes/filters/filter-v2.php:58
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:113
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:96
-#: svn/tags/3.0.2/includes/filters/filter-v2.php:58
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:117
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:100
-#: svn/tags/3.0.3/includes/filters/filter-v2.php:62
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:117
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:100
-#: svn/tags/3.0.4/includes/filters/filter-v2.php:62
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:117
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:100
-#: svn/tags/3.1.0/includes/filters/filter-v2.php:62
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:117
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:100
-#: svn/tags/3.2.0/includes/filters/filter-v2.php:62
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:117
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:100
-#: svn/tags/3.3.0/includes/filters/filter-v2.php:62
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:120
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:100
-#: svn/tags/4.0.0/includes/filters/filter-v2.php:74
-#: svn/trunk/includes/filters/filter-v1.php:120
-#: svn/trunk/includes/filters/filter-v2-preview.php:100
-#: svn/trunk/includes/filters/filter-v2.php:74
 msgid "Available on backorder"
 msgstr ""
 
 #: includes/filters/filter-v1.php:360
 #: includes/filters/filter-v2-preview.php:282
-#: svn/tags/1.10.0/cocart-get-cart-enhanced.php:365
-#: svn/tags/1.6.0/cocart-get-cart-enhanced.php:325
-#: svn/tags/1.6.1/cocart-get-cart-enhanced.php:326
-#: svn/tags/1.6.2/cocart-get-cart-enhanced.php:326
-#: svn/tags/1.6.3/cocart-get-cart-enhanced.php:326
-#: svn/tags/1.6.4/cocart-get-cart-enhanced.php:326
-#: svn/tags/1.6.5/cocart-get-cart-enhanced.php:326
-#: svn/tags/1.6.6/cocart-get-cart-enhanced.php:334
-#: svn/tags/1.7.0/cocart-get-cart-enhanced.php:337
-#: svn/tags/1.8.0/cocart-get-cart-enhanced.php:342
-#: svn/tags/1.9.0/cocart-get-cart-enhanced.php:343
-#: svn/tags/1.9.1/cocart-get-cart-enhanced.php:344
-#: svn/tags/1.9.2/cocart-get-cart-enhanced.php:344
-#: svn/tags/1.9.3/cocart-get-cart-enhanced.php:352
-#: svn/tags/2.0.0/filters/filter-v1.php:342
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:342
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:342
-#: svn/tags/2.0.2/includes/filters/filter-v2.php:278
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:343
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:278
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:342
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:278
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:342
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:278
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:342
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:278
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:342
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:278
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:342
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:278
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:345
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:282
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:345
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:282
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:345
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:282
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:345
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:282
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:348
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:282
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:360
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:282
-#: svn/trunk/includes/filters/filter-v1.php:360
-#: svn/trunk/includes/filters/filter-v2-preview.php:282
 #. translators: %s: average rating
 msgid "Rated %s out of 5"
 msgstr ""
 
 #: includes/filters/filter-v1.php:531
-#: svn/tags/1.10.0/cocart-get-cart-enhanced.php:524
-#: svn/tags/1.4.0/cocart-get-cart-enhanced.php:419
-#: svn/tags/1.5.0/cocart-get-cart-enhanced.php:432
-#: svn/tags/1.6.0/cocart-get-cart-enhanced.php:481
-#: svn/tags/1.6.1/cocart-get-cart-enhanced.php:482
-#: svn/tags/1.6.2/cocart-get-cart-enhanced.php:479
-#: svn/tags/1.6.3/cocart-get-cart-enhanced.php:484
-#: svn/tags/1.6.4/cocart-get-cart-enhanced.php:485
-#: svn/tags/1.6.5/cocart-get-cart-enhanced.php:485
-#: svn/tags/1.6.6/cocart-get-cart-enhanced.php:493
-#: svn/tags/1.7.0/cocart-get-cart-enhanced.php:496
-#: svn/tags/1.8.0/cocart-get-cart-enhanced.php:501
-#: svn/tags/1.9.0/cocart-get-cart-enhanced.php:502
-#: svn/tags/1.9.1/cocart-get-cart-enhanced.php:503
-#: svn/tags/1.9.2/cocart-get-cart-enhanced.php:503
-#: svn/tags/1.9.3/cocart-get-cart-enhanced.php:511
-#: svn/tags/2.0.0/filters/filter-v1.php:503
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:503
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:503
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:504
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:503
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:503
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:503
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:503
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:503
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:505
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:505
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:505
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:505
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:508
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:531
-#: svn/trunk/includes/filters/filter-v1.php:531
 msgid "Free shipping coupon"
 msgstr ""
 
-#: includes/filters/filter-v1.php:678 svn/tags/2.0.0/filters/filter-v1.php:633
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:633
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:633
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:634
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:635
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:635
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:635
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:635
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:635
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:638
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:638
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:638
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:638
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:641
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:678
-#: svn/trunk/includes/filters/filter-v1.php:678
+#: includes/filters/filter-v1.php:678
 msgid "An item which is no longer available was removed from your cart."
 msgstr ""
 
-#: includes/filters/filter-v1.php:685 svn/tags/2.0.0/filters/filter-v1.php:640
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:640
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:640
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:641
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:642
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:642
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:642
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:642
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:642
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:645
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:645
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:645
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:645
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:648
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:685
-#: svn/trunk/includes/filters/filter-v1.php:685
+#: includes/filters/filter-v1.php:685
 #. translators: %s: product name
 msgid "There are too many &quot;%s&quot; in the cart. Only 1 can be purchased."
 msgstr ""
 
-#: includes/filters/filter-v1.php:718 svn/tags/2.0.0/filters/filter-v1.php:671
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:671
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:671
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:672
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:673
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:673
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:673
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:673
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:673
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:676
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:676
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:676
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:676
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:679
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:718
-#: svn/trunk/includes/filters/filter-v1.php:718
+#: includes/filters/filter-v1.php:719
 #. translators: %s: product name
 msgid "Sorry, \"%s\" is not in stock and cannot be purchased."
 msgstr ""
 
-#: includes/filters/filter-v1.php:740 svn/tags/2.0.0/filters/filter-v1.php:693
-#: svn/tags/2.0.1/includes/filters/filter-v1.php:693
-#: svn/tags/2.0.2/includes/filters/filter-v1.php:693
-#: svn/tags/2.0.3/includes/filters/filter-v1.php:694
-#: svn/tags/2.0.4/includes/filters/filter-v1.php:695
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v1.php:695
-#: svn/tags/3.0.0/includes/filters/filter-v1.php:695
-#: svn/tags/3.0.1/includes/filters/filter-v1.php:695
-#: svn/tags/3.0.2/includes/filters/filter-v1.php:695
-#: svn/tags/3.0.3/includes/filters/filter-v1.php:698
-#: svn/tags/3.0.4/includes/filters/filter-v1.php:698
-#: svn/tags/3.1.0/includes/filters/filter-v1.php:698
-#: svn/tags/3.2.0/includes/filters/filter-v1.php:698
-#: svn/tags/3.3.0/includes/filters/filter-v1.php:701
-#: svn/tags/4.0.0/includes/filters/filter-v1.php:740
-#: svn/trunk/includes/filters/filter-v1.php:740
+#: includes/filters/filter-v1.php:744
 #. translators: 1: product name 2: quantity in stock
 msgid ""
 "Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s "
 "available). We apologize for any inconvenience caused."
 msgstr ""
 
-#: includes/filters/filter-v2-preview.php:331
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:327
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:327
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:327
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:331
-#: svn/trunk/includes/filters/filter-v2-preview.php:331
+#: includes/filters/filter-v2-preview.php:332
 #. translators: %d: shipping package number
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
-#: includes/filters/filter-v2-preview.php:331
-#: svn/tags/2.0.3/includes/filters/filter-v2.php:327
-#: svn/tags/2.0.4/includes/filters/filter-v2.php:327
-#: svn/tags/2.0.4/trunk/includes/filters/filter-v2.php:327
-#: svn/tags/3.0.0/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.1/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.2/includes/filters/filter-v2-preview.php:327
-#: svn/tags/3.0.3/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.0.4/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.1.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.2.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/3.3.0/includes/filters/filter-v2-preview.php:331
-#: svn/tags/4.0.0/includes/filters/filter-v2-preview.php:331
-#: svn/trunk/includes/filters/filter-v2-preview.php:331
+#: includes/filters/filter-v2-preview.php:334
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""

@@ -1,9 +1,9 @@
 <?php
 /**
- * CoCart - Cart Enhanced core setup.
+ * CoCart - Cart API Enhanced core setup.
  *
  * @author  Sébastien Dumont
- * @package Cart Enhanced
+ * @package Cart API Enhanced
  * @version 4.0.0
  * @license GPL-2.0+
  */
@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main CoCart Get Cart Enhanced class.
+ * Main CoCart Cart API Enhanced class.
  *
- * @class CoCart_Get_Cart_Enhanced
+ * @class CoCart_Cart_API_Enhanced
  */
-final class CoCart_Get_Cart_Enhanced {
+final class CoCart_Cart_API_Enhanced {
 
 	/**
 	 * Plugin Version
@@ -28,10 +28,10 @@ final class CoCart_Get_Cart_Enhanced {
 	 *
 	 * @var string
 	 */
-	public static $version = '4.0.1';
+	public static $version = '4.0.2';
 
 	/**
-	 * Initiate CoCart Get Cart Enhanced.
+	 * Initiate CoCart Cart API Enhanced.
 	 *
 	 * @access public
 	 *
@@ -59,8 +59,8 @@ final class CoCart_Get_Cart_Enhanced {
 	 * @return string
 	 */
 	public static function get_name() {
-		return 'CoCart - Cart Enhanced';
-	}
+		return 'CoCart - Cart API Enhanced';
+	} // END get_name()
 
 	/**
 	 * Return the version of the package.
@@ -73,7 +73,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 */
 	public static function get_version() {
 		return self::$version;
-	}
+	} // END get_version()
 
 	/**
 	 * Return the path to the package.
@@ -86,7 +86,7 @@ final class CoCart_Get_Cart_Enhanced {
 	 */
 	public static function get_path() {
 		return dirname( __DIR__ );
-	}
+	} // END get_path()
 
 	/**
 	 * Load filters to enhance the cart and items.
@@ -173,5 +173,4 @@ final class CoCart_Get_Cart_Enhanced {
 		load_textdomain( 'cocart-get-cart-enhanced', WP_LANG_DIR . '/cocart-get-cart-enhanced/cocart-get-cart-enhanced-' . $locale . '.mo' );
 		load_plugin_textdomain( 'cocart-get-cart-enhanced', false, plugin_basename( dirname( COCART_GET_CART_ENHANCED ) ) . '/languages' );
 	} // END load_plugin_textdomain()
-
 } // END class

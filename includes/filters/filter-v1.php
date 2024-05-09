@@ -5,7 +5,7 @@
  * @author  Sébastien Dumont
  * @package Filters
  * @since   1.0.0
- * @version 4.0.0
+ * @version 4.0.2
  * @license GPL-2.0+
  */
 
@@ -280,12 +280,10 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			foreach ( $totals as $type => $sum ) {
 				if ( in_array( $type, $ignore_convert ) ) {
 					$new_totals[ $type ] = $sum;
-				} else {
-					if ( is_string( $sum ) ) {
+				} elseif ( is_string( $sum ) ) {
 						$new_totals[ $type ] = html_entity_decode( wp_strip_all_tags( wc_price( $sum ) ) );
-					} else {
-						$new_totals[ $type ] = html_entity_decode( wp_strip_all_tags( wc_price( strval( $sum ) ) ) );
-					}
+				} else {
+					$new_totals[ $type ] = html_entity_decode( wp_strip_all_tags( wc_price( strval( $sum ) ) ) );
 				}
 			}
 
@@ -714,8 +712,11 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
 				// Check stock based on stock-status.
 				if ( ! $product->is_in_stock() ) {
-					/* translators: %s: product name */
-					$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock and cannot be purchased.', 'cocart-get-cart-enhanced' ), $product->get_name() ) );
+					$error->add( 'out-of-stock', sprintf(
+						/* translators: %s: product name */
+						__( 'Sorry, "%s" is not in stock and cannot be purchased.', 'cocart-get-cart-enhanced' ),
+						$product->get_name()
+					) );
 					return $error;
 				}
 
@@ -736,8 +737,12 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 				 * @param array      $values    Cart item values.
 				 */
 				if ( apply_filters( 'cocart_cart_item_required_stock_is_not_enough', $product->get_stock_quantity() < ( $held_stock + $required_stock ), $product, $values ) ) {
-					/* translators: 1: product name 2: quantity in stock */
-					$error->add( 'out-of-stock', sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'cocart-get-cart-enhanced' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+					$error->add( 'out-of-stock', sprintf(
+						/* translators: 1: product name 2: quantity in stock */
+						__( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'cocart-get-cart-enhanced' ),
+						$product->get_name(),
+						wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product )
+					) );
 					return $error;
 				}
 			}
@@ -770,7 +775,6 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 
 			return $cart_contents;
 		} // END check_cart_coupons()
-
 	} // END class
 
 } // END if class exists

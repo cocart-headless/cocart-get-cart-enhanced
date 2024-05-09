@@ -1,10 +1,18 @@
-# Changelog for CoCart Get Cart Enhanced
+# Changelog for CoCart Cart API Enhanced
+
+## v4.0.2 - 9th May, 2024
+
+### Compatibility
+
+* Tested with WordPress v6.5
+* Tested with WooCommerce v8.8
+* Tested with CoCart v4.0
 
 ## v4.0.1 - 3rd August, 2023
 
 ### Bug Fix
 
-* Fixed Uncaught TypeError for `cocart_prepare_money_response()` with CoCart v4.
+* Fixed Uncaught TypeError for `cocart_prepare_money_response()` with CoCart v5 (In development).
 
 ## v4.0.0 - 2nd August, 2023
 
@@ -17,7 +25,6 @@
 
 ### Compatibility
 
-* Ready for CoCart v4.0 ✔️
 * Tested with WooCommerce v7.9
 
 ## v3.3.0 - 1st April, 2023
