@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards">
+<ruleset name="CoCart Coding Standards">
 	<description>CoCart Code Standards</description>
 
 	<file>.</file>
@@ -20,7 +20,7 @@
 	<arg name="parallel" value="8" />
 
 	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="5.2" />
+	<config name="minimum_supported_wp_version" value="5.6" />
 	<config name="testVersion" value="7.0-" />
 
 	<!-- Rules -->
