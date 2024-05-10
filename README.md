@@ -5,9 +5,6 @@
 		<img src="https://img.shields.io/badge/license-GPL--3.0%2B-red.svg" alt="Licence">
 	</a>
 	<a href="https://wordpress.org/plugins/cocart-get-cart-enhanced/">
-		<img src="https://poser.pugx.org/cocart-headless/cocart-get-cart-enhanced/v/stable" alt="Latest Stable Version">
-	</a>
-	<a href="https://wordpress.org/plugins/cocart-get-cart-enhanced/">
 		<img src="https://img.shields.io/wordpress/plugin/dt/cocart-get-cart-enhanced.svg" alt="WordPress Plugin Downloads">
 	</a>
 </p>
@@ -96,7 +93,7 @@ Twitter [@cocartapi](https://twitter.com/cocartapi)
 
 ---
 
-CoCart is developed and maintained by [Sébastien Dumont](https://github.com/seb86).
+CoCart Cart API Enhanced is developed and maintained by [Sébastien Dumont](https://github.com/seb86).
 Founder of [CoCart Headless, LLC](https://github.com/cocart-headless).
 
 Website [sebastiendumont.com](https://sebastiendumont.com) &nbsp;&middot;&nbsp;
