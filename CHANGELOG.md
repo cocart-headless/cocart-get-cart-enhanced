@@ -35,9 +35,9 @@
 
 ### Compatibility
 
-* Tested with CoCart v3.8 ✔️
+* Tested with CoCart v3.8
 * Tested with WooCommerce v7.5
-* Tested with WordPress v6.2 ✔️
+* Tested with WordPress v6.2
 
 ## v3.2.0 - 29th March, 2022
 
@@ -47,9 +47,9 @@
 
 ### Compatibility
 
-* Tested with CoCart v3.1 and up ✔️
+* Tested with CoCart v3.1 and up
 * Tested with WooCommerce v6.3
-* Tested with WordPress v5.9 ✔️
+* Tested with WordPress v5.9
 
 ## v3.1.0 - 28th November, 2021
 
@@ -67,8 +67,8 @@
 
 ### Compatibility
 
-* Tested with WooCommerce v5.9 ✔️
-* Tested with WordPress v5.9 ✔️
+* Tested with WooCommerce v5.9
+* Tested with WordPress v5.9
 
 ## v3.0.4 - 23rd July, 2021
 
