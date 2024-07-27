@@ -1,5 +1,13 @@
 # Changelog for CoCart Cart API Enhanced
 
+## v4.0.3 - 27th July, 2024
+
+### Compatibility
+
+* Tested with WordPress v6.6
+* Tested with WooCommerce v9.1
+* Tested with CoCart v4.3
+
 ## v4.0.2 - 9th May, 2024
 
 ### Compatibility

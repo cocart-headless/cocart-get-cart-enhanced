@@ -28,7 +28,7 @@ final class CoCart_Cart_API_Enhanced {
 	 *
 	 * @var string
 	 */
-	public static $version = '4.0.2';
+	public static $version = '4.0.3';
 
 	/**
 	 * Initiate CoCart Cart API Enhanced.
@@ -43,10 +43,6 @@ final class CoCart_Cart_API_Enhanced {
 
 		// Load translation files.
 		add_action( 'init', array( __CLASS__, 'load_plugin_textdomain' ), 0 );
-
-		// Plugin activation and deactivation.
-		register_activation_hook( COCART_GET_CART_ENHANCED, array( __CLASS__, 'activated' ) );
-		register_deactivation_hook( COCART_GET_CART_ENHANCED, array( __CLASS__, 'deactivated' ) );
 	} // END init()
 
 	/**
@@ -96,56 +92,14 @@ final class CoCart_Cart_API_Enhanced {
 	 * @static
 	 */
 	public static function include_filters() {
-		include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v1.php';
-		include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v2.php';
+		include_once __DIR__ . '/filters/filter-v1.php';
+		include_once __DIR__ . '/filters/filter-v2.php';
 
 		// If enabled, cart will enhance API v1.
 		if ( apply_filters( 'cocart_preview_api_v2', false ) ) {
-			include_once dirname( COCART_GET_CART_ENHANCED ) . '/includes/filters/filter-v2-preview.php';
+			include_once __DIR__ . '/filters/filter-v2-preview.php';
 		}
 	} // include_filters()
-
-	/**
-	 * Runs when the plugin is activated.
-	 *
-	 * Adds plugin to list of installed CoCart add-ons.
-	 *
-	 * @access public
-	 *
-	 * @static
-	 */
-	public static function activated() {
-		$addons_installed = get_site_option( 'cocart_addons_installed', array() );
-
-		$plugin = plugin_basename( COCART_GET_CART_ENHANCED );
-
-		// Check if plugin is already added to list of installed add-ons.
-		if ( ! in_array( $plugin, $addons_installed, true ) ) {
-			array_push( $addons_installed, $plugin );
-			update_site_option( 'cocart_addons_installed', $addons_installed );
-		}
-	} // END activated()
-
-	/**
-	 * Runs when the plugin is deactivated.
-	 *
-	 * Removes plugin from list of installed CoCart add-ons.
-	 *
-	 * @access public
-	 *
-	 * @static
-	 */
-	public static function deactivated() {
-		$addons_installed = get_site_option( 'cocart_addons_installed', array() );
-
-		$plugin = plugin_basename( COCART_GET_CART_ENHANCED );
-
-		// Remove plugin from list of installed add-ons.
-		if ( in_array( $plugin, $addons_installed, true ) ) {
-			$addons_installed = array_diff( $addons_installed, array( $plugin ) );
-			update_site_option( 'cocart_addons_installed', $addons_installed );
-		}
-	} // END deactivated()
 
 	/**
 	 * Load the plugin translations if any ready.

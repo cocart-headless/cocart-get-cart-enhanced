@@ -13,23 +13,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		// Update developer dependencies
-		devUpdate: {
-			packages: {
-				options: {
-					packageJson: null,
-					packages: {
-						devDependencies: true,
-						dependencies: false
-					},
-					reportOnlyPkgs: [],
-					reportUpdated: false,
-					semver: true,
-					updateType: 'force'
-				}
-			}
-		},
-
 		// Generate .pot file
 		makepot: {
 			target: {
@@ -154,6 +137,14 @@ module.exports = function(grunt) {
 						to: "WC tested up to: <%= pkg.wc_tested_up_to %>"
 					},
 					{
+						from: /CoCart requires at least:.*$/m,
+						to: 'CoCart requires at least: <%= pkg.cocart_requires %>'
+					},
+					{
+						from: /CoCart tested up to:.*$/m,
+						to: 'CoCart tested up to: <%= pkg.cocart_tested_up_to %>'
+					},
+					{
 						from: /Version:.*$/m,
 						to: "Version:     <%= pkg.version %>"
 					},
@@ -161,6 +152,18 @@ module.exports = function(grunt) {
 						from: /public static \$version = \'.*.'/m,
 						to: "public static $version = '<%= pkg.version %>'"
 					},
+					{
+						from: /public static \$required_wp = \'.*.'/m,
+						to: "public static $required_wp = '<%= pkg.requires %>'"
+					},
+					{
+						from: /public static \$required_woo = \'.*.'/m,
+						to: "public static $required_woo = '<%= pkg.wc_requires %>'"
+					},
+					{
+						from: /public static \$required_php = \'.*.'/m,
+						to: "public static $required_php = '<%= pkg.requires_php %>'"
+					}
 				]
 			},
 			readme: {
@@ -178,14 +181,6 @@ module.exports = function(grunt) {
 					{
 						from: /Tested up to:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
 						to: 'Tested up to:$1$2<%= pkg.tested_up_to %>$3'
-					},
-					{
-						from: /WC requires at least:(\*\*|)(\s*?)[0-9.-]+(\s*?)$/mi,
-						to: 'WC requires at least:$1$2<%= pkg.wc_requires %>$3'
-					},
-					{
-						from: /WC tested up to:(\*\*|)(\s*?)[a-zA-Z0-9.-]+(\s*?)$/mi,
-						to: 'WC tested up to:$1$2<%= pkg.wc_tested_up_to %>$3'
 					},
 				]
 			},
@@ -268,9 +263,6 @@ module.exports = function(grunt) {
 	// Set the default grunt command to run test cases.
 	grunt.registerTask( 'default', [ 'test' ] );
 
-	// Checks for developer dependencies updates.
-	grunt.registerTask( 'check', [ 'devUpdate' ] );
-
 	// Checks for errors.
 	grunt.registerTask( 'test', [ 'checktextdomain' ]);
 
@@ -292,7 +284,7 @@ module.exports = function(grunt) {
 	 * Creates a deployable plugin zipped up ready to upload
 	 * and install on a WordPress installation.
 	 */
-	 grunt.registerTask( 'zip', [ 'copy:build', 'compress:zip', 'clean:build' ] );
+	grunt.registerTask( 'zip', [ 'copy:build', 'compress:zip', 'clean:build' ] );
 
 	// Build Plugin.
 	grunt.registerTask( 'build', [ 'version', 'update-pot', 'zip' ] );
