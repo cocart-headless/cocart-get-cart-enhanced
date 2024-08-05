@@ -1,5 +1,11 @@
 # Changelog for CoCart Cart API Enhanced
 
+## v4.0.4 - 5th August, 2024
+
+### Bug Fix
+
+* Fixed the cart key returning for guest customers in API v1.
+
 ## v4.0.3 - 27th July, 2024
 
 ### Compatibility

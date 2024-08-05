@@ -5,7 +5,7 @@
  * Description: Enhances CoCart's cart REST API response.
  * Author:      CoCart Headless, LLC
  * Author URI:  https://cocartapi.com
- * Version:     4.0.3
+ * Version:     4.0.4
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  * Requires at least: 5.6

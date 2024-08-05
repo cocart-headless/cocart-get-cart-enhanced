@@ -381,7 +381,14 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 		 */
 		public static function get_cart_key() {
 			// Current user ID.
-			$cart_key = strval( get_current_user_id() );
+			$current_user_id = strval( get_current_user_id() );
+
+			if ( $current_user_id > 0 ) {
+				return $current_user_id;
+			}
+
+			// Customer ID used as the cart key by default.
+			$cart_key = WC()->session->get_customer_id();
 
 			// Get cart cookie... if any.
 			$cookie = WC()->session->get_session_cookie();
@@ -392,8 +399,8 @@ if ( ! class_exists( 'CoCart_Cart_Enhanced_v1' ) ) {
 			}
 
 			// Check if we requested to load a specific cart.
-			if ( isset( $_REQUEST['cart_key'] ) || isset( $_REQUEST['id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				$cart_key = isset( $_REQUEST['cart_key'] ) ? trim( esc_html( sanitize_key( wp_unslash( $_REQUEST['cart_key'] ) ) ) ) : trim( esc_html( sanitize_key( wp_unslash( $_REQUEST['id'] ) ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( ! empty( $_REQUEST['cart_key'] ) || ! empty( $_REQUEST['id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$cart_key = isset( $_REQUEST['cart_key'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['cart_key'] ) ) : sanitize_text_field( wp_unslash( $_REQUEST['id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			}
 
 			return $cart_key;
