@@ -18,7 +18,7 @@ This free add-on for [CoCart](https://wordpress.org/plugins/cart-rest-api-for-wo
 
 Each item added to the cart will return the following:
 
- * **NEW** Returns visible product attributes for all products that is not a variation product. - **Enhances API v2 ONLY**
+ * Returns visible product attributes for all products that is not a variation product. - **Enhances API v2 ONLY**
  * Returns the regular price and sale price if any. - **Enhances API v2 ONLY**
  * Returns the discount status of items and the discounted price if any. - **Enhances API v2 ONLY**
  * Returns virtual and downloadable status. - **Enhances API v2**
