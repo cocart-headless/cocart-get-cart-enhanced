@@ -5,14 +5,14 @@
  * Description: Enhances CoCart's cart REST API response.
  * Author:      CoCart Headless, LLC
  * Author URI:  https://cocartapi.com
- * Version:     4.0.4
+ * Version:     4.0.5
  * Text Domain: cocart-get-cart-enhanced
  * Domain Path: /languages/
  * Requires at least: 5.6
  * Requires PHP: 7.4
  * Requires Plugins: cart-rest-api-for-woocommerce
  * CoCart requires at least: 4.2
- * CoCart tested up to: 4.3
+ * CoCart tested up to: 4.4
  *
  * @package CoCart Cart API Enhanced
  */

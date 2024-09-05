@@ -28,7 +28,7 @@ final class CoCart_Cart_API_Enhanced {
 	 *
 	 * @var string
 	 */
-	public static $version = '4.0.4';
+	public static $version = '4.0.5';
 
 	/**
 	 * Initiate CoCart Cart API Enhanced.

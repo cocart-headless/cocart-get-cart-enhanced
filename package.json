@@ -1,7 +1,7 @@
 {
 	"title": "CoCart - Cart API Enhanced",
 	"name": "cocart-get-cart-enhanced",
-	"version": "4.0.4",
+	"version": "4.0.5",
 	"private": false,
 	"contributors": [
 		"sebd86",
@@ -23,9 +23,9 @@
 	"requires_php": "7.4",
 	"tested_up_to": "6.6",
 	"wc_requires": "7.0",
-	"wc_tested_up_to": "9.1",
+	"wc_tested_up_to": "9.2",
 	"cocart_requires": "4.2",
-	"cocart_tested_up_to": "4.3",
+	"cocart_tested_up_to": "4.4",
 	"license": "GPL-3.0",
 	"copyright": "Copyright (c) 2024, CoCart Headless, LLC",
 	"description": "Enhances CoCart's cart REST API response.",

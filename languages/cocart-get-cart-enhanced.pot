@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the CoCart - Cart API Enhanced package.
 msgid ""
 msgstr ""
-"Project-Id-Version: CoCart - Cart API Enhanced 4.0.4\n"
+"Project-Id-Version: CoCart - Cart API Enhanced 4.0.5\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/cocart-headless/cocart-get-cart-enhanced/issues\n"
-"POT-Creation-Date: 2024-08-05 16:29:54+00:00\n"
+"POT-Creation-Date: 2024-09-05 15:08:09+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,17 +26,17 @@ msgstr ""
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: includes/filters/filter-v1.php:112 includes/filters/filter-v2-preview.php:92
-#: includes/filters/filter-v2.php:66
+#: includes/filters/filter-v2.php:65
 msgid "In Stock"
 msgstr ""
 
 #: includes/filters/filter-v1.php:116 includes/filters/filter-v2-preview.php:96
-#: includes/filters/filter-v2.php:70
+#: includes/filters/filter-v2.php:69
 msgid "Out of Stock"
 msgstr ""
 
 #: includes/filters/filter-v1.php:120
-#: includes/filters/filter-v2-preview.php:100 includes/filters/filter-v2.php:74
+#: includes/filters/filter-v2-preview.php:100 includes/filters/filter-v2.php:73
 msgid "Available on backorder"
 msgstr ""
 
